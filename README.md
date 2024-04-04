@@ -76,4 +76,4 @@ googlemapでは、ある程度範囲を決めた中での公園検索しかで�
 - tailwindcssとdaisyuiの使用
 
 ###  画面遷移図
-https://www.figma.com/file/jT1IMXubZj3C5haz9rBoeb/%E6%9D%B1%E4%BA%ACpicnic?type=design&node-id=0%3A1&mode=design&t=K2ya1b8wpj57kgBq-1
+https://www.figma.com/file/jT1IMXubZj3C5haz9rBoeb/%E6%9D%B1%E4%BA%ACpicnic?type=design&node-id=0%3A1&mode=design&t=8BcDOFxaTVPNVXRy-1
