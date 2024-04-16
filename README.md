@@ -77,3 +77,8 @@ googlemapでは、ある程度範囲を決めた中での公園検索しかで�
 
 ###  画面遷移図
 https://www.figma.com/file/jT1IMXubZj3C5haz9rBoeb/%E6%9D%B1%E4%BA%ACpicnic?type=design&node-id=0%3A1&mode=design&t=8BcDOFxaTVPNVXRy-1
+
+### ER図
+[![Image from Gyazo](https://i.gyazo.com/ce54d90961d4c192e6624c0af184a8d0.png)](https://gyazo.com/ce54d90961d4c192e6624c0af184a8d0)
+
+
