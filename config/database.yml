@@ -85,4 +85,4 @@ production:
   host: <%= ENV["RENDER_DB_HOSTNAME"] %>
   database: picnic_db_u07t
   username: picnic_db_u07t_user
-  password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
+  password: <%= ENV["RENDER_DB_PASSWORD"] %>
