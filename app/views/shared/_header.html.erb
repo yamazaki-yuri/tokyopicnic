@@ -1,0 +1,33 @@
+<header class="w-full navbar bg-base-100">
+  <div class="flex justify-between items-center w-full">
+    <div class="flex-1 px-2 lg:flex-none">
+      <%= link_to root_path do %>
+        <%= image_tag 'logo.png', size: "120x120" %>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to 'Search', '#', class: "btn btn-ghost rounded-btn text-slate-600 font-semibold text-sm hover:bg-slate-200" %>
+    </div>
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-ghost rounded-btn text-slate-600 hover:bg-slate-200">Menu</div>
+        <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
+          <li>
+            <%= link_to '公園投稿', '#', class: "text-park font-semibold hover:bg-slate-200 rounded-lg px-4 py-2" %>
+          </li>
+          <li>
+            <%= link_to 'マイページ', '#', class: "text-park font-semibold hover:bg-slate-200 rounded-lg px-4 py-2" %>
+          </li>
+          <li>
+            <%= link_to 'プロフィール編集', '#', class: "text-park font-semibold hover:bg-slate-200 rounded-lg px-4 py-2" %>
+          </li>
+          <li>
+            <%= link_to '新規登録', '#', class: "text-park font-semibold hover:bg-slate-200 rounded-lg px-4 py-2" %>
+          </li>
+          <li>
+            <%= link_to 'ログアウト', '#', class: "text-park font-semibold hover:bg-slate-200 rounded-lg px-4 py-2" %>
+          </li> 
+        </ul>
+      </div>
+    </div>
+  </div>  
+</header>
