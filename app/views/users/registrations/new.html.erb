@@ -2,34 +2,34 @@
   <%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), local: true do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <label class="block text-2xl font-bold text-center text-park">
+    <div class="block text-2xl font-bold text-center text-park">
       ユーザー登録
-    </label>
+    </div>
 
     <div class="mt-8">
-      <label class="text-park">
+      <div class="text-park">
         名前
-      </label>
+      </div>
       <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "py-3 px-5 mt-1 block w-full placeholder-gray-400 border-2 border-primary rounded-lg" %>
     </div>
 
     <div class="mt-8">
-      <label class="text-park">
+      <div class="text-park">
         メールアドレス
-      </label>
+      </div>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "py-3 px-5 mt-1 block w-full placeholder-gray-400 border-2 border-primary rounded-lg" %>
     </div>
 
     <div class="mt-8">
-      <label class="text-park text-md">
+      <div class="text-park text-md">
         パスワード
-      </label>
+      </div>
       <%= f.password_field :password, autocomplete: "new-password", class: "py-3 px-5 mt-1 block w-full placeholder-gray-400 border-2 border-primary rounded-lg" %>
     </div>
     <div class="mt-8">
-      <label class="text-park text-md">
+      <div class="text-park text-md">
         確認用パスワード
-      </label>
+      </div>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "py-3 px-5 mt-1 block w-full placeholder-gray-400 border-2 border-primary rounded-lg" %>
     </div>
     
