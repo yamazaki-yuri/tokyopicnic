@@ -10,9 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_04_032430) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_05_151131) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "park_reports", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "park_id", null: false
+    t.bigint "tokyo_ward_id", null: false
+    t.date "date"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["park_id"], name: "index_park_reports_on_park_id"
+    t.index ["tokyo_ward_id"], name: "index_park_reports_on_tokyo_ward_id"
+    t.index ["user_id"], name: "index_park_reports_on_user_id"
+  end
+
+  create_table "park_tokyo_wards", force: :cascade do |t|
+    t.bigint "park_id", null: false
+    t.bigint "tokyo_ward_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["park_id", "tokyo_ward_id"], name: "index_park_tokyo_wards_on_park_id_and_tokyo_ward_id", unique: true
+    t.index ["park_id"], name: "index_park_tokyo_wards_on_park_id"
+    t.index ["tokyo_ward_id"], name: "index_park_tokyo_wards_on_tokyo_ward_id"
+  end
+
+  create_table "parks", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "googlemaps_place_id", null: false
+    t.string "website_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["googlemaps_place_id"], name: "index_parks_on_googlemaps_place_id", unique: true
+  end
 
   create_table "sns_credentials", force: :cascade do |t|
     t.string "provider"
@@ -21,6 +53,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_04_032430) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+  end
+
+  create_table "tokyo_wards", force: :cascade do |t|
+    t.string "name", null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,5 +76,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_04_032430) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "park_reports", "parks"
+  add_foreign_key "park_reports", "tokyo_wards"
+  add_foreign_key "park_reports", "users"
+  add_foreign_key "park_tokyo_wards", "parks"
+  add_foreign_key "park_tokyo_wards", "tokyo_wards"
   add_foreign_key "sns_credentials", "users"
 end
