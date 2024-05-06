@@ -1,12 +1,31 @@
-<%= form_with(model: @park_report, local: true) do |f| %>
-  <%= f.collection_select :tokyo_ward_id, TokyoWard.all,  :id, :name, {include_blank: "区を選択"}, {class: "select select-primary max-w-xs"} %>
-<% end %>
-
-<iframe
-  width="450"
-  height="250"
-  frameborder="0" style="border:0"
-  referrerpolicy="no-referrer-when-downgrade"
-  src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=place_id:ChIJx6xXOPKLGGARtPr6qZZ2nHA"
-  allowfullscreen>
-</iframe>
+<div class="sm:mx-40 xl:mx-96 px-5 flex flex-col">
+  <div class="block text-2xl font-bold text-center text-park">
+      新規投稿
+  </div>
+  <div class="card bg-base-100 shadow-xl mt-8 flex flex-col w-full">
+    <figure class="flex flex-col w-full">
+      <%= form_with(model: @park_report, url: park_reports_path, local: true) do |f| %>
+          <div class="mt-8 flex flex-col w-full">
+            <%= f.label :公園の名前 %>
+            <%= f.text_field :park_name, placeholder: 'Enter a park name', class: "input input-bordered input-primary w-full max-w-xs" %>
+          </div>
+          <div class="mt-8 flex flex-col w-full">
+            <%= f.collection_select :tokyo_ward_id, TokyoWard.all,  :id, :name, {include_blank: "区を選択"}, {class: "select select-primary max-w-xs"} %>
+          </div>
+          <div class="my-5 flex flex-col w-full">
+            <%= f.label :日付 %>
+            <%= f.date_field :date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+          </div>
+          <div class="mt-8 mb-8 flex flex-col w-full">
+            <%= f.label :ひとこと %>
+            <%= f.text_field :comment, placeholder: 'コメントを記入', class: "textarea textarea-primary" %>
+          </div>
+    </figure>
+  </div>
+  <div class="mt-8 mx-auto">
+    <button class="btn btn-primary">
+      <%= f.submit '投稿する' %>
+    </button>
+      <% end %>
+  </div>
+</div>

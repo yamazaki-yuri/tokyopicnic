@@ -3,7 +3,8 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  resources :park_reports, only: [:new]
+  resources :park_reports, only: [:new, :create]
+  resources :parks, only: [:show]
   
   root 'tops#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
