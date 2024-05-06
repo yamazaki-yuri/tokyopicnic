@@ -1,3 +1,12 @@
 <%= form_with(model: @park_report, local: true) do |f| %>
   <%= f.collection_select :tokyo_ward_id, TokyoWard.all,  :id, :name, {include_blank: "区を選択"}, {class: "select select-primary max-w-xs"} %>
 <% end %>
+
+<iframe
+  width="450"
+  height="250"
+  frameborder="0" style="border:0"
+  referrerpolicy="no-referrer-when-downgrade"
+  src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=place_id:ChIJx6xXOPKLGGARtPr6qZZ2nHA"
+  allowfullscreen>
+</iframe>
