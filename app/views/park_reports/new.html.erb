@@ -1,0 +1,3 @@
+<%= form_with(model: @park_report, local: true) do |f| %>
+  <%= f.collection_select :tokyo_ward_id, TokyoWard.all,  :id, :name, {include_blank: "区を選択"}, {class: "select select-primary max-w-xs"} %>
+<% end %>
