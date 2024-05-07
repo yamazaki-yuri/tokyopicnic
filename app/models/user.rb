@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :sns_credentials, dependent: :destroy
   has_many :park_reports
   
+  validates :name, presence: true
+
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable,
         :omniauthable, omniauth_providers: %i[google_oauth2]
