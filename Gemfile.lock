@@ -111,6 +111,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.12.0)
+      devise (>= 4.9.0)
     dotenv (3.1.1)
     dotenv-rails (3.1.1)
       dotenv (= 3.1.1)
@@ -327,6 +329,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise (~> 4.9, >= 4.9.3)
+  devise-i18n
   dotenv-rails
   httparty
   jbuilder
