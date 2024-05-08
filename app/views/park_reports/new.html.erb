@@ -6,28 +6,27 @@
   <div class="card bg-base-100 shadow-xl mt-8 flex flex-col w-full">
     <figure class="flex flex-col w-full">
       <%= form_with(model: @park_report, url: park_reports_path, local: true) do |f| %>
-        <%= render 'shared/error_messages', object: @park_report %>
-          <div class="mt-8 flex flex-col w-full">
-            <%= f.label :name, "公園の名前" %>
-            <%= f.text_field :park_name, placeholder: 'Enter a park name', class: "input input-bordered input-primary w-full max-w-xs" %>
-          </div>
-          <div class="mt-8 flex flex-col w-full">
-            <%= f.collection_select :tokyo_ward_id, TokyoWard.all,  :id, :name, {include_blank: "区を選択"}, {class: "select select-primary max-w-xs"} %>
-          </div>
-          <div class="my-5 flex flex-col w-full">
-            <%= f.label :date, "日付(任意)" %>
-            <%= f.date_field :date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-          </div>
-          <div class="mt-8 mb-8 flex flex-col w-full">
-            <%= f.label :comment, "ひとこと" %>
-            <%= f.text_field :comment, placeholder: 'コメントを記入', class: "textarea textarea-primary" %>
-          </div>
-    </figure>
-  </div>
-  <div class="mt-8 mx-auto">
-    <button class="btn btn-primary">
-      <%= f.submit '投稿する' %>
-    </button>
+        <div class="mt-8 flex flex-col w-full">
+          <%= f.label :name, "公園の名前" %>
+          <%= f.text_field :park_name, placeholder: '公園の名前を入れてね', class: "input input-bordered input-primary w-full max-w-xs" %>
+        </div>
+        <div class="mt-8 flex flex-col w-2/3">
+          <%= f.collection_select :tokyo_ward_id, TokyoWard.all,  :id, :name, {include_blank: "区を選択"}, {class: "select select-primary max-w-xs"} %>
+        </div>
+        <div class="my-5 flex flex-col w-full">
+          <%= f.label :date, "日付(任意)" %>
+          <%= f.date_field :date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        </div>
+        <div class="mt-8 mb-8 flex flex-col w-full">
+          <%= f.label :comment, "ひとこと" %>
+          <%= f.text_field :comment, placeholder: '思ったことを自由に記入', class: "textarea textarea-primary" %>
+        </div>
+        <div class="my-5 flex flex-col w-full">
+          <button class="btn btn-primary">
+            <%= f.submit '投稿する' %>
+          </button>
+        </div>
       <% end %>
+    </figure>
   </div>
 </div>
