@@ -1,4 +1,6 @@
 class ParkReportsController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
     @park_report = ParkReport.new
   end
