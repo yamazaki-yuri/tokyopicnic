@@ -3,6 +3,7 @@ class ParkReportsController < ApplicationController
   
   def new
     @park_report = ParkReport.new
+    2.times { @park_report.report_images.build }
   end
 
   def create
@@ -29,7 +30,7 @@ class ParkReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:park_report).permit(:date, :comment).merge(park_id: @park.id, tokyo_ward_id: @tokyo_ward.id)
+    params.require(:park_report).permit(:date, :comment, report_images_attributes: [:url]).merge(park_id: @park.id, tokyo_ward_id: @tokyo_ward.id)
   end
 
   def save_park_report
