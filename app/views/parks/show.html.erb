@@ -1,3 +1,9 @@
+<div>
+  <% @park_images.each do |park_image| %>
+    <%= image_tag park_image.url.url, size: "250x250"%>
+  <% end %>
+</div>
+
 <iframe
   width="450"
   height="250"
@@ -10,3 +16,17 @@
 <div>
   <%= link_to '公式サイト', "#{@park.website_url}" %>
 </div>
+
+
+
+<button class="btn" onclick="my_modal_2.showModal()">画像を追加する</button>
+<dialog id="my_modal_2" class="modal">
+  <div class="modal-box">
+    <p class="text-park font-bold pb-5 text-center">画像を追加してね<p>
+    <%= render 'park_images/form', park_image: @park_image %>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
+

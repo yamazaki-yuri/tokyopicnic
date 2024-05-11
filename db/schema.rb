@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_11_025320) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_11_063443) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "park_images", force: :cascade do |t|
+    t.bigint "park_id", null: false
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["park_id"], name: "index_park_images_on_park_id"
+  end
 
   create_table "park_reports", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -84,6 +92,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_11_025320) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "park_images", "parks"
   add_foreign_key "park_reports", "parks"
   add_foreign_key "park_reports", "tokyo_wards"
   add_foreign_key "park_reports", "users"
