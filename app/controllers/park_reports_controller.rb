@@ -27,6 +27,11 @@ class ParkReportsController < ApplicationController
     save_park_report
   end
 
+  def show
+    @park_report = ParkReport.find(params[:id])
+    @report_images = @park_report.report_images
+  end
+
   private
 
   def report_params
