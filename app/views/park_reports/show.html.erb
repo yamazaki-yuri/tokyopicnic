@@ -1,0 +1,6 @@
+<div>
+  <% @report_images.each do |report_image| %>
+    <%= image_tag report_image.url.url, size: "250x250"%>
+  <% end %>
+</div>
+<%= @park_report.comment %>

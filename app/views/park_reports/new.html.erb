@@ -1,27 +1,33 @@
 <% content_for(:title, t('.title')) %>
-<div class="sm:mx-40 xl:mx-96 px-5 flex flex-col">
-  <div class="block text-2xl font-bold text-center text-park">
-      新規投稿
-  </div>
-  <div class="card bg-base-100 shadow-xl mt-8 flex flex-col w-full">
-    <figure class="flex flex-col w-full">
+<div class="block text-2xl font-bold text-center text-park">
+    新規投稿
+</div>
+<div class="flex justify-center items-center">
+  <div class="card bg-base-100 shadow-xl mt-8 flex flex-col w-96">
+    <figure class="flex">
       <%= form_with(model: @park_report, url: park_reports_path, local: true) do |f| %>
-        <div class="mt-8 flex flex-col w-full">
+        <div class="mt-8 flex flex-col px-5">
           <%= f.label :name, "公園の名前" %>
           <%= f.text_field :park_name, placeholder: '公園の名前を入れてね', class: "input input-bordered input-primary w-full max-w-xs" %>
         </div>
-        <div class="mt-8 flex flex-col w-2/3">
+        <div class="mt-8 flex flex-col w-2/3 px-5">
           <%= f.collection_select :tokyo_ward_id, TokyoWard.all,  :id, :name, {include_blank: "区を選択"}, {class: "select select-primary max-w-xs"} %>
         </div>
-        <div class="my-5 flex flex-col w-full">
+        <div class="my-5 flex flex-col px-5">
           <%= f.label :date, "日付(任意)" %>
           <%= f.date_field :date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
         </div>
-        <div class="mt-8 mb-8 flex flex-col w-full">
+          <%= f.fields_for :report_images do |report_image| %>
+            <div class="field mt-8 flex flex-col pl-5">
+              <%= report_image.label :url, "写真" %>
+              <%= report_image.file_field :url %>
+            </div>
+          <% end %>
+        <div class="mt-8 mb-8 flex flex-col px-5">
           <%= f.label :comment, "ひとこと" %>
           <%= f.text_field :comment, placeholder: '思ったことを自由に記入', class: "textarea textarea-primary" %>
         </div>
-        <div class="my-5 flex flex-col w-full">
+        <div class="my-5 flex flex-col px-5">
           <button class="btn btn-primary">
             <%= f.submit '投稿する' %>
           </button>
@@ -30,3 +36,4 @@
     </figure>
   </div>
 </div>
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_05_151131) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_11_025320) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,6 +44,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_05_151131) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["googlemaps_place_id"], name: "index_parks_on_googlemaps_place_id", unique: true
+  end
+
+  create_table "report_images", force: :cascade do |t|
+    t.bigint "park_report_id", null: false
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["park_report_id"], name: "index_report_images_on_park_report_id"
   end
 
   create_table "sns_credentials", force: :cascade do |t|
@@ -81,5 +89,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_05_151131) do
   add_foreign_key "park_reports", "users"
   add_foreign_key "park_tokyo_wards", "parks"
   add_foreign_key "park_tokyo_wards", "tokyo_wards"
+  add_foreign_key "report_images", "park_reports"
   add_foreign_key "sns_credentials", "users"
 end
