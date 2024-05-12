@@ -64,28 +64,32 @@
 
 <div class="flex justify-center items-center flex-col">
   <div style="width: 90%; height: 300px;">
-  <%= render 'shared/map' %>
+    <%= render 'shared/map' %>
   </div>
 
-  <div class="py-5 md:w-1/2">
-  <p class="text-xl text-park font-bold py-5 text-center">- みんなの投稿 -<p>
-    <div class="card w-80 bg-base-100 shadow-xl">
-      <figure>
-        <% @park_reports.each do |park_report| %>
+  <div class="py-5">
+    <p class="text-xl md:text-2xl text-park font-bold py-5 text-center">- みんなの投稿 -<p>
+  </div>
+  <div class="px-8 flex justify-center items-center md:justify-between flex-col md:flex-row md:gap-x-5 gap-y-8 pb-8  grid md:grid-cols-4">
+    <% @park_reports.each do |park_report| %>
+      <div class="card bg-base-100 shadow-xl flex flex-col md:gap-x-10" style="height: 380px;">
+        <figure>
           <div>
             <% park_report.report_images.each do |report_image| %>
               <% if report_image.url.present? %>
-                <%= image_tag report_image.url.url %>
+                <%= image_tag report_image.url.url, class: "w-full h-auto object-cover"%>
               <% end %>
             <% end %>
           </div>
-      </figure>
-      <div class="card-body">
-        <p><%= park_report.date %><p>
-        <h2 class="card-title"><%= park_report.comment %></h2>
-        <% end %>
+        </figure>
+
+        <div class="card-body bg-white rounded-full">
+            <p><%= park_report.date %></p>
+            <p><%= park_report.user.name %>さん</p>
+          <h2 class="card-title"><%= park_report.comment %></h2>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
 
