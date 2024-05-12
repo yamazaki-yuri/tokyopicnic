@@ -1,22 +1,24 @@
 <div class="text-center">
-  <p class="text-park">-<%=  @tokyo_ward.name %>-<p>
+  <p class="text-park">- <%=  @tokyo_ward.name %> -<p>
   <div class="flex justify-center items-center">
-    <p class="text-park text-4xl py-3 border-b-2 border-park w-60"><%=  @park.name %><p>
+    <p class="text-park text-3xl md:text-4xl py-3 border-b-2 border-park w-60"><%=  @park.name %><p>
   </div>
-  <p class="text-park py-3">キャッチフレーズ<p>
+  <p class="text-park py-5 md:pb-20">キャッチフレーズ<p>
 </div>
-<div class="flex justify-center items-center md:justify-between flex-col md:flex-row">
-  <div class="card w-96 bg-base-100 shadow-xl md:w-1/2">
-    <figure>
+
+<div class="flex justify-center items-center md:justify-between flex-col md:flex-row md:gap-x-10">
+  <div class="card bg-base-100 shadow-xl flex flex-col md:flex-row w-full h-auto md:h-full object-cover">
+    <figure class="rounded-md">
       <div>
         <% @park_images.each do |park_image| %>
           <% if park_image.url.present? %>
-            <%= image_tag park_image.url.url%>
+            <%= image_tag park_image.url.url %>
           <% end %>
         <% end %>
       </div>
     </figure>
-    <div class="card-body">
+  </div>
+  <div class="card-body bg-white rounded-md w-full h-auto md:h-full object-cover">
       <h2 class="card-title pb-2 pl-3 border-b-2 border-slate-200 text-park">
         公式サイト
         <%= link_to 'こちら', "#{@park.website_url}", class: "badge badge-secondary border-b-2 border-park text-park" %>
@@ -57,9 +59,33 @@
         </dialog>
     </div>
   </div>
-  <div class="pt-5 md:w-1/2 md:pl-10">
-  <%= render 'shared/map' %>
-  </div>
 </div>
 
+
+<div class="flex justify-center items-center flex-col">
+  <div style="width: 90%; height: 300px;">
+  <%= render 'shared/map' %>
+  </div>
+
+  <div class="py-5 md:w-1/2">
+  <p class="text-xl text-park font-bold py-5 text-center">- みんなの投稿 -<p>
+    <div class="card w-80 bg-base-100 shadow-xl">
+      <figure>
+        <% @park_reports.each do |park_report| %>
+          <div>
+            <% park_report.report_images.each do |report_image| %>
+              <% if report_image.url.present? %>
+                <%= image_tag report_image.url.url %>
+              <% end %>
+            <% end %>
+          </div>
+      </figure>
+      <div class="card-body">
+        <p><%= park_report.date %><p>
+        <h2 class="card-title"><%= park_report.comment %></h2>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
