@@ -1,18 +1,13 @@
 <div>
   <% @park_images.each do |park_image| %>
-    <%= image_tag park_image.url.url, size: "250x250"%>
+    <% if park_image.url.present? %>
+      <%= image_tag park_image.url.url, size: "250x250"%>
+    <% end %>
   <% end %>
 </div>
 
-<iframe
-  width="450"
-  height="250"
-  frameborder="0" style="border:0"
-  referrerpolicy="no-referrer-when-downgrade"
-  src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=place_id:<%= @park.googlemaps_place_id %>"
-  allowfullscreen>
-</iframe>
 
+<%= render 'shared/map' %>
 <div>
   <%= link_to '公式サイト', "#{@park.website_url}" %>
 </div>
