@@ -14,7 +14,7 @@
       <div class="flex justify-between border-b-2 border-slate-200 pb-1 text-park">
         <p class="pl-8"><%= @park_report.date %></p>
         <% if current_user.own?(@park_report) %>
-          <button class="pr-8" onclick="report_edit.showModal()"><i class="fa-solid fa-pen"></i>編集</button>
+          <button class="pr-5" onclick="report_edit.showModal()"><i class="fa-solid fa-pen"></i>編集</button>
         <% end %>
         <dialog id="report_edit" class="modal">
           <div class="modal-box">
@@ -24,6 +24,11 @@
             <button>close</button>
           </form>
         </dialog>
+        <% if current_user.own?(@park_report) %>
+          <div class="pr-5">
+            <i class="fa-solid fa-trash-can"></i>
+          </div>
+        <% end %>
       </div>
       <div class="border-b-2 border-slate-200 pb-1 text-park">
         <p class="pl-8"><%= @park_report.comment %><p>
