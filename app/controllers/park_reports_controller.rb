@@ -1,5 +1,6 @@
 class ParkReportsController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_report, only: %i[edit update]
   
   def new
     @park_report = ParkReport.new
@@ -27,14 +28,35 @@ class ParkReportsController < ApplicationController
     save_park_report
   end
 
+  def edit; end
+
+  def update
+    if @park_report.update(edit_params)
+      flash[:success] = "編集が完了しました"
+      redirect_to @park_report
+    else
+      flash[:danger] = "編集に失敗しました"
+      render 'park_reports/show', status: :unprocessable_entity
+    end
+  end
+
+
   def show
     @park_report = ParkReport.includes(:report_images, :park).find(params[:id])
   end
 
   private
 
+  def find_report
+    @park_report = current_user.park_reports.find(params[:id])
+  end
+
   def report_params
     params.require(:park_report).permit(:date, :comment, report_images_attributes: [:url]).merge(park_id: @park.id, tokyo_ward_id: @tokyo_ward.id)
+  end
+
+  def edit_params
+    params.require(:park_report).permit(:date, :comment)
   end
 
   def save_park_report
