@@ -4,6 +4,10 @@
     <%= f.date_field :date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
   <div class="mt-8 mb-8 flex flex-col px-5">
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title, placeholder: '思ったことを自由に記入', class: "textarea textarea-primary" %>
+  </div>
+  <div class="mt-8 mb-8 flex flex-col px-5">
     <%= f.label :comment, "ひとこと" %>
     <%= f.text_field :comment, placeholder: '思ったことを自由に記入', class: "textarea textarea-primary" %>
   </div>
