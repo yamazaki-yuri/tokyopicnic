@@ -52,11 +52,11 @@ class ParkReportsController < ApplicationController
   end
 
   def report_params
-    params.require(:park_report).permit(:date, :comment, report_images_attributes: [:url]).merge(park_id: @park.id, tokyo_ward_id: @tokyo_ward.id)
+    params.require(:park_report).permit(:date, :title, :comment, report_images_attributes: [:url]).merge(park_id: @park.id, tokyo_ward_id: @tokyo_ward.id)
   end
 
   def edit_params
-    params.require(:park_report).permit(:date, :comment)
+    params.require(:park_report).permit(:date, :title, :comment)
   end
 
   def save_park_report

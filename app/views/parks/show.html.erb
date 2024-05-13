@@ -79,7 +79,7 @@
           <div class="card-body bg-white rounded-lg">
               <p><%= park_report.date %></p>
               <p><%= park_report.user.name %>さん</p>
-            <%= link_to "#{park_report.comment}", park_report_path(park_report), class: "card-title" %>
+            <%= link_to "#{park_report.title}", park_report_path(park_report), class: "card-title" %>
           </div>
         </div>
       <% end %>
