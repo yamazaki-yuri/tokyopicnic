@@ -1,6 +1,36 @@
-<div>
-  <% @report_images.each do |report_image| %>
-    <%= image_tag report_image.url.url, size: "250x250"%>
-  <% end %>
+<div class="flex justify-center items-center md:justify-between flex-col md:flex-row md:gap-x-10">
+  <div class="card bg-base-100 shadow-xl flex flex-col md:flex-row w-full h-auto md:h-full object-cover">
+    <figure class="rounded-md">
+      <div>
+        <%= image_tag @park_report.report_images.first.url.url %>
+      </div>
+    </figure>
+  </div>
+  <div class="card-body bg-white rounded-md w-full h-auto md:h-full object-cover">
+      <h2 class="card-title pb-2 pl-3 border-b-2 border-slate-200 text-park">
+        <%= link_to "#{@park_report.park.name}", "#{park_path(@park_report.park)}" %>
+        <%= link_to '公式サイト', "#{@park_report.park.website_url}", class: "badge badge-secondary border-b-2 border-park text-park" %>
+      </h2>
+      <div class="border-b-2 border-slate-200 pb-1 text-park">
+        <p class="pl-8"><%= @park_report.date %><p>
+      </div>
+      <div class="border-b-2 border-slate-200 pb-1 text-park">
+        <p class="pl-8"><%= @park_report.comment %><p>
+      </div>
+      <div class="border-b-2 border-slate-200 pb-1 text-park">
+        <p class="pl-8">この日は朝からカラオケにいてセカオワのライブの予習をしてた。数年ぶりのカラオケ楽しかった！ライブ前にセカオワファンの集合写真に混ざって写った笑ライブ魔の時間潰しに代々木公園にいったら、人がたくさんいた。<p>
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-center items-center md:justify-between flex-col md:flex-row md:gap-x-5 gap-y-8 py-10 px-8 grid md:grid-cols-4 ">
+    <% @park_report.report_images.each do |report_image| %>
+      <div class="card bg-base-100 shadow-xl flex flex-col md:gap-x-10 rounded-lg" >
+        <figure>
+          <div>
+            <%= image_tag report_image.url.url, class: "w-full h-auto object-cover rounded-lg "%>
+          </div>
+        </figure>
+      </div>
+    <% end %>
+  </div>
 </div>
-<%= @park_report.comment %>

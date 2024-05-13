@@ -28,8 +28,7 @@ class ParkReportsController < ApplicationController
   end
 
   def show
-    @park_report = ParkReport.find(params[:id])
-    @report_images = @park_report.report_images
+    @park_report = ParkReport.includes(:report_images, :park).find(params[:id])
   end
 
   private
