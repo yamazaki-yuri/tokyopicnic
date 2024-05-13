@@ -4,10 +4,10 @@ class ParkImagesController < ApplicationController
     @park_image = @park.park_images.build(park_image_params)
 
     if @park_image.save
-      flash[:success] = "画像を投稿しました"
+      flash[:success] = "画像を追加しました"
       redirect_to @park
     else
-      flash[:danger] = "投稿に失敗しました"
+      flash[:danger] = "画像の追加に失敗しました"
       render 'parks/show', status: :unprocessable_entity
     end
   end

@@ -55,8 +55,8 @@
     <button class="btn" onclick="add_image.showModal()">画像を追加する</button>
     <dialog id="add_image" class="modal">
       <div class="modal-box">
-        <h3 class="font-bold text-lg">Hello!</h3>
-        <p class="py-4">Press ESC key or click outside to close</p>
+        <p class="text-park font-bold pb-5 text-center">画像を選択してね</p>
+        <%= render 'report_images/form', report_image: @report_image %>
       </div>
       <form method="dialog" class="modal-backdrop">
         <button>close</button>
