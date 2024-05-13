@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :park_reports, only: [:new, :create, :show, :edit, :update]
   resources :parks, only: [:show]
   resources :park_images, only: [:new, :create]
+  resources :report_images, only: [:new, :create, :destroy]
   
   root 'tops#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

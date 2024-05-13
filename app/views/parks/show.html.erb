@@ -73,7 +73,9 @@
         <div class="card bg-base-100 shadow-xl flex flex-col md:gap-x-10" style="height: 380px;">
           <figure>
             <div>
-              <%= image_tag park_report.report_images.first.url.url, class: "w-full h-auto object-cover"%>
+              <% if park_report.report_images.present? %>
+                <%= image_tag park_report.report_images.first.url.url, class: "w-full h-auto object-cover"%>
+              <% end %>
             </div>
           </figure>
           <div class="card-body bg-white rounded-lg">

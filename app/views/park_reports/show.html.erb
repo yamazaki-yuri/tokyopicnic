@@ -2,7 +2,9 @@
   <div class="card bg-base-100 shadow-xl flex flex-col md:flex-row w-full h-auto md:h-full object-cover">
     <figure class="rounded-md">
       <div>
-        <%= image_tag @park_report.report_images.first.url.url %>
+        <% if @park_report.report_images.present? %>
+          <%= image_tag @park_report.report_images.first.url.url %>
+        <% end %>
       </div>
     </figure>
   </div>
@@ -41,12 +43,23 @@
 
   <div class="flex justify-center items-center md:justify-between flex-col md:flex-row md:gap-x-5 gap-y-8 py-10 px-8 grid md:grid-cols-4 ">
     <% @park_report.report_images.each do |report_image| %>
-      <div class="card bg-base-100 shadow-xl flex flex-col md:gap-x-10 rounded-lg" >
-        <figure>
-          <div>
-            <%= image_tag report_image.url.url, class: "w-full h-auto object-cover rounded-lg "%>
+      <div>
+        <div class="card bg-base-100 shadow-xl flex flex-col md:gap-x-10 rounded-lg" >
+          <figure>
+            <div>
+            <% if report_image.url.present? %>
+              <%= image_tag report_image.url.url, class: "w-full h-auto object-cover rounded-lg "%>
+            <% end %>
+            </div>
+          </figure>
+        </div>
+        <% if current_user.own?(@park_report) %>
+          <div class="pt-3">
+            <%= link_to report_image_path(report_image), data: { turbo_method: :delete, turbo_confirm: '画像を削除しますか？'} do %>
+              <i class="fa-regular fa-trash-can"></i>
+            <% end %>
           </div>
-        </figure>
+        <% end %>
       </div>
     <% end %>
   </div>
@@ -55,8 +68,8 @@
     <button class="btn" onclick="add_image.showModal()">画像を追加する</button>
     <dialog id="add_image" class="modal">
       <div class="modal-box">
-        <h3 class="font-bold text-lg">Hello!</h3>
-        <p class="py-4">Press ESC key or click outside to close</p>
+        <p class="text-park font-bold pb-5 text-center">画像を選択してね</p>
+        <%= render 'report_images/form', report_image: @report_image %>
       </div>
       <form method="dialog" class="modal-backdrop">
         <button>close</button>
