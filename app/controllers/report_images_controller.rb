@@ -12,6 +12,15 @@ class ReportImagesController < ApplicationController
     end
   end
 
+  def destroy
+    @report_image = ReportImage.find(params[:id])
+    @park_report = @report_image.park_report
+    @report_image.remove_url!
+    @report_image.destroy!
+    flash[:success] = "画像を削除しました"
+    redirect_to @park_report, status: :see_other
+  end
+
   private
 
   def report_image_params
