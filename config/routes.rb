@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  resources :park_reports, only: [:new, :create, :show]
+  resources :park_reports, only: [:new, :create, :show, :edit, :update]
   resources :parks, only: [:show]
   resources :park_images, only: [:new, :create]
   

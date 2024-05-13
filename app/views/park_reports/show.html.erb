@@ -11,8 +11,24 @@
         <%= link_to "#{@park_report.park.name}", "#{park_path(@park_report.park)}" %>
         <%= link_to '公式サイト', "#{@park_report.park.website_url}", class: "badge badge-secondary border-b-2 border-park text-park" %>
       </h2>
-      <div class="border-b-2 border-slate-200 pb-1 text-park">
-        <p class="pl-8"><%= @park_report.date %><p>
+      <div class="flex justify-between border-b-2 border-slate-200 pb-1 text-park">
+        <p class="pl-8"><%= @park_report.date %></p>
+        <% if current_user.own?(@park_report) %>
+          <button class="pr-5" onclick="report_edit.showModal()"><i class="fa-solid fa-pen"></i>編集</button>
+        <% end %>
+        <dialog id="report_edit" class="modal">
+          <div class="modal-box">
+            <%= render 'edit' %>
+          </div>
+          <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+          </form>
+        </dialog>
+        <% if current_user.own?(@park_report) %>
+          <div class="pr-5">
+            <i class="fa-solid fa-trash-can"></i>
+          </div>
+        <% end %>
       </div>
       <div class="border-b-2 border-slate-200 pb-1 text-park">
         <p class="pl-8"><%= @park_report.comment %><p>
@@ -22,6 +38,7 @@
       </div>
     </div>
   </div>
+
   <div class="flex justify-center items-center md:justify-between flex-col md:flex-row md:gap-x-5 gap-y-8 py-10 px-8 grid md:grid-cols-4 ">
     <% @park_report.report_images.each do |report_image| %>
       <div class="card bg-base-100 shadow-xl flex flex-col md:gap-x-10 rounded-lg" >
@@ -32,5 +49,18 @@
         </figure>
       </div>
     <% end %>
+  </div>
+
+  <div class="flex justify-center items-center">
+    <button class="btn" onclick="add_image.showModal()">画像を追加する</button>
+    <dialog id="add_image" class="modal">
+      <div class="modal-box">
+        <h3 class="font-bold text-lg">Hello!</h3>
+        <p class="py-4">Press ESC key or click outside to close</p>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
   </div>
 </div>

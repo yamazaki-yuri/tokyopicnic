@@ -23,4 +23,8 @@ class User < ApplicationRecord
       return user
     end
   end
+
+  def own?(object)
+    id == object&.user_id
+  end
 end
