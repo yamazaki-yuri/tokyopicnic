@@ -1,6 +1,7 @@
 class ParkReportsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_report, only: %i[edit update]
+  before_action :find_current_user_report, only: %i[edit update]
+  before_action :find_report, only: %i[show destroy]
   
   def new
     @park_report = ParkReport.new
@@ -42,14 +43,29 @@ class ParkReportsController < ApplicationController
 
 
   def show
-    @park_report = ParkReport.includes(:report_images, :park).find(params[:id])
     @report_image = ReportImage.new
+  end
+
+  def destroy
+    @park = @park_report.park
+    if @park_report.destroy
+      
+      flash[:success] = "投稿を削除しました"
+      redirect_to @park
+    else
+      flash.now[:danger] = "投稿の削除に失敗しました"
+      render :show, status: :unprocessable_entity
+    end
   end
 
   private
 
-  def find_report
+  def find_current_user_report
     @park_report = current_user.park_reports.find(params[:id])
+  end
+
+  def find_report
+    @park_report = ParkReport.includes(:report_images, :park).find(params[:id])
   end
 
   def report_params

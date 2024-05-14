@@ -17,7 +17,7 @@ class ReportImagesController < ApplicationController
     @park_report = @report_image.park_report
     @report_image.remove_url!
     @report_image.destroy!
-    flash[:success] = "画像を削除しました"
+    flash.now[:success] = "画像を削除しました"
     redirect_to @park_report, status: :see_other
   end
 
