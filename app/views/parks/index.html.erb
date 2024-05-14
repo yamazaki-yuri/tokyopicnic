@@ -1,0 +1,27 @@
+<div class="px-8 flex justify-center items-center md:justify-between flex-col md:flex-row gap-y-8 xl:gap-x-5 lg:gap-x-5 sm:gap-x-5 pb-8 grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2">
+  <% @parks.each do |park| %>
+    <div class="card bg-base-100 shadow-xl flex flex-col md:gap-x-10">
+      <figure>
+        <div>
+          <% if park.park_images.any? %>
+            <%= image_tag park.park_images.first.url.url %>
+          <% else %>
+            <image src="/assets/default.png" %>
+          <% end %>
+        </div>
+      </figure>
+      <div class="card-body flex justify-center items-center">
+        
+          <div class="text-park text-center ">
+            <p>-<%= "#{park.tokyo_wards.first.name}" %>-</p>
+          </div> 
+          <div class="card-title flex justify-center items-center w-full border-b-2 border-slate-200 text-park pb-2">
+            <div>
+              <%= link_to "#{park.name}", park_path(park) %>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  <% end %>
+</div>
