@@ -1,83 +1,85 @@
-<div class="flex justify-center items-center md:justify-between flex-col md:flex-row md:gap-x-10">
-  <div class="card bg-base-100 shadow-xl flex flex-col md:flex-row w-full h-auto md:h-full object-cover">
-    <figure class="rounded-md">
-      <div>
-        <% if @park_report.report_images.present? %>
-          <%= image_tag @park_report.report_images.first.url.url %>
-        <% end %>
+<div  class="flex-grow container mx-auto px-6 py-10">
+  <div class="flex justify-center items-center md:justify-between flex-col md:flex-row md:gap-x-10 px-3">
+    <div class="card bg-base-100 shadow-xl flex flex-col md:flex-row w-full h-auto md:h-full object-cover">
+      <figure class="rounded-md">
+        <div>
+          <% if @park_report.report_images.present? %>
+            <%= image_tag @park_report.report_images.first.url.url %>
+          <% end %>
+        </div>
+      </figure>
+    </div>
+    <div class="card-body bg-white rounded-md w-full h-auto md:h-full object-cover">
+        <h2 class="card-title pb-2 pl-3 border-b-2 border-slate-200 text-park">
+          <%= link_to "#{@park_report.park.name}", "#{park_path(@park_report.park)}" %>
+          <%= link_to '公式サイト', "#{@park_report.park.website_url}", class: "badge badge-secondary border-b-2 border-park text-park" %>
+        </h2>
+        <div class="flex justify-between border-b-2 border-slate-200 pb-1 text-park">
+          <p class="pl-8"><%= @park_report.date %></p>
+          <% if current_user.own?(@park_report) %>
+            <button class="pr-5" onclick="report_edit.showModal()"><i class="fa-solid fa-pen"></i>編集</button>
+          <% end %>
+          <dialog id="report_edit" class="modal">
+            <div class="modal-box">
+              <%= render 'edit' %>
+            </div>
+            <form method="dialog" class="modal-backdrop">
+              <button>close</button>
+            </form>
+          </dialog>
+          <% if current_user.own?(@park_report) %>
+            <div class="pr-5">
+              <%= link_to park_report_path(@park_report), data: { turbo_method: :delete, turbo_confirm: '投稿を削除しますか？画像も全て削除されます。'} do %>
+                <i class="fa-solid fa-trash-can"></i>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="border-b-2 border-slate-200 pb-1 text-park">
+          <p class="pl-8"><%= @park_report.title %><p>
+        </div>
+        <div class="border-b-2 border-slate-200 pb-1 text-park">
+          <p class="pl-8"><%= @park_report.comment %><p>
+        </div>
       </div>
-    </figure>
-  </div>
-  <div class="card-body bg-white rounded-md w-full h-auto md:h-full object-cover">
-      <h2 class="card-title pb-2 pl-3 border-b-2 border-slate-200 text-park">
-        <%= link_to "#{@park_report.park.name}", "#{park_path(@park_report.park)}" %>
-        <%= link_to '公式サイト', "#{@park_report.park.website_url}", class: "badge badge-secondary border-b-2 border-park text-park" %>
-      </h2>
-      <div class="flex justify-between border-b-2 border-slate-200 pb-1 text-park">
-        <p class="pl-8"><%= @park_report.date %></p>
-        <% if current_user.own?(@park_report) %>
-          <button class="pr-5" onclick="report_edit.showModal()"><i class="fa-solid fa-pen"></i>編集</button>
-        <% end %>
-        <dialog id="report_edit" class="modal">
+    </div>
+
+    <div class="flex justify-center items-center md:justify-between flex-col md:flex-row gap-y-8 py-10 px-8 gap-y-8 xl:gap-x-5 sm:gap-x-5 pb-8 grid xl:grid-cols-4 sm:grid-cols-3">
+      <% @park_report.report_images.each do |report_image| %>
+        <div>
+          <div class="card bg-base-100 shadow-xl flex flex-col md:gap-x-10 rounded-lg" >
+            <figure>
+              <div>
+              <% if report_image.url.present? %>
+                <%= image_tag report_image.url.url, class: "w-full h-auto object-cover rounded-lg "%>
+              <% end %>
+              </div>
+            </figure>
+          </div>
+          <% if current_user.own?(@park_report) %>
+            <div class="pt-3">
+              <%= link_to report_image_path(report_image), data: { turbo_method: :delete, turbo_confirm: '画像を削除しますか？'} do %>
+                <i class="fa-regular fa-trash-can"></i>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="flex justify-center items-center">
+      <% if current_user.own?(@park_report) %>
+        <button class="btn" onclick="add_image.showModal()">画像を追加する</button>
+        <dialog id="add_image" class="modal">
           <div class="modal-box">
-            <%= render 'edit' %>
+            <p class="text-park font-bold pb-5 text-center">画像を選択してね</p>
+            <%= render 'report_images/form', report_image: @report_image %>
           </div>
           <form method="dialog" class="modal-backdrop">
             <button>close</button>
           </form>
         </dialog>
-        <% if current_user.own?(@park_report) %>
-          <div class="pr-5">
-            <%= link_to park_report_path(@park_report), data: { turbo_method: :delete, turbo_confirm: '投稿を削除しますか？画像も全て削除されます。'} do %>
-              <i class="fa-solid fa-trash-can"></i>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-      <div class="border-b-2 border-slate-200 pb-1 text-park">
-        <p class="pl-8"><%= @park_report.title %><p>
-      </div>
-      <div class="border-b-2 border-slate-200 pb-1 text-park">
-        <p class="pl-8"><%= @park_report.comment %><p>
-      </div>
+      <% end %>
     </div>
-  </div>
-
-  <div class="flex justify-center items-center md:justify-between flex-col md:flex-row gap-y-8 py-10 px-8 gap-y-8 xl:gap-x-5 sm:gap-x-5 pb-8 grid xl:grid-cols-4 sm:grid-cols-3">
-    <% @park_report.report_images.each do |report_image| %>
-      <div>
-        <div class="card bg-base-100 shadow-xl flex flex-col md:gap-x-10 rounded-lg" >
-          <figure>
-            <div>
-            <% if report_image.url.present? %>
-              <%= image_tag report_image.url.url, class: "w-full h-auto object-cover rounded-lg "%>
-            <% end %>
-            </div>
-          </figure>
-        </div>
-        <% if current_user.own?(@park_report) %>
-          <div class="pt-3">
-            <%= link_to report_image_path(report_image), data: { turbo_method: :delete, turbo_confirm: '画像を削除しますか？'} do %>
-              <i class="fa-regular fa-trash-can"></i>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="flex justify-center items-center">
-    <% if current_user.own?(@park_report) %>
-      <button class="btn" onclick="add_image.showModal()">画像を追加する</button>
-      <dialog id="add_image" class="modal">
-        <div class="modal-box">
-          <p class="text-park font-bold pb-5 text-center">画像を選択してね</p>
-          <%= render 'report_images/form', report_image: @report_image %>
-        </div>
-        <form method="dialog" class="modal-backdrop">
-          <button>close</button>
-        </form>
-      </dialog>
-    <% end %>
   </div>
 </div>
