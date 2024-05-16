@@ -11,10 +11,10 @@
     <div class="card bg-base-100 shadow-xl flex flex-col md:flex-row w-full h-auto md:h-full object-cover">
       <figure class="rounded-md">
         <div>
-          <% @park_images.each do |park_image| %>
-            <% if park_image.url.present? %>
-              <%= image_tag park_image.url.url %>
-            <% end %>
+          <% if @park_images.any? %>
+            <%= image_tag @park_images.first.url.url %>
+          <% else %>
+            <%= image_tag 'default.png' %>
           <% end %>
         </div>
       </figure>
