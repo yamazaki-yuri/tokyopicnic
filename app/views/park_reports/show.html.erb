@@ -12,7 +12,7 @@
     <div class="card-body bg-white rounded-md w-full h-auto md:h-full object-cover">
         <h2 class="card-title pb-2 pl-3 border-b-2 border-slate-200 text-park">
           <%= link_to "#{@park_report.park.name}", "#{park_path(@park_report.park)}" %>
-          <%= link_to '公式サイト', "#{@park_report.park.website_url}", class: "badge badge-secondary border-b-2 border-park text-park" %>
+          <%= link_to '公式サイト', "#{@park_report.park.website_url}", class: "badge badge border-b-2 border-park text-park" %>
         </h2>
         <div class="flex justify-between border-b-2 border-slate-200 pb-1 text-park">
           <p class="pl-8"><%= @park_report.date %></p>

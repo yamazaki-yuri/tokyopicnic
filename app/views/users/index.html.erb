@@ -1,0 +1,29 @@
+<div class="flex-grow container mx-auto px-6 py-10">
+  <div class="flex justify-center items-center">
+    <div class="text-2xl md:text-3xl lg:text-4xl text-park text-center font-bold pt-10 pb-5 px-8 border-b-2 border-park">
+      <%= current_user.name %>さんのページ
+    </div>
+  </div>
+
+  <div class="py-5">
+    <p class="text-xl md:text-2xl text-park font-bold py-5 text-center">- 投稿一覧 -</p>
+  </div>
+  <div class="px-8 flex justify-center items-center md:justify-between flex-col md:flex-row gap-y-8 xl:gap-x-5 lg:gap-x-5 sm:gap-x-5 pb-8  grid xl:grid-cols-4 lg:grid-cols-3  sm:grid-cols-2">
+    <% @park_reports.each do |park_report| %>
+      <div class="card bg-base-100 shadow-xl flex flex-col md:gap-x-10" style="height: 380px;">
+        <figure>
+          <div>
+            <% if park_report.report_images.present? %>
+              <%= image_tag park_report.report_images.first.url.url, class: "w-full h-auto object-cover"%>
+            <% end %>
+          </div>
+        </figure>
+        <div class="card-body bg-white rounded-lg">
+            <p><%= park_report.date %></p>
+          <%= link_to "#{park_report.park.name}", park_path(park_report.park), class: "card-title pb-2 border-b-2 border-slate-200" %>
+          <%= link_to "#{park_report.title}", park_report_path(park_report), class: "pl-5 text-park font-bold" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
