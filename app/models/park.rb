@@ -15,6 +15,10 @@ class Park < ApplicationRecord
     ["food_allowed", "alcohol_allowed", "sheet_available", "bringing_in_play_equipment", "fee",  "name", "updated_at", "created_at"]
   end
 
+  def self.ransackable_associations(auth_object = nil)
+    ["tokyo_wards"]
+  end
+
   def display_permission_value(column)
     case self[column]
     when 'possible'

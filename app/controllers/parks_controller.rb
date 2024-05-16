@@ -1,7 +1,15 @@
 class ParksController < ApplicationController
   def index
     @q = Park.ransack(params[:q])
-    @parks = @q.result(distinct: true).includes(:park_images, park_tokyo_wards: :tokyo_ward)
+    if params[:q].present? && (params[:q][:fee] == "paid" || params[:q][:fee] == "free")
+      if params[:q][:fee] == "paid"
+        @parks = @q.result.where.not(fee: nil)
+      elsif params[:q][:fee] == "free"
+        @parks = @q.result.where(fee: nil)
+      end
+    else
+      @parks = @q.result(distinct: true).includes(:park_images, park_tokyo_wards: :tokyo_ward)
+    end
   end
 
   def show
