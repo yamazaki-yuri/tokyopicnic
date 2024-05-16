@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
   resources :park_reports
-  resources :parks, only: [:show]
+  resources :parks, only: [:show, :index]
   resources :park_images, only: [:new, :create]
   resources :report_images, only: [:new, :create, :destroy]
   

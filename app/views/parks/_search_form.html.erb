@@ -1,0 +1,32 @@
+<div class="card w-96 bg-base-100 shadow-xl mb-5">
+  <div class="card-body">
+    <%= search_form_for @q do |f| %>
+      <%= f.label :name_cont_any, "公園名で探す", class: "text-park" %>
+      <div class="pb-5 border-b-2 border-slate-200">
+        <%= f.text_field :name_cont_any, placeholder: "公園名を入力してください", class: "input input-bordered input-primary w-full", style: "height: 40px;" %>
+      </div>
+      <div class="pt-5">
+        
+      </div>
+      <div class="pt-3">
+        <%= f.check_box :food_allowed_in, { multiple: true }, "possible", nil  %>
+        <%= f.label :food_allowed_in_possible, "飲食可", class: "text-park" %>
+      </div>
+      <div>
+        <%= f.check_box :alcohol_allowed_in, { multiple: true }, "possible", nil %>
+        <%= f.label :alcohol_allowed_in_possible, "お酒飲んでいい", class: "text-park" %>
+      </div>
+      <div>
+        <%= f.check_box :sheet_available_in, { multiple: true }, "possible", nil %>
+        <%= f.label :sheet_available_in_possible, "シートを敷ける", class: "text-park" %>
+      </div>
+      <div>
+        <%= f.check_box :bringing_in_play_equipment_in, { multiple: true }, "possible", nil %>
+        <%= f.label :bringing_in_play_equipment_in_possible, "遊具で遊んでいい", class: "text-park" %>
+      </div>
+      <div class="btn btn-sm btn-secondary mt-3">
+        <%= f.submit "検索" %>
+      </div>
+    <% end %>
+  </div>
+</div>

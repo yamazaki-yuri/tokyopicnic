@@ -1,7 +1,7 @@
 class ParksController < ApplicationController
   def index
-    @parks = Park.all.includes(:park_images, park_tokyo_wards: :tokyo_ward)
-    
+    @q = Park.ransack(params[:q])
+    @parks = @q.result(distinct: true).includes(:park_images, park_tokyo_wards: :tokyo_ward)
   end
 
   def show
