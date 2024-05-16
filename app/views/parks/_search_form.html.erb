@@ -1,43 +1,58 @@
-<div class="card w-96 bg-base-100 shadow-xl mb-5">
-  <div class="card-body">
-    <%= search_form_for @q do |f| %>
-      <%= f.label :name_cont_any, "公園名で探す", class: "text-park" %>
-      <div class="pb-5 border-b-2 border-slate-200">
+<div class="card w-auto bg-base-100 shadow-xl mb-5">
+  <div class="card-body flex md:justify-between flex-col md:flex-row">
+    <div class="md:w-3/5">
+      <div class="pb-1 text-park font-bold">
+        公園名で探す
+      </div>
+      <%= search_form_for @q do |f| %>
+      <div class="pb-5 border-b-2 border-slate-200 md:border-none">
         <%= f.text_field :name_cont_any, placeholder: "公園名を入力してください", class: "input input-bordered input-primary w-full", style: "height: 40px;" %>
       </div>
-      <div class="pt-5">
-        <div>
+    </div>
+    <div class="flex justify-center md:justify-between flex-col w-full md:pl-5">
+      <div class="pt-5 md:pt-0 text-park font-bold md:gap-x-5">
           条件で絞り込む
-        </div>
-        <div>
-          <%= f.radio_button :fee, "paid" %>
-          <%= f.label :fee, "有料" %>
-          <%= f.radio_button :fee, "free" %>
-          <%= f.label :fee, "無料" %>
-        </div>
-        <div>
+      </div>
+      <div class="flex justify-center md:justify-between flex-col md:flex-row px-3 md:w-2/3">
+        <div class="pt-2">
           <%= f.collection_select :tokyo_wards_id_eq, TokyoWard.all, :id, :name, { prompt: '区を選択' }, class: "input input-bordered input-primary", style: "height: 30px;" %>
         </div>
+        <div class=" pt-2 w-2/5 md:w-1/5">
+          <div class="text-park">
+            <%= f.radio_button :fee, "paid" %>
+            <%= f.label :fee, "有料" %>
+          </div>
+          <div class="text-park">
+            <%= f.radio_button :fee, "free" %>
+            <%= f.label :fee, "無料" %>
+          </div>
+        </div>
+      
+        <div>
+          <div class="pt-3 md:pt-1">
+            <%= f.check_box :food_allowed_in, { multiple: true }, "possible", nil  %>
+            <%= f.label :food_allowed_in_possible, "飲食可", class: "text-park" %>
+          </div>
+          <div>
+            <%= f.check_box :alcohol_allowed_in, { multiple: true }, "possible", nil %>
+            <%= f.label :alcohol_allowed_in_possible, "お酒飲んでいい", class: "text-park" %>
+          </div>
+          <div>
+            <%= f.check_box :sheet_available_in, { multiple: true }, "possible", nil %>
+            <%= f.label :sheet_available_in_possible, "シートを敷ける", class: "text-park" %>
+          </div>
+          <div>
+            <%= f.check_box :bringing_in_play_equipment_in, { multiple: true }, "possible", nil %>
+            <%= f.label :bringing_in_play_equipment_in_possible, "遊具で遊んでいい", class: "text-park" %>
+          </div>
+        </div>
       </div>
-      <div class="pt-3">
-        <%= f.check_box :food_allowed_in, { multiple: true }, "possible", nil  %>
-        <%= f.label :food_allowed_in_possible, "飲食可", class: "text-park" %>
-      </div>
-      <div>
-        <%= f.check_box :alcohol_allowed_in, { multiple: true }, "possible", nil %>
-        <%= f.label :alcohol_allowed_in_possible, "お酒飲んでいい", class: "text-park" %>
-      </div>
-      <div>
-        <%= f.check_box :sheet_available_in, { multiple: true }, "possible", nil %>
-        <%= f.label :sheet_available_in_possible, "シートを敷ける", class: "text-park" %>
-      </div>
-      <div>
-        <%= f.check_box :bringing_in_play_equipment_in, { multiple: true }, "possible", nil %>
-        <%= f.label :bringing_in_play_equipment_in_possible, "遊具で遊んでいい", class: "text-park" %>
-      </div>
-      <div class="btn btn-sm btn-secondary mt-3">
-        <%= f.submit "検索" %>
-      </div>
-    <% end %>
+    </div>
   </div>
+  <div class="px-10 pb-3">
+    <div class="btn btn-sm btn-secondary my-2 w-full">
+      <%= f.submit "検索" %>
+    </div>
+  </div>
+  <% end %>
 </div>
