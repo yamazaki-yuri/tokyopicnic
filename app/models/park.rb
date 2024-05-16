@@ -11,6 +11,10 @@ class Park < ApplicationRecord
   enum sheet_available: { possible: 0, impossible: 1, unspecified: 2 }, _prefix: true
   enum bringing_in_play_equipment: { possible: 0, impossible: 1, unspecified: 2 }, _prefix: true
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["food_allowed", "alcohol_allowed", "sheet_available", "bringing_in_play_equipment", "fee",  "name", "updated_at", "created_at"]
+  end
+
   def display_permission_value(column)
     case self[column]
     when 'possible'
