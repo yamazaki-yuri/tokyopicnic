@@ -1,15 +1,17 @@
-<div class="card w-96 bg-base-100 shadow-xl mb-5">
+<div class="card bg-base-100 shadow-xl mb-5 md:w-1/2">
   <div class="card-body">
+    <div class="pb-1 text-park font-bold">
+      - 公園名で探す -
+    </div>
     <%= search_form_for @q do |f| %>
-      <%= f.label :name_cont_any, "公園名で探す", class: "text-park" %>
       <div class="pb-5 border-b-2 border-slate-200">
         <%= f.text_field :name_cont_any, placeholder: "公園名を入力してください", class: "input input-bordered input-primary w-full", style: "height: 40px;" %>
       </div>
       <div class="pt-5">
-        <div>
-          条件で絞り込む
+        <div class="pb-1 text-park font-bold">
+          - 条件で絞り込む -
         </div>
-        <div>
+        <div class="pb-2 text-park">
           <%= f.radio_button :fee, "paid" %>
           <%= f.label :fee, "有料" %>
           <%= f.radio_button :fee, "free" %>
