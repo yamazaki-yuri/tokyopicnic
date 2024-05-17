@@ -1,0 +1,36 @@
+<%= turbo_frame_tag current_user do %>
+  <div class="flex justify-center items-center py-10">
+    <div class="card w-96 bg-base-100 shadow-xl">
+      <div class="card-body">
+      <% is_google_account = @user.sns_credential_ids.present? %>
+        <% if is_google_account %>
+          <p class="text-sm pb-3 text-indigo-500">Googleアカウントの為メールの編集はできません<p>
+        <% end %>
+      <%= form_with model: @user, url: profile_path(@user), local: true do |f| %>
+        <div class="flex justify-center border-b-2 border-slate-200 pb-1">
+          <p class="font-bold">名前</p>
+          <p class="text-park pl-4">
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "pl-3 mt-1 block placeholder-gray-400 rounded-lg border-2 border-gray-200" %>
+          </p>
+        </div>
+        <div class="flex justify-center border-b-2 border-slate-200 pt-4 pb-1">
+          <p class="font-bold">メール</p>
+          <% if is_google_account %>
+            <p class="pl-3 mt-1 block placeholder-gray-400 rounded-lg border-2 border-gray-200"><%= current_user.email%></p>
+          <% else %>
+            <p class="text-park">
+              <%= f.text_field :email, autofocus: true, autocomplete: "email", class: "pl-3 mt-1 block placeholder-gray-400 rounded-lg border-2 border-gray-200" %>
+            </p>
+          <% end %>
+        </div>
+        <div class="pt-7 w-full">
+          <%= f.submit '更新', class: "btn btn-secondary me-2 w-full" %>
+        </div>
+        <div class="text-center text-park pt-12">
+          <%= link_to 'パスワード変更はこちら', "#" %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
