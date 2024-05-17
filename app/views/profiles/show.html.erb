@@ -1,0 +1,29 @@
+<div class="flex-grow container mx-auto px-6 py-10">
+  <div class="flex justify-center items-center">
+    <div class="text-2xl md:text-3xl lg:text-4xl text-park text-center font-bold pt-10 pb-5 px-8 border-b-2 border-park">
+      <%= current_user.name %>さんのプロフィール
+    </div>
+  </div>
+  <%= turbo_frame_tag current_user do %>
+  <div class="flex justify-center items-center py-10">
+    <div class="card w-96 bg-base-100 shadow-xl">
+      <div class="card-body">
+        <div class="flex justify-center border-b-2 border-slate-200 pb-3">
+          <p class="font-bold">名前</p>
+          <p class="text-park"><%= current_user.name %></P>
+        </div>
+        <div class="flex justify-center border-b-2 border-slate-200 pt-2 pb-3">
+          <p class="font-bold">メール</p>
+          <p class="text-park"><%= current_user.email %></p>
+        </div>
+        <div class="pt-5 w-full">
+          <%= link_to "編集", edit_profile_path, class: "btn btn-secondary me-2 w-full" %>
+        </div>
+        <div class="text-center text-park pt-10">
+          <%= link_to 'パスワード変更はこちら', "#" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

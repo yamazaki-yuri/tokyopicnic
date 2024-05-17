@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :parks, only: [:show, :index]
   resources :park_images, only: [:new, :create]
   resources :report_images, only: [:new, :create, :destroy]
+  resource :profile, only: %i[show edit update]
   
   root 'tops#index'
   get '/search', to: 'parks#index', as: 'search'
