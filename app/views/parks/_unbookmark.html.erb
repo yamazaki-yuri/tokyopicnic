@@ -1,0 +1,3 @@
+<%= link_to bookmark_path(current_user.bookmarks.find_by(park_id: park.id)), id: "unbookmark-button-for-park-#{park.id}", data: { turbo_method: :delete } do %>
+  <i class="fa-solid fa-heart pl-5", style="font-size: 40px;"></i>
+<% end %>

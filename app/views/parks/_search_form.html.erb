@@ -1,5 +1,5 @@
-<%= turbo_frame_tag "messages" do %>
-  <div class="card bg-base-100 shadow-xl mb-5 md:w-1/2">
+<%= turbo_frame_tag "search" do %>
+  <div class="card bg-base-100 shadow-xl mb-5 md:w-1/2" data-turbo-frame="_top">
     <div class="card-body">
       <div class="pb-1 text-park font-bold">
         - 公園名で探す -
@@ -43,7 +43,7 @@
             </div>
           </div>
         </div>
-        <div class="btn btn-sm btn-secondary mt-3">
+        <div class="btn btn-sm btn-secondary mt-3 w-full">
           <%= f.submit "検索", data: { turbo_frame: "_top" } %>
         </div>
       <% end %>

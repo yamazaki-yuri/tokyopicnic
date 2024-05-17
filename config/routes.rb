@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :park_images, only: [:new, :create]
   resources :report_images, only: [:new, :create, :destroy]
   resource :profile, only: %i[show edit update]
+  resources :bookmarks, only: %i[create destroy]
   
   root 'tops#index'
   get '/search', to: 'parks#index', as: 'search'

@@ -11,10 +11,10 @@
     <div class="card bg-base-100 shadow-xl flex flex-col md:flex-row w-full h-auto md:h-full object-cover">
       <figure class="rounded-md">
         <div>
-          <% @park_images.each do |park_image| %>
-            <% if park_image.url.present? %>
-              <%= image_tag park_image.url.url %>
-            <% end %>
+          <% if @park_images.present? %>
+            <%= image_tag @park_images.first.url.url %>
+          <% else %>
+            <%= image_tag 'default.png' %>
           <% end %>
         </div>
       </figure>
@@ -23,6 +23,7 @@
         <h2 class="card-title pb-2 pl-3 border-b-2 border-slate-200 text-park">
           公式サイト
           <%= link_to 'こちら', "#{@park.website_url}", class: "badge badge border-b-2 border-park text-park" %>
+          <%= render 'bookmark_button', { park: @park } %>
         </h2>
         <div class="flex justify-between border-b-2 border-slate-200 pb-1 text-park">
           <p class="w-1/3 pl-8"><i class="fa-solid fa-yen-sign pr-5"></i>料金</p>
@@ -71,20 +72,24 @@
       </div>
       <div class="px-8 flex justify-center items-center md:justify-between flex-col md:flex-row gap-y-8 xl:gap-x-5 lg:gap-x-5 sm:gap-x-5 pb-8  grid xl:grid-cols-4 lg:grid-cols-3  sm:grid-cols-2">
         <% @park_reports.each do |park_report| %>
-          <div class="card bg-base-100 shadow-xl flex flex-col md:gap-x-10" style="height: 380px;">
-            <figure>
-              <div>
-                <% if park_report.report_images.present? %>
-                  <%= image_tag park_report.report_images.first.url.url, class: "w-full h-auto object-cover"%>
-                <% end %>
+          <%= link_to park_report_path(park_report), class: "card-link" do %>
+            <div class="card bg-base-100 shadow-xl flex flex-col md:gap-x-10" style="height: 380px;">
+              <figure>
+                <div>
+                  <% if park_report.report_images.present? %>
+                    <%= image_tag park_report.report_images.first.url.url, class: "w-full h-auto object-cover"%>
+                  <% else %>
+                    <%= image_tag 'default.png' %>
+                  <% end %>
+                </div>
+              </figure>
+              <div class="card-body bg-white rounded-lg">
+                  <p><%= park_report.date %></p>
+                  <p><%= park_report.user.name %>さん</p>
+                  <p class="card-title"><%= park_report.title %></p>
               </div>
-            </figure>
-            <div class="card-body bg-white rounded-lg">
-                <p><%= park_report.date %></p>
-                <p><%= park_report.user.name %>さん</p>
-              <%= link_to "#{park_report.title}", park_report_path(park_report), class: "card-title" %>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>
