@@ -15,6 +15,8 @@
           <div>
             <% if park_report.report_images.present? %>
               <%= image_tag park_report.report_images.first.url.url, class: "w-full h-auto object-cover"%>
+            <% else %>
+              <%= image_tag 'default.png' %>
             <% end %>
           </div>
         </figure>
@@ -22,6 +24,28 @@
             <p><%= park_report.date %></p>
           <%= link_to "#{park_report.park.name}", park_path(park_report.park), class: "card-title pb-2 border-b-2 border-slate-200" %>
           <%= link_to "#{park_report.title}", park_report_path(park_report), class: "pl-5 text-park font-bold" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="py-5">
+    <p class="text-xl md:text-2xl text-park font-bold py-5 text-center">- ブックマーク一覧 -</p>
+  </div>
+  <div class="px-8 flex justify-center items-center md:justify-between flex-col md:flex-row gap-y-8 xl:gap-x-5 lg:gap-x-5 sm:gap-x-5 pb-8  grid xl:grid-cols-4 lg:grid-cols-3  sm:grid-cols-2">
+    <% @bookmark_parks.each do |bookmark_park| %>
+      <div class="card bg-base-100 shadow-xl flex flex-col md:gap-x-10" style="height: 380px;">
+        <figure>
+          <div>
+            <% if bookmark_park.park_images.present? %>
+              <%= image_tag bookmark_park.park_images.first.url.url, class: "w-full h-auto object-cover"%>
+            <% else %>
+              <%= image_tag 'default.png' %>
+            <% end %>
+          </div>
+        </figure>
+        <div class="card-body bg-white rounded-lg">
+          <%= link_to "#{bookmark_park.name}", park_path(bookmark_park), class: "card-title pb-2 border-b-2 border-slate-200" %>
         </div>
       </div>
     <% end %>

@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :sns_credentials, dependent: :destroy
   has_many :park_reports
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_parks, through: :bookmarks, source: :park
   
   validates :name, presence: true
 
@@ -26,5 +28,17 @@ class User < ApplicationRecord
 
   def own?(object)
     id == object&.user_id
+  end
+
+  def bookmark(park)
+    bookmark_parks << park
+  end
+
+  def unbookmark(park)
+    bookmark_parks.destroy(park)
+  end
+
+  def bookmark?(park)
+    bookmark_parks.include?(park)
   end
 end
