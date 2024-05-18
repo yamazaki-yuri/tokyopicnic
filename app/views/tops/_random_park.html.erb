@@ -1,0 +1,17 @@
+<div class="flex justify-center items-center">
+<div class="card w-96 bg-accent shadow-xl">
+  <figure class="px-10 pt-10">
+    <% if @park_images.present? %>
+      <%= image_tag @park_images.first.url.url %>
+    <% else %>
+      <%= image_tag 'default.png' %>
+    <% end %> 
+  </figure>
+  <div class="card-body items-center text-center">
+    <div class="card-actions">
+      <%= link_to 'この公園を詳しく見る', "#{park_path(@park)}", class: "bg-accent btn btn-primary", data: { turbo: false } %>
+    </div>
+  </div>
+</div>
+</div>
+
