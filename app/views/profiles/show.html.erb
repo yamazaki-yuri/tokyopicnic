@@ -8,7 +8,16 @@
   <div class="flex justify-center items-center py-10">
     <div class="card w-96 bg-base-100 shadow-xl">
       <div class="card-body">
-        <div class="flex justify-center border-b-2 border-slate-200 pb-3">
+        <div class="flex justify-center items-center avatar border-b-2 border-slate-200 pb-3">
+          <div class="w-24 rounded-full ring ring-park ring-offset-base-100 ring-offset-2">
+            <% if current_user.avatar.present? %>
+              <%= image_tag current_user.avatar.url %>
+            <% else %>
+              <%= image_tag 'avatar.jpg' %>
+            <% end %>
+          </div>
+        </div>
+        <div class="flex justify-center border-b-2 border-slate-200 pt-2 pb-3">
           <p class="font-bold">名前</p>
           <p class="text-park"><%= current_user.name %></P>
         </div>
