@@ -16,7 +16,7 @@
         </h2>
         <div class="flex justify-between border-b-2 border-slate-200 pb-1 text-park">
           <p class="pl-8"><%= @park_report.date %></p>
-          <% if current_user.own?(@park_report) %>
+          <% if user_signed_in? && current_user.own?(@park_report) %>
             <button class="pr-5" onclick="report_edit.showModal()"><i class="fa-solid fa-pen"></i>編集</button>
           <% end %>
           <dialog id="report_edit" class="modal">
@@ -27,7 +27,7 @@
               <button>close</button>
             </form>
           </dialog>
-          <% if current_user.own?(@park_report) %>
+          <% if user_signed_in? && current_user.own?(@park_report) %>
             <div class="pr-5">
               <%= link_to park_report_path(@park_report), data: { turbo_method: :delete, turbo_confirm: '投稿を削除しますか？画像も全て削除されます。'} do %>
                 <i class="fa-solid fa-trash-can"></i>
@@ -56,7 +56,7 @@
               </div>
             </figure>
           </div>
-          <% if current_user.own?(@park_report) %>
+          <% if user_signed_in? &&  current_user.own?(@park_report) %>
             <div class="pt-3">
               <%= link_to report_image_path(report_image), data: { turbo_method: :delete, turbo_confirm: '画像を削除しますか？'} do %>
                 <i class="fa-regular fa-trash-can"></i>
@@ -68,7 +68,7 @@
     </div>
 
     <div class="flex justify-center items-center">
-      <% if current_user.own?(@park_report) %>
+      <% if user_signed_in? && current_user.own?(@park_report) %>
         <button class="btn" onclick="add_image.showModal()">画像を追加する</button>
         <dialog id="add_image" class="modal">
           <div class="modal-box">

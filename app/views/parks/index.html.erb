@@ -19,7 +19,7 @@
             </div> 
             <div class="card-title flex justify-center items-center w-full border-b-2 border-slate-200 text-park pb-2">
               <div>
-                <%= link_to "#{park.name}", park_path(park) %>
+                <%= link_to "#{park.name}", park_path(park), data: { turbo: false } %>
               </div>
             </div>
           </div>

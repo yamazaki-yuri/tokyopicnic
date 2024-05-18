@@ -23,7 +23,13 @@
         <h2 class="card-title pb-2 pl-3 border-b-2 border-slate-200 text-park">
           公式サイト
           <%= link_to 'こちら', "#{@park.website_url}", class: "badge badge border-b-2 border-park text-park" %>
-          <%= render 'bookmark_button', { park: @park } %>
+          <% if user_signed_in? %>
+            <%= render 'bookmark_button', { park: @park } %>
+          <% else %>
+            <%= link_to new_user_session_path  do %>
+              <i class="fa-regular fa-heart pl-5", style="font-size: 40px;"></i>
+            <% end %>
+          <% end %>
         </h2>
         <div class="flex justify-between border-b-2 border-slate-200 pb-1 text-park">
           <p class="w-1/3 pl-8"><i class="fa-solid fa-yen-sign pr-5"></i>料金</p>
@@ -85,7 +91,16 @@
               </figure>
               <div class="card-body bg-white rounded-lg">
                   <p><%= park_report.date %></p>
-                  <p><%= park_report.user.name %>さん</p>
+                  <div class="flex items-center">
+                    <div class="pr-5"><%= park_report.user.name %>さん</div>
+                    <div>
+                      <% if park_report.user.avatar.present? %>
+                        <%= image_tag park_report.user.avatar.url, class: "w-10 h-10 rounded-full border border-park" %>
+                      <% else %>
+                        <%= image_tag 'avatar.jpg', class: "w-10 h-10 rounded-full border border-park" %>
+                      <% end %>
+                    </div>
+                  </div>
                   <p class="card-title"><%= park_report.title %></p>
               </div>
             </div>

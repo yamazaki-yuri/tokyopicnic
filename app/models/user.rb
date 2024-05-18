@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :bookmark_parks, through: :bookmarks, source: :park
   
   validates :name, presence: true
+  mount_uploader :avatar, AvatarUploader
 
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable,

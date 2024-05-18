@@ -1,5 +1,5 @@
 class ParkReportsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :find_current_user_report, only: %i[edit update]
   before_action :find_report, only: %i[show destroy]
   
@@ -51,7 +51,7 @@ class ParkReportsController < ApplicationController
     if @park_report.destroy
       
       flash[:success] = "投稿を削除しました"
-      redirect_to @park
+      redirect_to mypage_path
     else
       flash.now[:danger] = "投稿の削除に失敗しました"
       render :show, status: :unprocessable_entity
