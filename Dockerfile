@@ -21,6 +21,8 @@ FROM base as build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential curl git libpq-dev libvips node-gyp pkg-config python-is-python3
 
+RUN apt-get install -y imagemagick
+
 # Install JavaScript dependencies
 ARG NODE_VERSION=20.12.2
 ARG YARN_VERSION=1.22.19
