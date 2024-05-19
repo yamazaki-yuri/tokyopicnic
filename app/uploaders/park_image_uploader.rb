@@ -1,7 +1,7 @@
 class ParkImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
+  
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?
@@ -21,19 +21,6 @@ class ParkImageUploader < CarrierWave::Uploader::Base
   end
 
   def extension_allowlist
-    %w[jpg jpeg png heic webp]
-  end
-
-  process :convert_to_webp
-
-  def convert_to_webp
-    manipulate! do |img|
-      img.format 'webp'
-      img
-    end
-  end
-
-  def filename
-    super.chomp(File.extname(super)) + '.webp' if original_filename.present?
+    %w[jpg jpeg png]
   end
 end
