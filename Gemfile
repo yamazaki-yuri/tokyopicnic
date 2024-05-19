@@ -55,6 +55,8 @@ gem 'httparty'
 
 gem 'carrierwave', '~> 3.0'
 gem 'mini_magick'
+gem 'fog-aws'
+gem "aws-sdk-s3"
 
 gem 'ransack'
 
