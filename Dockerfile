@@ -19,9 +19,9 @@ FROM base as build
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential curl git libpq-dev libvips node-gyp pkg-config python-is-python3 imagemagick
+    apt-get install --no-install-recommends -y build-essential curl git libpq-dev libvips node-gyp pkg-config python-is-python3
 
-RUN apt-get install -y imagemagick
+RUN apt-get install -y imagemagick=8:7.0.7.22+dfsg-2.1ubuntu11.4
 RUN convert --version
 
 # Install JavaScript dependencies
