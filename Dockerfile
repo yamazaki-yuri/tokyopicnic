@@ -19,19 +19,9 @@ FROM base as build
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential curl git libpq-dev libvips node-gyp pkg-config python-is-python3
+    apt-get install --no-install-recommends -y build-essential curl git libpq-dev libvips node-gyp pkg-config python-is-python3 imagemagick
 
-RUN wget https://download.imagemagick.org/ImageMagick/download/releases/ImageMagick-7.0.7-22.tar.gz \
-    && tar xvzf ImageMagick-7.0.7-22.tar.gz \
-    && cd ImageMagick-7.0.7-22 \
-    && ./configure \
-    && make \
-    && make install \
-    && ldconfig
-
-# ImageMagickのバージョンを確認
-RUN magick --version
-
+RUN apt-get install -y imagemagick
 RUN convert --version
 
 # Install JavaScript dependencies
