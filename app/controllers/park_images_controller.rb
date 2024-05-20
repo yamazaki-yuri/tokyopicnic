@@ -2,6 +2,7 @@ class ParkImagesController < ApplicationController
   def create
     @park = Park.find(params[:park_image][:park_id])
     @park_image = @park.park_images.build(park_image_params)
+    binding.pry
 
     if @park_image.save
       flash[:success] = "画像を追加しました"
