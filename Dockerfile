@@ -19,35 +19,9 @@ FROM base as build
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential curl git libpq-dev libvips node-gyp pkg-config python-is-python3
+    apt-get install --no-install-recommends -y build-essential curl git libpq-dev libvips node-gyp pkg-config python-is-python3 imagemagick
 
-# Install packages needed for ImageMagick
-RUN apt-get update -qq \
-    && apt-get install -y \
-    wget \
-    build-essential \
-    libjpeg-dev \
-    libpng-dev \
-    libtiff-dev \
-    libgif-dev \
-    libwebp-dev \
-    libopenexr-dev \
-    libheif-dev \
-    libde265-dev \
-    && rm -rf /var/lib/apt/lists/*
-
-# Download and install specific version of ImageMagick
-RUN wget https://imagemagick.org/download/releases/ImageMagick-7.1.1-32.tar.gz \
-    && tar -xzf ImageMagick-7.1.1-32.tar.gz \
-    && cd ImageMagick-7.1.1-32 \
-    && ./configure \
-    && make \
-    && make install \
-    && ldconfig \
-    && cd .. \
-    && rm -rf ImageMagick-7.1.1-32 \
-    && rm ImageMagick-7.1.1-32.tar.gz
-
+RUN apt-get install -y imagemagick
 RUN convert --version
 
 # Install JavaScript dependencies
@@ -83,7 +57,7 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 FROM base
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libvips postgresql-client && \
+    apt-get install --no-install-recommends -y curl imagemagick postgresql-client && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Copy built artifacts: gems, application
