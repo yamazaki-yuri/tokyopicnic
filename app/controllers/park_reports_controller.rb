@@ -6,6 +6,8 @@ class ParkReportsController < ApplicationController
   def new
     @park_report = ParkReport.new
     @park_report.report_images.build
+    @park_report.park_name = params[:park_name]
+    @park_report.tokyo_ward_id = params[:tokyo_ward_id]
   end
 
   def create

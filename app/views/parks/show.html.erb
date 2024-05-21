@@ -57,7 +57,7 @@
         </div>
         <% if @park_images.empty? %>
           <div class="text-park text-center">
-            <p><%= "#{@park.name}" %>の画像がまだありません</p>
+            <p>- <%= "#{@park.name}" %>の画像がまだありません -</p>
           </div>
         <% end %>
         <button class="btn" onclick="my_modal_2.showModal()">画像を追加する</button>
@@ -81,6 +81,15 @@
 
       <div class="py-5">
         <p class="text-xl md:text-2xl text-park font-bold py-5 text-center">- みんなの投稿 -</p>
+      </div>
+      <div class="card w-96 bg-base-100 shadow-xl">
+        <div class="card-body">
+          <% if @park_reports.empty? %>
+            <p class="text-park text-center">まだ投稿がありません<p>
+          <% end %>
+            <p class="text-park text-center"><%= "#{@park.name}" %>の思い出を投稿する<p>
+          <%= link_to '投稿する', new_park_report_path(park_name: @park.name, tokyo_ward_id: @tokyo_ward.id), class: "btn btn-secondary me-2 w-full font-semibold" %>
+        </div>
       </div>
       <div class="px-8 flex justify-center items-center md:justify-between flex-col md:flex-row gap-y-8 xl:gap-x-5 lg:gap-x-5 sm:gap-x-5 pb-8  grid xl:grid-cols-4 lg:grid-cols-3  sm:grid-cols-2">
         <% @park_reports.each do |park_report| %>

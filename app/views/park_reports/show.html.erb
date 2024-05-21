@@ -5,6 +5,8 @@
         <div>
           <% if @park_report.report_images.present? %>
             <%= image_tag @park_report.report_images.first.url.url %>
+          <% else %>
+            <%= image_tag 'default.png' %>
           <% end %>
         </div>
       </figure>
