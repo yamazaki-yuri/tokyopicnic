@@ -14,7 +14,7 @@
           <% if @park_images.present? %>
             <%= image_tag @park_images.first.url.url %>
           <% else %>
-            <%= image_tag 'default.png' %>
+            <%= image_tag 'park.jpg' %>
           <% end %>
         </div>
       </figure>
@@ -55,10 +55,16 @@
           <p class="w-1/3 pl-5"><i class="fa-solid fa-heart pr-3"></i>おすすめの理由</p>
           <p class="pl-10">-</p>
         </div>
+        <% if @park_images.empty? %>
+          <div class="text-park text-center">
+            <p><%= "#{@park.name}" %>の画像がまだありません</p>
+          </div>
+        <% end %>
         <button class="btn" onclick="my_modal_2.showModal()">画像を追加する</button>
           <dialog id="my_modal_2" class="modal">
             <div class="modal-box">
-              <p class="text-park font-bold pb-5 text-center">画像を追加してね</p>
+              <p class="text-park font-bold text-center">- <%= "#{@park.name}" %>の画像を追加してね -</p>
+              <p class="text-park font-bold pb-5 text-center">⚠︎追加した画像は消せません</p>
               <%= render 'park_images/form', park_image: @park_image %>
             </div>
             <form method="dialog" class="modal-backdrop">
