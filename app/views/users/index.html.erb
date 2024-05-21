@@ -1,6 +1,6 @@
 <div class="flex-grow container mx-auto px-6 py-10">
   <div class="flex justify-center items-center">
-    <div class="text-2xl md:text-3xl lg:text-4xl text-park text-center font-bold pt-10 pb-5 px-8 border-b-2 border-park">
+    <div class="text-2xl md:text-3xl lg:text-4xl text-park text-center font-bold pb-5 px-8 border-b-2 border-park">
       <%= current_user.name %>さんのページ
     </div>
   </div>
@@ -30,29 +30,12 @@
   </div>
 
   <div class="px-8 flex justify-center items-center">
-    <div class="card w-96 bg-base-100 shadow-xl">
-      <div class="card-body">
-        <% if @park_reports.empty? %>
-          <p class="text-park text-center font-bold">投稿がありません<p>
-        <% end %>
-          <%= link_to '公園の思い出を投稿する', new_park_report_path, class: "btn btn-secondary me-2 w-full font-semibold" %>
-      </div>
-    </div>
+      <%= link_to '公園の思い出を投稿する', new_park_report_path, class: "bg-accent btn btn-primary me-2 w-auto font-semibold" %>
   </div>
 
   <div class="py-5">
     <p class="text-xl md:text-2xl text-park font-bold py-5 text-center">- ブックマーク一覧 -</p>
   </div>
-  <% if @bookmark_parks.empty? %>
-  <div class="px-8 flex justify-center items-center">
-    <div class="card w-96 bg-base-100 shadow-xl">
-      <div class="card-body">
-          <p class="text-park text-center font-bold">ブックマークがありません<p>
-          <%= link_to '気になる公園を見つけよう！', new_park_report_path, class: "btn btn-secondary me-2 w-full font-semibold" %>
-      </div>
-    </div>
-  </div>
-  <% end %>
   <div class="px-8 flex justify-center items-center md:justify-between flex-col md:flex-row gap-y-8 xl:gap-x-5 lg:gap-x-5 sm:gap-x-5 pb-8  grid xl:grid-cols-4 lg:grid-cols-3  sm:grid-cols-2">
     <% @bookmark_parks.each do |bookmark_park| %>
       <div class="card bg-base-100 shadow-xl flex flex-col md:gap-x-10" style="height: 380px;">
@@ -70,5 +53,9 @@
         </div>
       </div>
     <% end %>
+  </div>
+
+  <div class="px-8 flex justify-center items-center">
+    <%= link_to '気になる公園を見つけよう！', search_path, class: "bg-accent btn btn-primary me-2 w-auto font-semibold" %>
   </div>
 </div>

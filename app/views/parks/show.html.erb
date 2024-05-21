@@ -87,8 +87,8 @@
           <% if @park_reports.empty? %>
             <p class="text-park text-center">まだ投稿がありません<p>
           <% end %>
-            <p class="text-park text-center"><%= "#{@park.name}" %>の思い出を投稿する<p>
-          <%= link_to '投稿する', new_park_report_path(park_name: @park.name, tokyo_ward_id: @tokyo_ward.id), class: "btn btn-secondary me-2 w-full font-semibold" %>
+            <p class="text-park text-center pb-5"><%= "#{@park.name}" %>の思い出を投稿する<p>
+          <%= link_to '投稿する', new_park_report_path(park_name: @park.name, tokyo_ward_id: @tokyo_ward.id), class: "btn me-2 w-full font-semibold" %>
         </div>
       </div>
       <div class="pt-5 px-8 flex justify-center items-center md:justify-between flex-col md:flex-row gap-y-8 xl:gap-x-5 lg:gap-x-5 sm:gap-x-5 pb-8  grid xl:grid-cols-4 lg:grid-cols-3  sm:grid-cols-2">
