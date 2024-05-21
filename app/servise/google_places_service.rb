@@ -8,17 +8,18 @@ class GooglePlacesService
     @api_key = ENV['GOOGLE_API_KEY']
   end
 
-  def search(location, query)
+  def search(location, keyword)
     options = {
       query: {
         location: location,
-        query: query,
-        radius: 5000,
+        keyword: keyword,
+        radius: 3000,
+        type: 'park',
         key: @api_key,
         language: 'ja'
       }
     }
-    self.class.get("/textsearch/json", options)
+    self.class.get("/nearbysearch/json", options)
   end
 
   def get_website(place_id)
