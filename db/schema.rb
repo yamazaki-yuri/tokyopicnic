@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_18_020234) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_22_031523) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,6 +67,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_18_020234) do
     t.integer "alcohol_allowed", default: 2
     t.integer "sheet_available", default: 2
     t.integer "bringing_in_play_equipment", default: 2
+    t.string "catchphrase"
+    t.string "recommended_points"
     t.index ["googlemaps_place_id"], name: "index_parks_on_googlemaps_place_id", unique: true
   end
 

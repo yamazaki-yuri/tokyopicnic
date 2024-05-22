@@ -1,8 +1,8 @@
 class Park < ApplicationRecord
-  has_many :park_reports
-  has_many :park_tokyo_wards
+  has_many :park_reports, dependent: :destroy
+  has_many :park_tokyo_wards, dependent: :destroy
   has_many :tokyo_wards, through: :park_tokyo_wards
-  has_many :park_images
+  has_many :park_images, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
 
   validates :name, presence: true
