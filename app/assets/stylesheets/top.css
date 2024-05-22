@@ -1,0 +1,28 @@
+.main-container {
+  background-image: url('park.jpg');
+  height: 800px;
+  background-size:cover;
+  color: white;
+}
+
+.custom-btn:hover {
+  color: white; /* テキストの色 */
+  border: 2px solid #4CAF50; /* ボーダーの色 */
+}
+
+.navbar {
+  background-color: #3f6212;
+}
+
+.btn-ghost {
+  color: #FFFFFF;
+}
+
+.btn-ghost:hover {
+  color: #FFFFFF;
+  background-color: #65a30d;
+}
+
+.logo:hover {
+  background-color: #3f6212;
+}
