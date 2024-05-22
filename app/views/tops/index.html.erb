@@ -1,24 +1,27 @@
 <% content_for(:title, t('.title')) %>
-<div class="text-4xl md:text-7xl text-park text-center font-bold">Tokyo×Picnic</div>
-<div class="flex justify-center items-center pt-10">
-<%= turbo_frame_tag "park_info_frame" do %>
-  <button class="bg-accent btn btn-primary"" onclick="random_park_modal.showModal()">行ったことある？？</button>
-  <dialog id="random_park_modal" class="modal">
-    <div class="modal-box">
-      <div class="pb-8">
-        <div class="justify-center text-center pb-5">
-          <p class="text-park">- <%= @park_tokyo_ward.name %> -</p>
-          <p class="text-park py-2">キャッチコピー</p>
-          <div class="text-park font-bold text-xl py-2 mx-20 border-b-2 border-park">
-            <%= @park.name %>
+<%= stylesheet_link_tag 'top' %>
+<div class="main-container">
+  <h1 class="text-center font-bold text-4xl pt-10">東京にも、緑はある。</h1>
+  <div class="flex justify-center items-center pt-10">
+  <%= turbo_frame_tag "park_info_frame" do %>
+    <button class="btn custom-btn" onclick="random_park_modal.showModal()">行ったことある？？</button>
+    <dialog id="random_park_modal" class="modal">
+      <div class="modal-box">
+        <div class="pb-8">
+          <div class="justify-center text-center pb-5">
+            <p class="text-park">- <%= @park_tokyo_ward.name %> -</p>
+            <p class="text-park py-2">キャッチコピー</p>
+            <div class="text-park font-bold text-xl py-2 mx-20 border-b-2 border-park">
+              <%= @park.name %>
+            </div>
           </div>
+          <%= render 'random_park' %>
         </div>
-        <%= render 'random_park' %>
+      <% end %>
       </div>
-    <% end %>
-    </div>
-    <form method="get" class="modal-backdrop" action="<%= root_path %>", data: { turbo_frame: "park_info_frame" }>
-      <button type="submit">close</button>
-    </form>
-  </dialog>
+      <form method="get" class="modal-backdrop" action="<%= root_path %>", data: { turbo_frame: "park_info_frame" }>
+        <button type="submit">close</button>
+      </form>
+    </dialog>
+  </div>
 </div>
