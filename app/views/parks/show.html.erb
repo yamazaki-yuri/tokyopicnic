@@ -22,7 +22,11 @@
     <div class="card-body bg-white rounded-md w-full h-auto md:h-full object-cover">
         <h2 class="card-title pb-2 pl-3 border-b-2 border-slate-200 text-park">
           公式サイト
-          <%= link_to 'こちら', "#{@park.website_url}", class: "badge badge border-b-2 border-park text-park" %>
+          <% if @park.website_url.present? %>
+            <%= link_to 'こちら', "#{@park.website_url}", class: "badge badge border-b-2 border-park text-park" %>
+          <% else %>
+            <p class="badge badge border-b-2 border-park text-park">なし<p>
+          <% end %>
           <% if user_signed_in? %>
             <%= render 'bookmark_button', { park: @park } %>
           <% else %>
