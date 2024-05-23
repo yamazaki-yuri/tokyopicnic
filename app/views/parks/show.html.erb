@@ -81,6 +81,13 @@
           </dialog>
       </div>
     </div>
+    <p class="text-park text-sm pt-5">※飲酒は、禁止されている公園以外△とさせていただいております。他のお客様のご迷惑にならぬよう、節度を守って楽しみましょう。詳しくは
+      <% if @park.website_url.present? %>
+        <%= link_to '公式サイト', "#{@park.website_url}", class: "font-bold" %>
+      <% end %>
+      をご確認ください。
+    </p>
+
 
     <div class="flex justify-center items-center flex-col py-10">
       <div style="width: 90%; height: 300px;">

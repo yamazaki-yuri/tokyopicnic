@@ -13,7 +13,7 @@ class GooglePlacesService
       query: {
         location: location,
         keyword: keyword,
-        radius: 3000,
+        radius: 5000,
         type: 'park',
         key: @api_key,
         language: 'ja'
