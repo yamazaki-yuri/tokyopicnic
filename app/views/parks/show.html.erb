@@ -105,7 +105,7 @@
             <div class="card bg-base-100 shadow-xl flex flex-col md:gap-x-10" style="height: 380px;">
               <figure>
                 <div>
-                  <% if park_report.report_images.present? %>
+                  <% if park_report.report_images.present? && park_report.report_images.first.url.present? %>
                     <%= image_tag park_report.report_images.first.url.url, class: "w-full h-auto object-cover"%>
                   <% else %>
                     <%= image_tag 'default.png' %>
