@@ -6,14 +6,14 @@
   </div>
 
   <div class="py-5">
-    <p class="text-xl md:text-2xl text-park font-bold py-5 text-center">- 投稿一覧 -</p>
+    <p class="text-xl md:text-2xl text-park font-bold py-5 text-center">- 私の公園日記 -</p>
   </div>
   <div class="px-8 flex justify-center items-center md:justify-between flex-col md:flex-row gap-y-8 xl:gap-x-5 lg:gap-x-5 sm:gap-x-5 pb-8  grid xl:grid-cols-4 lg:grid-cols-3  sm:grid-cols-2">
     <% @park_reports.each do |park_report| %>
       <div class="card bg-base-100 shadow-xl flex flex-col md:gap-x-10" style="height: 380px;">
         <figure>
           <div>
-            <% if park_report.report_images.present? %>
+            <% if park_report.report_images.present? && park_report.report_images.first.url.present? %>
               <%= image_tag park_report.report_images.first.url.url, class: "w-full h-auto object-cover"%>
             <% else %>
               <%= image_tag 'default.png' %>
