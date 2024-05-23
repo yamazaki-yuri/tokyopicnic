@@ -3,9 +3,9 @@ class ParksController < ApplicationController
     @q = Park.ransack(params[:q])
     if params[:q].present? && (params[:q][:fee] == "paid" || params[:q][:fee] == "free")
       if params[:q][:fee] == "paid"
-        @parks = @q.result.where.not(fee: nil)
+        @parks = @q.result.where(fee: "あり")
       elsif params[:q][:fee] == "free"
-        @parks = @q.result.where(fee: nil)
+        @parks = @q.result.where(fee: "なし")
       end
     else
       @parks = @q.result(distinct: true).includes(:park_images, park_tokyo_wards: :tokyo_ward)

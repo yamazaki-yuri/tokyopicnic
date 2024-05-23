@@ -5,14 +5,14 @@
         <%= image_tag 'logo.png', class: "logo rounded-lg hover:bg-slate-200", size: "100x100" %>
       <% end %>
     </div>
-    <div>
-      <%= link_to 'Search', search_path, class: "btn btn-ghost rounded-btn text-slate-600 font-semibold text-sm hover:bg-slate-200" %>
-    </div>
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost rounded-btn text-slate-600 hover:bg-slate-200">Menu</div>
         <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
           <li>
             <%= link_to '新規投稿', new_park_report_path, class: "text-park font-semibold hover:bg-slate-200 rounded-lg px-4 py-2" %>
+          </li>
+          <li>
+            <%= link_to '公園を探す', search_path, class: "text-park font-semibold hover:bg-slate-200 rounded-lg px-4 py-2" %>
           </li>
           <li>
             <%= link_to 'マイページ', mypage_path, class: "text-park font-semibold hover:bg-slate-200 rounded-lg px-4 py-2" %>
