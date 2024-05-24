@@ -53,8 +53,12 @@
             </div>
           </div>
         </div>
-        <div class="btn btn-sm btn-secondary mt-3 w-full">
-          <%= f.submit "検索", data: { turbo_frame: "search" } %>
+        <div class="flex justify-center mt-3">
+          <div class="btn btn-sm btn-secondary mt-3">
+          <i class="fa-solid fa-magnifying-glass">
+            <%= f.submit "検索する", data: { turbo_frame: "search" } %>
+          </i>
+          </div>
         </div>
       <% end %>
     </div>
