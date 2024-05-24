@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   root 'tops#index'
   get '/search', to: 'parks#index', as: 'search'
   get '/mypage', to: 'users#index'
+  get '/terms_of_service', to: 'tops#terms_of_service'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
