@@ -2,6 +2,7 @@
   background-image: url('park.jpg');
   height: 800px;
   background-size:cover;
+  background-position: center top;
   color: white;
 }
 
@@ -25,4 +26,12 @@
 
 .logo:hover {
   background-color: #3f6212;
+}
+
+.btn.custom-btn {
+  padding: 15px 32px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px #a8c680;
+  transition: 0.3s;
 }
