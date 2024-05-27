@@ -14,27 +14,27 @@
           <div class="text-park">
             名前
           </div>
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "py-3 px-5 mt-1 block w-full placeholder-gray-400 border-2 border-primary rounded-lg" %>
+          <%= f.text_field :name, placeholder: 'ニックネームOK', autofocus: true, autocomplete: "name", class: "py-3 px-5 mt-1 block w-full placeholder-gray-400 border-2 border-primary rounded-lg" %>
         </div>
 
         <div class="mt-8">
           <div class="text-park">
             メールアドレス
           </div>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "py-3 px-5 mt-1 block w-full placeholder-gray-400 border-2 border-primary rounded-lg" %>
+          <%= f.email_field :email, placeholder: 'hogehoge@example.com', autofocus: true, autocomplete: "email", class: "py-3 px-5 mt-1 block w-full placeholder-gray-400 border-2 border-primary rounded-lg" %>
         </div>
 
         <div class="mt-8">
           <div class="text-park text-md">
             パスワード
           </div>
-          <%= f.password_field :password, autocomplete: "new-password", class: "py-3 px-5 mt-1 block w-full placeholder-gray-400 border-2 border-primary rounded-lg" %>
+          <%= f.password_field :password, placeholder: '英数字6文字以上', autocomplete: "new-password", class: "py-3 px-5 mt-1 block w-full placeholder-gray-400 border-2 border-primary rounded-lg" %>
         </div>
         <div class="mt-8">
           <div class="text-park text-md">
             確認用パスワード
           </div>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "py-3 px-5 mt-1 block w-full placeholder-gray-400 border-2 border-primary rounded-lg" %>
+          <%= f.password_field :password_confirmation, placeholder: 'パスワードをもう一度', autocomplete: "new-password", class: "py-3 px-5 mt-1 block w-full placeholder-gray-400 border-2 border-primary rounded-lg" %>
         </div>
         
         <div class="mt-12">

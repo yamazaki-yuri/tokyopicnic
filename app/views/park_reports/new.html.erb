@@ -18,7 +18,7 @@
             <%= f.collection_select :tokyo_ward_id, TokyoWard.all,  :id, :name, {include_blank: "区を選択"}, {class: "select select-primary max-w-xs"} %>
           </div>
           <div class="my-5 flex flex-col px-5">
-            <%= f.label :date, "日付" %>
+            <%= f.label :date, "行った日" %>
             <%= f.date_field :date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
           </div>
             <%= f.fields_for :report_images do |report_image| %>

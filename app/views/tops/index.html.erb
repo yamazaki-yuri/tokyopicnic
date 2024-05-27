@@ -1,11 +1,11 @@
 <% content_for(:title, t('.title')) %>
 <%= stylesheet_link_tag 'top' %>
 <div class="main-container">
-  <h1 class="text-center font-bold text-4xl pt-10" style="padding-left: 0.5em;">東京にも、緑はある。</h1>
-  <p class="text-center pt-5">23区の公園で新たな発見を</p>
-  <div class="flex justify-center items-center pt-10">
-  <%= turbo_frame_tag "park_info_frame" do %>
-    <button class="btn custom-btn" onclick="random_park_modal.showModal()">行ったことある？？</button>
+  <h1 class="text-center font-bold text-4xl pt-10" style="padding-left: 0.5em;">休日は、ピクニック。</h1>
+  <p class="text-center pt-5">東京23区で新たな発見を</p>
+  <div class="flex justify-center items-center flex-col md:flex-row pt-10">
+    <%= turbo_frame_tag "park_info_frame" do %>
+    <button class="btn custom-btn" onclick="random_park_modal.showModal()">行ったことある？？？</button>
     <dialog id="random_park_modal" class="modal">
       <div class="modal-box">
         <div class="pb-8">
@@ -22,11 +22,76 @@
           </div>
           <%= render 'random_park' %>
         </div>
-      <% end %>
       </div>
       <form method="get" class="modal-backdrop" action="<%= root_path %>", data: { turbo_frame: "park_info_frame" }>
         <button type="submit">close</button>
       </form>
     </dialog>
+    <% end %>
+      <p class="text-center pt-2 pb-2 px-3">OR</p>
+      <%= link_to '知ってる公園教えて！', new_park_report_path, class: "btn custom-btn" %>
+  </div>
+</div>
+<div class="sub_container text-park px-5 py-10">
+  <div>
+    <p class="text-xl text-center font-bold pt-10">- 東京Picnicで出来ること -</p>
+    <p class="text-center pt-3">東京23区とはよく耳にするけれど、何がどこにあるんだろう。<br>
+    行ったことがない場所もたくさんあるでしょう。<br>
+    公園をきっかけにいろんな土地に行ってみませんか？<br>
+    東京の新たな魅力を発見・共有しよう！</p>
+  </div>
+  <div class="flex justify-center items-center flex-col md:flex-row md:gap-x-10 px-3 mt-5 mb-5 pt-5 pb-5">
+    <div class="card w-96 bg-accent shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title">公園をランダムにおすすめ</h2>
+        <p><br>
+        東京には、たくさんの公園があります。<br>
+        中でも、ピクニックにお勧めな公園を厳選<br>
+        聞いたことがない、魅力的な公園に出会えるかも。<br>
+        </p>
+        <div class="card-actions justify-end">
+          <%= link_to '見てみる', root_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <div class="pt-5">
+      <%= image_tag 'random.jpg', class: "rounded-lg", size: "350x350" %>
+    </div>
+  </div>
+  <div class="flex justify-center items-center flex-col md:flex-row md:gap-x-10 px-3 mt-5 mb-5 pt-5 pb-5">
+    <div class="card w-96 bg-accent shadow-xl order-1 md:order-2">
+      <div class="card-body">
+        <h2 class="card-title">あなたに合った公園を見つけよう</h2>
+        <p><br>
+        目的別や23区を選択など<br>
+        公園の情報を絞り込んで検索できます。<br>
+        </p>
+        <div class="card-actions justify-end">
+          <%= link_to '見てみる', search_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <div class="pt-5 order-2 md:order-1">
+      <%= image_tag 'search.png', class: "rounded-lg shadow-xl", size: "350x350" %>
+    </div>
+  </div>
+  <div class="flex justify-center items-center flex-col md:flex-row md:gap-x-10 px-3 mt-5 mb-5 pt-5 pb-5">
+    <div class="card w-96 bg-accent shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title">行った公園の日記を投稿しよう</h2>
+        <p class="text-sm">※ログイン限定機能</p>
+        <p><br>
+        あなたしか知らない公園や、<br>
+        お気に入りの公園などをみんなに共有しよう！<br>
+        公園に行った日のことを日記のように保管。<br>
+        </p>
+        <div class="card-actions justify-end">
+          <%= link_to '見てみる', new_park_report_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <div class="pt-5">
+      <%= image_tag 'post.jpg', class: "rounded-lg shadow-xl", size: "350x350" %>
+    </div>
   </div>
 </div>

@@ -6,6 +6,9 @@
   </div>
   <%= turbo_frame_tag "search" do %>
   <%= render 'search_form' %>
+  <% if params[:q].present? %>
+    <p class="text-center text-park pb-5 font-semibold">- 検索結果は<%= "#{@count}" %>件です -</p>
+  <% end %>
   <div class="flex justify-center items-center md:justify-between flex-col md:flex-row gap-y-8 xl:gap-x-5 lg:gap-x-5 sm:gap-x-5 px-2 pb-8 grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2">
     <% @parks.each do |park| %>
       <%= link_to park_path(park), data: { turbo: false }, class: "card bg-base-100 shadow-xl flex flex-col md:gap-x-10" do %>

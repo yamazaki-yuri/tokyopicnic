@@ -14,10 +14,10 @@
         <div class="pt-2 flex justify-between flex-row">
           <div style="margin-right: 1rem;">
             <div class="pb-2 text-park">
-              <%= f.collection_select :fee, [["有料", "paid"], ["無料", "free"]], :last, :first, { prompt: '料金は？' }, class: "select select-success max-w-xs" %>
+              <%= f.collection_select :tokyo_wards_id_eq, TokyoWard.all, :id, :name, { include_blank: '区を選択' }, class: "select select-success max-w-xs" %>
             </div>
             <div class="pb-2 text-park">
-              <%= f.collection_select :tokyo_wards_id_eq, TokyoWard.all, :id, :name, { include_blank: '区を選択' }, class: "select select-success max-w-xs" %>
+              <%= f.collection_select :fee, [["有料", "paid"], ["無料", "free"]], :last, :first, { prompt: '料金は？' }, class: "select select-success max-w-xs" %>
             </div>
           </div>
           <div class="w-2/3">
