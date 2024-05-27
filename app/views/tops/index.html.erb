@@ -32,3 +32,66 @@
       <%= link_to '知ってる公園教えて！', new_park_report_path, class: "btn custom-btn" %>
   </div>
 </div>
+<div class="sub_container text-park px-5 py-10">
+  <div>
+    <p class="text-xl text-center font-bold pt-10">- 東京Picnicで出来ること -</p>
+    <p class="text-center pt-3">東京23区とはよく耳にするけれど、何がどこにあるんだろう。<br>
+    行ったことがない場所もたくさんあるでしょう。<br>
+    公園をきっかけにいろんな土地に行ってみませんか？<br>
+    東京の新たな魅力を発見・共有しよう！</p>
+  </div>
+  <div class="flex justify-center items-center flex-col md:flex-row md:gap-x-10 px-3 mt-5 mb-5 pt-5 pb-5">
+    <div class="card w-96 bg-accent shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title">公園をランダムにおすすめ</h2>
+        <p><br>
+        東京には、たくさんの公園があります。<br>
+        中でも、ピクニックにお勧めな公園を厳選<br>
+        聞いたことがない、魅力的な公園に出会えるかも。<br>
+        </p>
+        <div class="card-actions justify-end">
+          <%= link_to '見てみる', root_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <div class="pt-5">
+      <%= image_tag 'random.jpg', class: "rounded-lg", size: "350x350" %>
+    </div>
+  </div>
+  <div class="flex justify-center items-center flex-col md:flex-row md:gap-x-10 px-3 mt-5 mb-5 pt-5 pb-5">
+    <div class="card w-96 bg-accent shadow-xl order-1 md:order-2">
+      <div class="card-body">
+        <h2 class="card-title">あなたに合った公園を見つけよう</h2>
+        <p><br>
+        目的別や23区を選択など<br>
+        公園の情報を絞り込んで検索できます。<br>
+        </p>
+        <div class="card-actions justify-end">
+          <%= link_to '見てみる', search_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <div class="pt-5 order-2 md:order-1">
+      <%= image_tag 'search.png', class: "rounded-lg shadow-xl", size: "350x350" %>
+    </div>
+  </div>
+  <div class="flex justify-center items-center flex-col md:flex-row md:gap-x-10 px-3 mt-5 mb-5 pt-5 pb-5">
+    <div class="card w-96 bg-accent shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title">行った公園の日記を投稿しよう</h2>
+        <p class="text-sm">※ログイン限定機能</p>
+        <p><br>
+        あなたしか知らない公園や、<br>
+        お気に入りの公園などをみんなに共有しよう！<br>
+        公園に行った日のことを日記のように保管。<br>
+        </p>
+        <div class="card-actions justify-end">
+          <%= link_to '見てみる', new_park_report_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <div class="pt-5">
+      <%= image_tag 'post.jpg', class: "rounded-lg shadow-xl", size: "350x350" %>
+    </div>
+  </div>
+</div>
