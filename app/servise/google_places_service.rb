@@ -5,7 +5,7 @@ class GooglePlacesService
   base_uri 'https://maps.googleapis.com/maps/api/place'
 
   def initialize
-    @api_key = ENV.fetch('GOOGLE_API_KEY')
+    @api_key = ENV['GOOGLE_API_KEY']
   end
 
   def search(location, keyword)
