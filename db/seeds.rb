@@ -31,4 +31,4 @@ tokyo_wards = TokyoWard.create([
   {name: '文京区', latitude: 35.70900974056391, longitude: 139.75190836385295},
   {name: '港区', latitude: 35.65865030623709, longitude: 139.75135129450376},
   {name: '目黒区', latitude: 35.64219699407184, longitude: 139.69827978654425},
-  ])
+])

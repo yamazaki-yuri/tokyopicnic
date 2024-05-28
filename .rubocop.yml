@@ -1,0 +1,25 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  SuggestExtensions: false
+  NewCops: enable
+  DisplayCopNames: true
+  Exclude:
+    - "Gemfile"
+    - "bin/**/*"
+    - "db/**/*"
+    - "log/**/*"
+    - "tmp/**/*"
+    - "config/environments/*"
+    - "config/puma.rb"
+  TargetRubyVersion: 3.1
+  Metrics:
+  Enabled: false
+  
+# 未i18nのチェック
+Rails/I18nLocaleTexts:
+  Enabled: false
