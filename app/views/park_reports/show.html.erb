@@ -13,8 +13,8 @@
     </div>
     <div class="card-body bg-white rounded-md w-full h-auto md:h-full object-cover">
         <h2 class="card-title pb-2 pl-3 border-b-2 border-slate-200 text-park">
-          <%= link_to "#{@park_report.park.name}", "#{park_path(@park_report.park)}" %>
-          <%= link_to '公式サイト', "#{@park_report.park.website_url}", class: "badge badge border-b-2 border-park text-park" %>
+          <%= link_to "#{@park_report.park.name}", "#{park_path(@park_report.park)}", class: "hover:bg-slate-200 rounded-lg px-4 py-2" %>
+          <%= link_to '公式サイト', "#{@park_report.park.website_url}", class: "badge badge border-b-2 border-park text-park hover:bg-slate-200" %>
         </h2>
         <div class="flex justify-between border-b-2 border-slate-200 pb-1 text-park">
           <p class="pl-8"><%= @park_report.date %></p>
@@ -71,7 +71,7 @@
 
     <div class="flex justify-center items-center">
       <% if user_signed_in? && current_user.own?(@park_report) %>
-        <button class="btn" onclick="add_image.showModal()">画像を追加する</button>
+        <button class="btn hover:bg-slate-200 rounded-lg px-4 py-2" onclick="add_image.showModal()">画像を追加する</button>
         <dialog id="add_image" class="modal">
           <div class="modal-box">
             <p class="text-park font-bold pb-5 text-center">画像を選択してね</p>

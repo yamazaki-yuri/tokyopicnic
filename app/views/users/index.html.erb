@@ -22,8 +22,8 @@
         </figure>
         <div class="card-body bg-white rounded-lg">
             <p><%= park_report.date %></p>
-          <%= link_to "#{park_report.park.name}", park_path(park_report.park), class: "card-title pb-2 border-b-2 border-slate-200" %>
-          <%= link_to "#{park_report.title}", park_report_path(park_report), class: "pl-5 text-park font-bold" %>
+          <%= link_to "#{park_report.park.name}", park_path(park_report.park), class: "card-title pb-2 border-b-2 border-slate-200 hover:bg-slate-200 rounded-lg px-4 py-2" %>
+          <%= link_to "#{park_report.title}", park_report_path(park_report), class: "pl-5 text-park font-bold hover:bg-slate-200 rounded-lg px-4 py-2" %>
         </div>
       </div>
     <% end %>

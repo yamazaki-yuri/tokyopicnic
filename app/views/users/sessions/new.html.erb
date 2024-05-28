@@ -20,7 +20,7 @@
         </div>
         <% end %>
         <div class="mt-8 text-center text-park">
-          <%= link_to 'パスワードをお忘れの方はこちら', new_user_password_path %>
+          <%= link_to 'パスワードをお忘れの方はこちら', new_user_password_path, class: "hover:bg-slate-200 rounded-lg px-4 py-2" %>
         </div>
         <div class="mt-8 flex flex-col w-full">
           <div class="divider divider-neutral">OR</div>
@@ -29,7 +29,7 @@
           <%= render 'google_signin_button' %>
         </div>
         <div class="mt-8 pb-8 text-center text-park">
-          <%= link_to 'はじめての方はこちら', new_user_registration_path %>
+          <%= link_to 'はじめての方はこちら', new_user_registration_path, class: "hover:bg-slate-200 rounded-lg px-4 py-2" %>
         </div>
       </div>
     </div>
