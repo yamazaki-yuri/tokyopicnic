@@ -25,6 +25,7 @@ class ParkImageUploader < CarrierWave::Uploader::Base
     %w[jpg jpeg png heic webp]
   end
 
+  process resize_to_limit: [800,800]
   process :convert_to_webp
 
   def convert_to_webp
