@@ -88,7 +88,7 @@
             <p>- <%= "#{@park.name}" %>の画像がまだありません -</p>
           </div>
         <% end %>
-        <button class="btn" onclick="my_modal_2.showModal()">画像を追加する</button>
+        <button class="btn hover:bg-slate-200 rounded-lg px-4 py-2" onclick="my_modal_2.showModal()">画像を追加する</button>
           <dialog id="my_modal_2" class="modal">
             <div class="modal-box">
               <p class="text-park font-bold text-center">- <%= "#{@park.name}" %>の画像を追加してね -</p>
@@ -122,7 +122,7 @@
             <p class="text-park text-center">まだ投稿がありません<p>
           <% end %>
             <p class="text-park text-center pb-5"><%= "#{@park.name}" %>の思い出を投稿する<p>
-          <%= link_to '投稿する', new_park_report_path(park_name: @park.name, tokyo_ward_id: @tokyo_ward.id), class: "btn me-2 w-full font-semibold" %>
+          <%= link_to '投稿する', new_park_report_path(park_name: @park.name, tokyo_ward_id: @tokyo_ward.id), class: "btn me-2 w-full font-semibold hover:bg-slate-200 rounded-lg px-4 py-2" %>
         </div>
       </div>
       <div class="pt-5 px-8 flex justify-center items-center md:justify-between flex-col md:flex-row gap-y-8 xl:gap-x-5 lg:gap-x-5 sm:gap-x-5 pb-8  grid xl:grid-cols-4 lg:grid-cols-3  sm:grid-cols-2">
