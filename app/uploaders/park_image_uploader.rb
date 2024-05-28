@@ -25,8 +25,16 @@ class ParkImageUploader < CarrierWave::Uploader::Base
     %w[jpg jpeg png heic webp]
   end
 
+  process :auto_orient
   process resize_to_limit: [800,800]
   process :convert_to_webp
+
+  def auto_orient
+    manipulate! do |img|
+      img.auto_orient
+      img
+    end
+  end
 
   def convert_to_webp
     manipulate! do |img|
