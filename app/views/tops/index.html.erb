@@ -8,8 +8,8 @@
     <button class="btn custom-btn" onclick="random_park_modal.showModal()">行ったことある？？？</button>
     <dialog id="random_park_modal" class="modal">
       <div class="modal-box">
-        <div class="pb-8">
-          <div class="justify-center text-center pb-5 px-10">
+        <div>
+          <div class="justify-center text-center pb-5 px-6">
             <% if @park.catchphrase.present? %>
               <p class="text-park font-bold md:text-2xl py-2 pb-3 border-b-2 border-park"><%= "#{@park.catchphrase}" %></p>
             <% else %>

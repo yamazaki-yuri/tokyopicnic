@@ -4,7 +4,7 @@
       <% if @park_images.present? %>
         <%= image_tag @park_images.first.url.url %>
       <% else %>
-        <%= image_tag 'default.png' %>
+        <%= image_tag 'park.jpg' %>
       <% end %> 
     </figure>
     <div class="card-body items-center text-center">
@@ -14,6 +14,6 @@
     </div>
   </div>
 </div>
-<div class="text-center pt-8">
+<div class="text-center pt-5">
   <%= link_to '他の公園を条件で検索する', search_path, class: "text-park hover:bg-slate-200 rounded-lg px-4 py-2", data: { turbo: false } %>
 </div>
