@@ -39,7 +39,7 @@
         <h2 class="card-title pb-2 pl-3 border-b-2 border-slate-200 text-park">
           公式サイト
           <% if @park.website_url.present? %>
-            <%= link_to 'こちら', "#{@park.website_url}", class: "badge badge border-b-2 border-park text-park" %>
+            <%= link_to 'こちら', "#{@park.website_url}", class: "badge badge border-b-2 border-park text-park hover:bg-slate-200" %>
           <% else %>
             <p class="badge badge border-b-2 border-park text-park">なし<p>
           <% end %>
