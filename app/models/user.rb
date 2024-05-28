@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :sns_credentials, dependent: :destroy
-  has_many :park_reports
+  has_many :park_reports, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_parks, through: :bookmarks, source: :park
   

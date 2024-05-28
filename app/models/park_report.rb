@@ -7,5 +7,4 @@ class ParkReport < ApplicationRecord
   attr_accessor :park_name
 
   validates :title, presence: true
-  validates :tokyo_ward_id, presence: true
 end

@@ -3,12 +3,18 @@ class ParkReportsController < ApplicationController
   before_action :find_current_user_report, only: %i[edit update]
   before_action :find_report, only: %i[show destroy]
   
+  def show
+    @report_image = ReportImage.new
+  end
+
   def new
     @park_report = ParkReport.new
     @park_report.report_images.build
     @park_report.park_name = params[:park_name]
     @park_report.tokyo_ward_id = params[:tokyo_ward_id]
   end
+
+  def edit; end
 
   def create
     @park_report = ParkReport.new(recieve_params)
@@ -30,8 +36,6 @@ class ParkReportsController < ApplicationController
     end
   end
 
-  def edit; end
-
   def update
     if @park_report.update(edit_params)
       flash[:success] = "編集が完了しました"
@@ -40,11 +44,6 @@ class ParkReportsController < ApplicationController
       flash[:danger] = "編集に失敗しました"
       render 'park_reports/show', status: :unprocessable_entity
     end
-  end
-
-
-  def show
-    @report_image = ReportImage.new
   end
 
   def destroy
@@ -72,7 +71,6 @@ class ParkReportsController < ApplicationController
   def recieve_params
     params.require(:park_report).permit(:park_name, :tokyo_ward_id, :date, :title, :comment, report_images_attributes: [:url])
   end
-
 
   def report_params
     params.require(:park_report).permit(:date, :title, :comment, report_images_attributes: [:url]).merge(park_id: @park.id, tokyo_ward_id: @tokyo_ward.id)
