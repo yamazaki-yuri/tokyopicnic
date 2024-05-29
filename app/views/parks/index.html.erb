@@ -5,7 +5,16 @@
     </div>
   </div>
   <%= turbo_frame_tag "search" do %>
-  <%= render 'search_form' %>
+  <div class="flex flex-col md:flex-row pt-8 md:gap-x-5">
+    <div class="md:w-1/2 pb-5">
+      <div data-controller="google-map--index">
+        <div data-google-map--index-target="map" data-json="<%= @parks_json %>" style="height:55vh;max-width:600px;"></div>
+      </div>
+    </div>
+    <div class="md:w-1/2">
+      <%= render 'search_form' %>
+    </div>
+  </div>
   <% if params[:q].present? %>
     <p class="text-center text-park pb-5 font-semibold">- 検索結果は<%= "#{@count}" %>件です -</p>
   <% end %>
