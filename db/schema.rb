@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_23_105943) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_29_041315) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,6 +71,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_105943) do
     t.string "recommended_points"
     t.integer "dog_run", default: 2
     t.integer "bbq_area", default: 2
+    t.float "latitude"
+    t.float "longitude"
     t.index ["googlemaps_place_id"], name: "index_parks_on_googlemaps_place_id", unique: true
   end
 

@@ -9,6 +9,7 @@ class ParksController < ApplicationController
       end
     else
       @parks = @q.result(distinct: true).includes(:park_images, park_tokyo_wards: :tokyo_ward)
+      @parks_json = @parks.map { |o| park_to_hash(o) }.to_json
       @count = @parks.count
     end
   end
@@ -19,5 +20,17 @@ class ParksController < ApplicationController
     @park_images = @park.park_images
     @tokyo_ward = @park.tokyo_wards.first
     @park_reports = @park.park_reports.includes([:report_images, :user])
+  end
+
+  private
+
+  def park_to_hash(park)
+    { 
+      id: park.id,
+      tokyo_ward_id: park.tokyo_wards.first.id,
+      name: park.name,
+      lat: park.latitude,
+      lng: park.longitude
+    }
   end
 end

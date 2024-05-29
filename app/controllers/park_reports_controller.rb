@@ -116,10 +116,12 @@ class ParkReportsController < ApplicationController
         return
       end
     place_id = park_info['place_id']
+    park_lat = park_info['geometry']['location']['lat']
+    park_lng = park_info['geometry']['location']['lng']
     web_response = google_places_service.get_website(place_id)
     website = web_response['result']['website']
   
-    @park = Park.create(name: @park_name, googlemaps_place_id: place_id, website_url: website)
+    @park = Park.create(name: @park_name, googlemaps_place_id: place_id, website_url: website, latitude: park_lat, longitude: park_lng)
     @park.tokyo_wards << @tokyo_ward
   end
 end

@@ -4,6 +4,12 @@
 
 import { application } from "./application"
 
+import GoogleMap__ApplicationController from "./google_map/application_controller"
+application.register("google-map--application", GoogleMap__ApplicationController)
+
+import GoogleMap__IndexController from "./google_map/index_controller"
+application.register("google-map--index", GoogleMap__IndexController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
