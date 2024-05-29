@@ -84,7 +84,7 @@ export default class extends ApplicationController {
         <a href="/parks/${o.id}" data-turbo-frame="false">
           詳細を見る
         </a><br>
-        <a href="/park_reports/new?park_name=${encodeURIComponent(o.name)}" data-turbo-frame="false">
+        <a href="/park_reports/new?park_name=${encodeURIComponent(o.name)}&tokyo_ward_id=${encodeURIComponent(o.tokyo_ward_id)}" data-turbo-frame="true">
           この公園の投稿をする
         </a>
       `

@@ -27,6 +27,7 @@ class ParksController < ApplicationController
   def park_to_hash(park)
     { 
       id: park.id,
+      tokyo_ward_id: park.tokyo_wards.first.id,
       name: park.name,
       lat: park.latitude,
       lng: park.longitude
