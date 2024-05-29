@@ -4,7 +4,7 @@
       - 公園名で探す -
     </div>
     <%= search_form_for @q do |f| %>
-      <div class="pb-5 border-b-2 border-slate-200">
+      <div class="pb-5 border-b-2 border-slate-200 lg:pl-5">
         <%= f.text_field :name_cont_any, placeholder: "公園名を入力してください", class: "input input-bordered input-success w-full", style: "height: 40px;" %>
       </div>
       <div class="pt-5 text-park font-bold">
@@ -12,10 +12,10 @@
       </div>
       <div class="pt-2 flex justify-between flex-row">
         <div style="margin-right: 1rem;">
-          <div class="pb-2 text-park">
+          <div class="pb-2 text-park lg:pl-5">
             <%= f.collection_select :tokyo_wards_id_eq, TokyoWard.all, :id, :name, { include_blank: '区を選択' }, class: "select select-success max-w-xs" %>
           </div>
-          <div class="pb-2 text-park">
+          <div class="pb-2 text-park lg:pl-5">
             <%= f.collection_select :fee, [["有料", "paid"], ["無料", "free"]], :last, :first, { prompt: '料金は？' }, class: "select select-success max-w-xs" %>
           </div>
         </div>
@@ -55,7 +55,7 @@
       <div class="flex justify-center mt-3">
         <div class="btn btn-sm btn-secondary mt-3">
         <i class="fa-solid fa-magnifying-glass">
-          <%= f.submit "検索する", data: { turbo_frame: "search" } %>
+          <%= f.submit "検索する" %>
         </i>
         </div>
       </div>

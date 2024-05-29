@@ -6,7 +6,6 @@ let infoWindows = [];
 
 // Connects to data-controller="google-map--index"
 export default class extends ApplicationController {
-  //デフォルトの地図の中心地を設定
   static values = {
     location: {
       lat: 35.6855322796429,
@@ -49,14 +48,19 @@ export default class extends ApplicationController {
   }
 
   createMap(center) {
-    map = new google.maps.Map(this.mapTarget, {
-      center: center,
-      zoom: this.zoomValue,
+    const loader = this.setLoader();
+    loader.importLibrary("marker").then(() => {
+      map = new google.maps.Map(this.mapTarget, {
+        center: center,
+        zoom: this.zoomValue,
+      });
+      this.addMarkersToMap();
     });
-    this.addMarkersToMap();
   }
 
   addMarkersToMap() {
+    markers = [];
+    infoWindows = [];
     this.parksValue.forEach((o, i) => {
       this.addMarkerToMarkers(o);
       this.addInfoWindowToInfoWindows(o);
@@ -76,14 +80,14 @@ export default class extends ApplicationController {
   addInfoWindowToInfoWindows(o) {
     const infoWindow = new google.maps.InfoWindow({
       content: `
-          <p>${o.name}</p><br>
-          <a href="/parks/${o.id}" data-turbolinks="true">
-            詳細を見る
-          </a><br>
-          <a href="/park_reports/new" data-turbolinks="true" data-park-name="${o.name}">
-            この公園の投稿をする
-          </a>
-        `
+        <p>${o.name}</p><br>
+        <a href="/parks/${o.id}" data-turbo-frame="false">
+          詳細を見る
+        </a><br>
+        <a href="/park_reports/new?park_name=${encodeURIComponent(o.name)}" data-turbo-frame="false">
+          この公園の投稿をする
+        </a>
+      `
     });
     infoWindows.push(infoWindow);
   }
