@@ -6,6 +6,7 @@ let infoWindows = [];
 
 // Connects to data-controller="google-map--index"
 export default class extends ApplicationController {
+  //地図の初期値(中心地は皇居に設定)
   static values = {
     location: {
       lat: 35.6855322796429,
@@ -16,6 +17,7 @@ export default class extends ApplicationController {
   }
   static targets = ['map']
 
+  //HTMLのmap要素に接続された時に実行
   connect() {
     this.setParks();
     this.initMapWithUserLocation();
@@ -23,7 +25,7 @@ export default class extends ApplicationController {
 
   initMapWithUserLocation() {
     const loader = this.setLoader();
-    loader.load().then(async () => {
+    loader.importLibrary("marker").then(async () => {
       const { Map } = await google.maps.importLibrary("maps");
 
       if (navigator.geolocation) {
@@ -58,6 +60,7 @@ export default class extends ApplicationController {
     });
   }
 
+  //公園の情報を基に地図上にマーカーと情報ウィンドウを追加
   addMarkersToMap() {
     markers = [];
     infoWindows = [];
@@ -68,6 +71,7 @@ export default class extends ApplicationController {
     });
   }
 
+  //各公園の位置にマーカーを作成
   addMarkerToMarkers(o) {
     const marker = new google.maps.Marker({
       position: { lat: o.lat, lng: o.lng },
@@ -77,6 +81,7 @@ export default class extends ApplicationController {
     markers.push(marker);
   }
 
+  //マーカーをクリックした時に表示される情報ウィンドウの内容
   addInfoWindowToInfoWindows(o) {
     const infoWindow = new google.maps.InfoWindow({
       content: `
@@ -94,6 +99,7 @@ export default class extends ApplicationController {
     infoWindows.push(infoWindow);
   }
 
+  //マーカーがクリックされた時に情報ウィンドウを表示するイベントリスナー
   addEventToMarker(i) {
     markers[i].addListener('click', () => {
       infoWindows[i].open(map, markers[i]);
