@@ -80,13 +80,15 @@ export default class extends ApplicationController {
   addInfoWindowToInfoWindows(o) {
     const infoWindow = new google.maps.InfoWindow({
       content: `
-        <p>${o.name}</p><br>
-        <a href="/parks/${o.id}" data-turbo-frame="false">
+        <p class="text-park font-bold text-center text-lg">- ${o.name} -</p><br>
+        <a href="/parks/${o.id}" data-turbo-frame="false" class="btn me-2 w-full hover:bg-slate-200 rounded-lg px-2 py-1 text-park">
           詳細を見る
         </a><br>
-        <a href="/park_reports/new?park_name=${encodeURIComponent(o.name)}&tokyo_ward_id=${encodeURIComponent(o.tokyo_ward_id)}" data-turbo-frame="true">
-          この公園の投稿をする
-        </a>
+        <br>
+        <a href="/park_reports/new?park_name=${encodeURIComponent(o.name)}&tokyo_ward_id=${encodeURIComponent(o.tokyo_ward_id)}" data-turbo-frame="true" class="btn me-2 w-full hover:bg-slate-200 rounded-lg px-2 py-1 text-park">
+          この公園の日記を投稿する
+        </a><br>
+        <br>
       `
     });
     infoWindows.push(infoWindow);
