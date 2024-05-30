@@ -6,36 +6,36 @@
     </div>
   </div>
   <div class="flex justify-center items-center">
-    <div class="card bg-base-100 text-park shadow-xl mt-8 flex flex-col w-96">
+    <div class="card bg-accent text-park shadow-xl mt-8 flex flex-col w-96">
       <figure class="flex">
         <%= form_with(model: @park_report, url: park_reports_path, local: true) do |f| %>
           <%= render 'shared/error_messages', object: @park_report %>
           <div class="mt-8 flex flex-col px-5" data-controller="autocomplete" data-autocomplete-min-length-value="2" data-autocomplete-url-value="/parks/autocomplete" role="combobox">
             <%= f.label :name, "公園の名前" %>
-            <%= f.text_field :park_name, data: { autocomplete_target: 'input' }, placeholder: '公園の名前を入れてね', class: "input input-bordered input-primary w-full max-w-xs" %>
+            <%= f.text_field :park_name, data: { autocomplete_target: 'input' }, placeholder: '公園の名前を入れてね', class: "input input-bordered input-primary bg-accent w-full max-w-xs" %>
             <%= f.hidden_field :name, data: { autocomplete_target: 'hidden' } %>
             <ul class="list-group mt-4 text-xs" data-autocomplete-target="results"></ul>
           </div>
           <div class="mt-8 flex flex-col w-2/3 px-5">
-            <%= f.collection_select :tokyo_ward_id, TokyoWard.all,  :id, :name, {include_blank: "区を選択"}, {class: "select select-primary max-w-xs"} %>
+            <%= f.collection_select :tokyo_ward_id, TokyoWard.all,  :id, :name, {include_blank: "区を選択"}, {class: "select select-primary bg-accent max-w-xs"} %>
           </div>
           <div class="my-5 flex flex-col px-5">
             <%= f.label :date, "行った日" %>
-            <%= f.date_field :date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+            <%= f.date_field :date, class: "block shadow rounded-md border border-gray-200 bg-accent outline-none px-3 py-2 mt-2 w-full" %>
           </div>
             <%= f.fields_for :report_images do |report_image| %>
-              <div class="field mt-8 flex flex-col pl-5">
+              <div class="field mt-8 flex flex-col px-5">
                 <%= report_image.label :url, "写真" %>
-                <%= report_image.file_field :url, class: "file-input file-input-bordered file-input w-full max-w-xs", style: "max-height: 40px;"%>
+                <%= report_image.file_field :url, class: "file-input file-input-bordered file-input bg-accent w-full max-w-xs", style: "max-height: 40px;"%>
               </div>
             <% end %>
           <div class="mt-8 mb-8 flex flex-col px-5">
             <%= f.label :title, "公園をひとことで(⚠︎必須)" %>
-            <%= f.text_field :title, placeholder: 'どんな公園だった？', class: "textarea textarea-primary" %>
+            <%= f.text_field :title, placeholder: 'どんな公園だった？', class: "textarea textarea-primary bg-accent" %>
           </div>
           <div class="mt-8 mb-8 flex flex-col px-5">
             <%= f.label :comment, "思い出" %>
-            <%= f.text_area :comment, placeholder: '自由に記入して思い出を残そう', class: "textarea textarea-primary" %>
+            <%= f.text_area :comment, placeholder: '自由に記入して思い出を残そう', class: "textarea textarea-primary bg-accent" %>
           </div>
           <div class="my-5 flex flex-col px-5">
             <button class="btn btn-primary">
