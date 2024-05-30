@@ -22,17 +22,12 @@
       <%= link_to park_path(park), data: { turbo: false }, class: "card bg-base-100 shadow-xl flex flex-col md:gap-x-10" do %>
         <figure>
         <div>
-        <% if park.park_images.present? %>
-          <% first_image = park.park_images.first %>
-          <% if first_image.present? && first_image.url.present? %>
-            <%= image_tag first_image.url.url %>
+          <% if park.park_images.present? && park.park_images.first.url.present? %>
+            <%= image_tag park.park_images.first.url.url %>
           <% else %>
             <%= image_tag 'park.jpg' %>
           <% end %>
-        <% else %>
-          <%= image_tag 'park.jpg' %>
-        <% end %>
-      </div>
+        </div>
         </figure>
         <div class="card-body flex justify-center items-center">
           <div class="text-park text-center">
