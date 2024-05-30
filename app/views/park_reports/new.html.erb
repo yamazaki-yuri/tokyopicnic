@@ -10,9 +10,11 @@
       <figure class="flex">
         <%= form_with(model: @park_report, url: park_reports_path, local: true) do |f| %>
           <%= render 'shared/error_messages', object: @park_report %>
-          <div class="mt-8 flex flex-col px-5">
+          <div class="mt-8 flex flex-col px-5" data-controller="autocomplete" data-autocomplete-min-length-value="2" data-autocomplete-url-value="/parks/autocomplete" role="combobox">
             <%= f.label :name, "公園の名前" %>
-            <%= f.text_field :park_name, placeholder: '公園の名前を入れてね', class: "input input-bordered input-primary w-full max-w-xs" %>
+            <%= f.text_field :park_name, data: { autocomplete_target: 'input' }, placeholder: '公園の名前を入れてね', class: "input input-bordered input-primary w-full max-w-xs" %>
+            <%= f.hidden_field :name, data: { autocomplete_target: 'hidden' } %>
+            <ul class="list-group mt-4 text-xs" data-autocomplete-target="results"></ul>
           </div>
           <div class="mt-8 flex flex-col w-2/3 px-5">
             <%= f.collection_select :tokyo_ward_id, TokyoWard.all,  :id, :name, {include_blank: "区を選択"}, {class: "select select-primary max-w-xs"} %>
