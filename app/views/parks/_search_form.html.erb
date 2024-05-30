@@ -4,8 +4,10 @@
       - 公園名で探す -
     </div>
     <%= search_form_for @q do |f| %>
-      <div class="pb-5 border-b-2 border-slate-200 lg:pl-5">
-        <%= f.text_field :name_cont_any, placeholder: "公園名を入力してください", class: "input input-bordered input-success w-full", style: "height: 40px;" %>
+      <div class="pb-5 border-b-2 border-slate-200 lg:pl-5", data-controller="autocomplete" data-autocomplete-min-length-value="2" data-autocomplete-url-value="/parks/autocomplete" role="combobox">
+        <%= f.text_field :name_cont_any, data: { autocomplete_target: 'input' }, placeholder: "公園名を入力してください", class: "input input-bordered input-success w-full", style: "height: 40px;" %>
+        <%= f.hidden_field :name, data: { autocomplete_target: 'hidden' } %>
+        <ul class="list-group mt-4 text-xs" data-autocomplete-target="results"></ul>
       </div>
       <div class="pt-5 text-park font-bold">
         - 条件で絞り込む -

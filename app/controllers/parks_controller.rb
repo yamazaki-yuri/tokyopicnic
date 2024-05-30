@@ -22,6 +22,11 @@ class ParksController < ApplicationController
     @park_reports = @park.park_reports.includes([:report_images, :user])
   end
 
+  def autocomplete
+    @parks = Park.where("name like ?", "%#{params[:q]}%")
+    render partial: 'parks/park', locals: { parks: @parks }
+  end
+
   private
 
   def park_to_hash(park)
