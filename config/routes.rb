@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :parks, only: [:show, :index] do
     collection do
       get 'autocomplete'
+      get 'tokyo_ward_info'
     end
   end
   resources :park_images, only: [:new, :create]

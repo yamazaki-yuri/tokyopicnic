@@ -27,6 +27,20 @@ class ParksController < ApplicationController
     render partial: 'parks/park', locals: { parks: @parks }
   end
 
+  def tokyo_ward_info
+    park_id = params[:park_id]
+    puts "Received request for park: #{park_id}" # デバッグメッセージ
+    park = Park.find_by(id: park_id)
+    if park
+      tokyo_ward = park.tokyo_wards.first
+      puts "Found park: #{park_id}, Tokyo ward: #{tokyo_ward.id}" # デバッグメッセージ
+      render json: { tokyo_ward_id: tokyo_ward.id }
+    else
+      puts "Park not found: #{park_id}" # デバッグメッセージ
+      render json: { error: 'Park not found' }, status: :not_found
+    end
+  end
+
   private
 
   def park_to_hash(park)

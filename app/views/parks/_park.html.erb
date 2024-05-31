@@ -1,5 +1,5 @@
 <% parks.each do |park| %>
-  <li class="w-80 flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-park hover:bg-blue-200 focus:ring-2 focus:ring-blue-500" role="option" data-autocomplete-label="<%= park.name %>">
+  <li class="w-80 flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-park hover:bg-blue-200 focus:ring-2 focus:ring-blue-500" role="option" data-autocomplete-value="<%= park.id %>" data-autocomplete-label="<%= park.name %>">
     <%= park.name %>
   </li>
 <% end %>
