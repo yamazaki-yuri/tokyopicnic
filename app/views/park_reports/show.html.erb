@@ -18,17 +18,19 @@
         </h2>
         <div class="flex justify-between border-b-2 border-slate-200 pb-1 text-park">
           <p class="pl-8"><%= @park_report.date %></p>
-          <% if user_signed_in? && current_user.own?(@park_report) %>
-            <button class="pr-5" onclick="report_edit.showModal()"><i class="fa-solid fa-pen"></i>編集</button>
-          <% end %>
-          <dialog id="report_edit" class="modal">
-            <div class="modal-box">
-              <%= render 'edit' %>
-            </div>
-            <form method="dialog" class="modal-backdrop">
-              <button>close</button>
-            </form>
-          </dialog>
+          <div data-controller="focus">
+            <% if user_signed_in? && current_user.own?(@park_report) %>
+              <button class="pr-5" data-focus-target="edit" onclick="report_edit.showModal()"><i class="fa-solid fa-pen"></i>編集</button>
+            <% end %>
+            <dialog id="report_edit" class="modal">
+              <div class="modal-box">
+                <%= render 'edit' %>
+              </div>
+              <form method="dialog" class="modal-backdrop">
+                <button>close</button>
+              </form>
+            </dialog>
+          </div>
           <% if user_signed_in? && current_user.own?(@park_report) %>
             <div class="pr-5">
               <%= link_to park_report_path(@park_report), data: { turbo_method: :delete, turbo_confirm: '投稿を削除しますか？画像も全て削除されます。'} do %>

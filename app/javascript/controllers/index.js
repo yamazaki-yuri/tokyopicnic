@@ -7,6 +7,9 @@ import { application } from "./application"
 import AutocompleteController from "./autocomplete_controller"
 application.register("autocomplete", AutocompleteController)
 
+import FocusController from "./focus_controller"
+application.register("focus", FocusController)
+
 import GoogleMap__ApplicationController from "./google_map/application_controller"
 application.register("google-map--application", GoogleMap__ApplicationController)
 

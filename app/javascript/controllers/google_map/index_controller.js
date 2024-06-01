@@ -13,14 +13,24 @@ export default class extends ApplicationController {
       lng: 139.75277781477016
     },
     zoom: 11,
-    parks: []
+    parks: [],
+    mapId: "parkmap",
   }
-  static targets = ['map']
+  static targets = ['map', 'user_location']
 
   //HTMLのmap要素に接続された時に実行
   connect() {
     this.setParks();
-    this.initMapWithUserLocation();
+    this.initMap();
+    this.user_locationTarget.addEventListener('click', this.initMapWithUserLocation.bind(this)); // 修正: イベントリスナーに関数を渡す
+  }
+
+  initMap() {
+    const loader = this.setLoader();
+    loader.importLibrary("marker").then(async () => {
+      const { Map } = await google.maps.importLibrary("maps");
+      this.createMap(this.locationValue, this.zoomValue);
+    });
   }
 
   initMapWithUserLocation() {
@@ -35,26 +45,27 @@ export default class extends ApplicationController {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
-            this.createMap(userLocation);  // 現在地を中心に地図を作成
+            this.createMap(userLocation, 13);  // 現在地を中心に地図を作成。地図を初期値より拡大
           },
           () => {
             console.warn("Geolocation failed or is not available.");
-            this.createMap(this.locationValue);  // 現在地の取得に失敗した場合はデフォルトの中心地
+            this.createMap(this.locationValue, this.zoomValue);  // 現在地の取得に失敗した場合はデフォルトの中心地
           }
         );
       } else {
         console.warn("Geolocation is not supported by this browser.");
-        this.createMap(this.locationValue);  // Geolocationがサポートされていない場合はデフォルトの中心地
+        this.createMap(this.locationValue, this.zoomValue);  // Geolocationがサポートされていない場合はデフォルトの中心地
       }
     });
   }
 
-  createMap(center) {
+  createMap(center, zoom) {
     const loader = this.setLoader();
     loader.importLibrary("marker").then(() => {
       map = new google.maps.Map(this.mapTarget, {
         center: center,
-        zoom: this.zoomValue,
+        zoom: zoom,
+        mapId: this.mapIdValue
       });
       this.addMarkersToMap();
     });
@@ -65,24 +76,23 @@ export default class extends ApplicationController {
     markers = [];
     infoWindows = [];
     this.parksValue.forEach((o, i) => {
-      this.addMarkerToMarkers(o);
-      this.addInfoWindowToInfoWindows(o);
-      this.addEventToMarker(i);
+      this.addMarkerToMarkers(o, i);
     });
   }
 
   //各公園の位置にマーカーを作成
-  addMarkerToMarkers(o) {
-    const marker = new google.maps.Marker({
+  addMarkerToMarkers(o, index) {
+    const marker = new google.maps.marker.AdvancedMarkerElement({
       position: { lat: o.lat, lng: o.lng },
       map,
-      name: o.name
+      title: o.name
     });
     markers.push(marker);
+    this.addInfoWindowToInfoWindows(o, marker);
   }
 
   //マーカーをクリックした時に表示される情報ウィンドウの内容
-  addInfoWindowToInfoWindows(o) {
+  addInfoWindowToInfoWindows(o, marker) {
     const infoWindow = new google.maps.InfoWindow({
       content: `
         <p class="text-park font-bold text-center text-lg">- ${o.name} -</p><br>
@@ -97,12 +107,9 @@ export default class extends ApplicationController {
       `
     });
     infoWindows.push(infoWindow);
-  }
-
-  //マーカーがクリックされた時に情報ウィンドウを表示するイベントリスナー
-  addEventToMarker(i) {
-    markers[i].addListener('click', () => {
-      infoWindows[i].open(map, markers[i]);
+    google.maps.event.addListener(marker, 'click', () => {
+      infoWindows.forEach(info => info.close()); // すべての情報ウィンドウを閉じる
+      infoWindow.open(map, marker);
     });
   }
 

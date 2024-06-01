@@ -9,9 +9,14 @@
       <%= render 'search_form' %>
     </div>
     <div class="md:w-1/2 xl:w-2/3 pb-5">
-      <div data-controller="google-map--index">
+      <gmp-map map-id="parkmap" data-controller="google-map--index">
         <div data-google-map--index-target="map" data-json="<%= @parks_json %>" style="height:55vh;max-width:800px;"></div>
-      </div>
+        <div class="btn btn-sm btn-secondary border-park mt-3">
+        <i class="fa-solid fa-magnifying-glass">
+        <button data-google-map--index-target="user_location">現在地周辺を表示する</button>
+        </i>
+        </div>
+      </gmp-map>
     </div>
   </div>
   <% if params[:q].present? %>
