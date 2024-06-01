@@ -42,7 +42,7 @@ class ParkReportsController < ApplicationController
       redirect_to @park_report
     else
       flash[:danger] = "編集に失敗しました"
-      render 'park_reports/show', status: :unprocessable_entity
+      render :show, status: :unprocessable_entity
     end
   end
 
