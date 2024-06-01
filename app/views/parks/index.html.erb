@@ -13,7 +13,7 @@
         <div data-google-map--index-target="map" data-json="<%= @parks_json %>" style="height:55vh;max-width:800px;"></div>
         <div class="btn btn-sm btn-secondary border-park mt-3">
         <i class="fa-solid fa-magnifying-glass">
-        <button data-google-map--index-target="user_location">現在地周辺を表示する</button>
+          <button data-google-map--index-target="user_location">現在地周辺を表示する</button>
         </i>
         </div>
       </gmp-map>
@@ -26,7 +26,7 @@
     <% @parks.each do |park| %>
       <%= link_to park_path(park), data: { turbo: false }, class: "card bg-base-100 shadow-xl flex flex-col md:gap-x-10" do %>
         <figure>
-        <div>
+        <div style="max-height: 230px; width: 100%; object-fit: cover;">
           <% if park.park_images.present? && park.park_images.first.url.present? %>
             <%= image_tag park.park_images.first.url.url %>
           <% else %>
