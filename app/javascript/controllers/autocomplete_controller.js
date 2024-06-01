@@ -5,22 +5,18 @@ export default class extends Autocomplete {
 
   connect() {
     super.connect();
-    console.log('Autocomplete connected');
-    this.resultsTarget.addEventListener('click', this.handleResultClick.bind(this)); // イベントリスナーの追加
+    this.resultsTarget.addEventListener('click', this.handleResultClick.bind(this)); // 公園の予測変換をクリックしたときに発火させる
   }
 
   handleResultClick(event) {
-    const selectedItem = event.target.closest('li[role="option"]');
+    const selectedItem = event.target.closest('li[role="option"]'); //クリックした要素に一番近い<li>を取得
     if (selectedItem) {
-      console.log('Result item clicked:', selectedItem);
-      this.parkIdTarget.value = selectedItem.dataset.autocompleteValue; // 公園IDをセット
-      console.log('Park ID set to:', this.parkIdTarget.value); // デバッグメッセージ
-      this.fetchTokyoWardInfo(this.parkIdTarget.value); // 公園IDが設定された後に区情報を取得
+      this.parkIdTarget.value = selectedItem.dataset.autocompleteValue; // datasetのうちautocompleteValueの要素(park.id)を取得
+      this.fetchTokyoWardInfo(this.parkIdTarget.value);
     }
   }
 
   async fetchTokyoWardInfo(parkId) {
-    console.log('Fetching Tokyo Ward Info for Park ID:', parkId); // デバッグメッセージ
     if (!parkId) {
       console.error('Park ID not found');
       return;
@@ -31,10 +27,8 @@ export default class extends Autocomplete {
         throw new Error('Failed to fetch Tokyo ward info');
       }
       const data = await response.json();
-      console.log('Received Tokyo Ward Data:', data); // デバッグメッセージ
       if (data.tokyo_ward_id) {
         this.wardTarget.value = data.tokyo_ward_id;
-        console.log('Ward Target Value Set:', this.wardTarget.value); // デバッグメッセージ
       }
     } catch (error) {
       console.error(error);
