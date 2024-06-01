@@ -1,0 +1,9 @@
+ja:
+  helpers:
+    submit:
+      create: 登録
+      login: ログイン
+      submit: 投稿する
+      edit: 編集
+      add_image: 画像を追加する
+      choice_image: 画像を選択してね

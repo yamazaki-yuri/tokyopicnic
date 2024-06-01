@@ -20,7 +20,7 @@
           <p class="pl-8"><%= @park_report.date %></p>
           <div data-controller="focus">
             <% if user_signed_in? && current_user.own?(@park_report) %>
-              <button class="pr-5" data-focus-target="edit" onclick="report_edit.showModal()"><i class="fa-solid fa-pen"></i>編集</button>
+              <button class="pr-5" data-focus-target="edit" onclick="report_edit.showModal()"><i class="fa-solid fa-pen"></i><%= t('helpers.submit.edit') %></button>
             <% end %>
             <dialog id="report_edit" class="modal">
               <div class="modal-box">
@@ -73,10 +73,10 @@
 
     <div class="flex justify-center items-center">
       <% if user_signed_in? && current_user.own?(@park_report) %>
-        <button class="btn hover:bg-slate-200 rounded-lg px-4 py-2" onclick="add_image.showModal()">画像を追加する</button>
+        <button class="btn hover:bg-slate-200 rounded-lg px-4 py-2" onclick="add_image.showModal()"><%= t('helpers.submit.add_image') %></button>
         <dialog id="add_image" class="modal">
           <div class="modal-box">
-            <p class="text-park font-bold pb-5 text-center">画像を選択してね</p>
+            <p class="text-park font-bold pb-5 text-center"><%= t('helpers.submit.choice_image') %></p>
             <%= render 'report_images/form', report_image: @report_image %>
           </div>
           <form method="dialog" class="modal-backdrop">

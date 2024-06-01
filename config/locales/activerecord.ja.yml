@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      park: 公園
+      park_report: 公園日記
+    attributes:
+      park:
+        name: 公園名
