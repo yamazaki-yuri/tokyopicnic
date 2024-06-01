@@ -22,6 +22,22 @@ class ParksController < ApplicationController
     @park_reports = @park.park_reports.includes([:report_images, :user])
   end
 
+  def autocomplete
+    @parks = Park.where("name like ?", "%#{params[:q]}%")
+    render partial: 'parks/park', locals: { parks: @parks }
+  end
+
+  def tokyo_ward_info
+    park_id = params[:park_id]
+    park = Park.find(park_id)
+    if park
+      tokyo_ward = park.tokyo_wards.first
+      render json: { tokyo_ward_id: tokyo_ward.id }
+    else
+      render json: { error: 'Park not found' }, status: :not_found
+    end
+  end
+
   private
 
   def park_to_hash(park)

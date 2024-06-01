@@ -21,13 +21,13 @@
     <% @parks.each do |park| %>
       <%= link_to park_path(park), data: { turbo: false }, class: "card bg-base-100 shadow-xl flex flex-col md:gap-x-10" do %>
         <figure>
-          <div>
-            <% if park.park_images.any? %>
-              <%= image_tag park.park_images.first.url.url %>
-            <% else %>
-              <%= image_tag 'park.jpg' %>
-            <% end %>
-          </div>
+        <div>
+          <% if park.park_images.present? && park.park_images.first.url.present? %>
+            <%= image_tag park.park_images.first.url.url %>
+          <% else %>
+            <%= image_tag 'park.jpg' %>
+          <% end %>
+        </div>
         </figure>
         <div class="card-body flex justify-center items-center">
           <div class="text-park text-center">

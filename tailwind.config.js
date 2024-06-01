@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        maru: ['Zen Maru Gothic', 'serif'],
       },
       colors: {
         'park': '#0A6380',

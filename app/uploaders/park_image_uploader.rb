@@ -11,10 +11,6 @@ class ParkImageUploader < CarrierWave::Uploader::Base
     storage :file
   end
 
-  def default_url(*args)
-    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "park.jpg"].compact.join('_'))
-  end
-
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir

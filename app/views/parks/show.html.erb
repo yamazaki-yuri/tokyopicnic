@@ -16,13 +16,18 @@
     <div class="card bg-base-100 shadow-xl flex flex-col md:flex-row w-full h-auto md:h-full object-cover">
       <div data-controller="slider" class="relative">
         <div class="swiper-wrapper">
-        <% if @park_images.empty? %>
-          <%= image_tag 'park.jpg' %>
-        <% end %>
-          <% @park_images.each do |image| %>
+          <% if @park_images.empty? %>
             <div data-slider-target="slide" class="swiper-slide hidden">
-              <%= image_tag image.url.url, class: "rounded-md" %>
+              <%= image_tag 'park.jpg', class: "rounded-md" %>
             </div>
+          <% else %>
+            <% @park_images.each do |image| %>
+              <% if image.url.present? %>
+                <div data-slider-target="slide" class="swiper-slide hidden">
+                  <%= image_tag image.url.url, class: "rounded-md" %>
+                </div>
+              <% end %>
+            <% end %>
           <% end %>
         </div>
         <% if @park_images.size > 1 %>
@@ -103,7 +108,7 @@
     </div>
     <p class="text-park text-sm pt-5">※飲酒は、禁止されている公園以外△とさせていただいております。他のお客様のご迷惑にならぬよう、節度を守って楽しみましょう。詳しくは
       <% if @park.website_url.present? %>
-        <%= link_to '公式サイト', "#{@park.website_url}", class: "font-bold" %>
+        <%= link_to '公式サイト', "#{@park.website_url}", class: "font-extrabold" %>
       <% end %>
       をご確認ください。
     </p>
@@ -113,17 +118,19 @@
         <%= render 'shared/map' %>
       </div>
 
+      <div class="pt-8">
+        <div class="card w-96 bg-base-100 shadow-xl">
+          <div class="card-body">
+            <% if @park_reports.empty? %>
+              <p class="text-park text-center">まだ投稿がありません<p>
+            <% end %>
+              <p class="text-park text-center pb-5"><%= "#{@park.name}" %>の思い出を投稿する<p>
+            <%= link_to '投稿する', new_park_report_path(park_name: @park.name, tokyo_ward_id: @tokyo_ward.id), class: "btn me-2 w-full font-semibold hover:bg-slate-200 rounded-lg px-4 py-2" %>
+          </div>
+        </div>
+      </div>
       <div class="pt-5">
         <p class="text-xl md:text-2xl text-park font-bold py-5 text-center">- みんなの公園日記 -</p>
-      </div>
-      <div class="card w-96 bg-base-100 shadow-xl">
-        <div class="card-body">
-          <% if @park_reports.empty? %>
-            <p class="text-park text-center">まだ投稿がありません<p>
-          <% end %>
-            <p class="text-park text-center pb-5"><%= "#{@park.name}" %>の思い出を投稿する<p>
-          <%= link_to '投稿する', new_park_report_path(park_name: @park.name, tokyo_ward_id: @tokyo_ward.id), class: "btn me-2 w-full font-semibold hover:bg-slate-200 rounded-lg px-4 py-2" %>
-        </div>
       </div>
       <div class="pt-5 px-8 flex justify-center items-center md:justify-between flex-col md:flex-row gap-y-8 xl:gap-x-5 lg:gap-x-5 sm:gap-x-5 pb-8  grid xl:grid-cols-4 lg:grid-cols-3  sm:grid-cols-2">
         <% @park_reports.each do |park_report| %>
