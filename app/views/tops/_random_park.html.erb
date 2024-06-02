@@ -1,11 +1,13 @@
 <div class="flex justify-center items-center">
   <div class="card w-96 bg-accent shadow-xl">
     <figure class="px-10 pt-10">
-      <% if @park_images.present? %>
-        <%= image_tag @park_images.first.url.url %>
-      <% else %>
-        <%= image_tag 'park.jpg' %>
-      <% end %> 
+      <div style="max-height: 200px; width: 100%; object-fit: cover;">
+        <% if @park_images.present? && @park_images.first.url.present? %>
+          <%= image_tag @park_images.first.url.url %>
+        <% else %>
+          <%= image_tag 'park.jpg' %>
+        <% end %> 
+      </div>
     </figure>
     <div class="card-body items-center text-center">
       <div class="card-actions">

@@ -6,4 +6,18 @@ ja:
       park_report: 公園日記
     attributes:
       park:
-        name: 公園名
+        name: 公園の名前
+        website: 公式サイト
+        fee: 料金
+        food_allowed: 飲食
+        alcohol_allowed: 飲酒
+        sheet_available: シート
+        bringing_in_play_equipment: 遊具
+        catchphrase: キャッチフレーズ
+        recommended_points: おすすめの理由
+        dog_run: ドッグラン
+        bbq_area: BQQ場
+      park_report:
+        date: 行った日
+        title: 公園をひとことで
+        comment: 思い出

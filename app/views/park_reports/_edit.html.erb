@@ -1,14 +1,14 @@
 <%= form_with(model: @park_report, url: park_report_path, remote: true, local: true, class: "justify-between item-center") do |f| %>
   <div class="my-5 flex flex-col px-5">
-    <%= f.label :date, "日付(任意)" %>
+    <%= f.label :date, ParkReport.human_attribute_name(:date) + "(任意)" %>
     <%= f.date_field :date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
   <div class="mt-8 mb-8 flex flex-col px-5">
-    <%= f.label :title, "公園をひとことで" %>
+    <%= f.label :title, ParkReport.human_attribute_name(:title) %>
     <%= f.text_field :title, placeholder: 'どんな公園？', class: "textarea textarea-primary", data: { focus_target: "title" } %>
   </div>
   <div class="mt-8 mb-8 flex flex-col px-5">
-    <%= f.label :comment, "思い出" %>
+    <%= f.label :comment, ParkReport.human_attribute_name(:comment) %>
     <%= f.text_area :comment, placeholder: '自由に記入して思い出を記録しよう', class: "textarea textarea-primary" %>
   </div>
   <div class="btn btn-ghost rounded-btn hover:bg-slate-200 text-park mt-5 w-full">

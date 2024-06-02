@@ -9,14 +9,14 @@
     <dialog id="random_park_modal" class="modal">
       <div class="modal-box">
         <div>
-          <div class="justify-center text-center pb-5 px-6">
+          <div class="justify-center text-center pb-2 px-6">
             <% if @park.catchphrase.present? %>
-              <p class="text-park font-bold md:text-2xl py-2 pb-3 border-b-2 border-park"><%= "#{@park.catchphrase}" %></p>
+              <p class="text-park font-bold text-lg md:text-2xl py-2 pb-3 border-b-2 border-park"><%= "#{@park.catchphrase}" %></p>
             <% else %>
-              <p class="text-park py-2">キャッチフレーズ募集中<p>
+              <p class="text-park py-2"><%= Park.human_attribute_name(:catchphrase) %>募集中<p>
             <% end %>
             <p class="text-park pt-3">- <%= @park_tokyo_ward.name %> -</p>
-            <div class="text-park font-bold text-xl">
+            <div class="text-park font-bold md:text-xl">
               <%= @park.name %>
             </div>
           </div>
