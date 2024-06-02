@@ -144,9 +144,3 @@ ja:
       not_saved:
         one: ""
         other: ""
-  tops:
-    index:
-      title: トップ
-  park_reports:
-    new:
-      title: 新規投稿

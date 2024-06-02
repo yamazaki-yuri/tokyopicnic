@@ -32,3 +32,25 @@ ja:
     destroy:
       success: "🍂%{item}を削除しました"
       failure: "🍂%{item}の削除に失敗しました"
+  tops:
+    index:
+      title: トップ
+  park_reports:
+    new:
+      title: 新規投稿
+    show:
+      title: 公園日記
+  parks:
+    index:
+      title: 公園を見つける
+    show:
+      title: 公園詳細
+  profiles:
+    show:
+      title: プロフィール
+  users:
+    index:
+      title: マイページ
+    passwords:
+      new:
+        title: パスワードリセット申請

@@ -50,10 +50,10 @@ class ParkReportsController < ApplicationController
     @park = @park_report.park
     if @park_report.destroy
       
-      flash[:success] = "投稿を削除しました"
+      flash[:success] = t('flash_message.destroy.success', item: ParkReport.human_attribute_name(:report))
       redirect_to mypage_path
     else
-      flash.now[:danger] = "投稿の削除に失敗しました"
+      flash.now[:danger] = t('flash_message.destroy.failure', item: ParkReport.human_attribute_name(:report))
       render :show, status: :unprocessable_entity
     end
   end
