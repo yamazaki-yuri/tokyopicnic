@@ -20,6 +20,7 @@ ja:
         dog_run: ドッグラン
         bbq_area: BQQ場
       park_report:
+        park: 公園の名前
         date: 行った日
-        title: 公園をひとことで
+        title: 公園をひとことで!!
         comment: 思い出

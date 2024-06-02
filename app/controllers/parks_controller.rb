@@ -14,6 +14,20 @@ class ParksController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @park = Park.find(params[:id])
+    if @park.update(edit_params)
+      flash[:success] = "投稿が完了しました"
+      redirect_to @park
+    else
+      flash[:danger] = "投稿に失敗しました"
+      render :show, status: :unprocessable_entity
+    end
+  end
+
   def show
     @park = Park.find(params[:id])
     @park_image = ParkImage.new
@@ -39,6 +53,10 @@ class ParksController < ApplicationController
   end
 
   private
+
+  def edit_params
+    params.require(:park).permit(:catchphrase, :recommended_points)
+  end
 
   def park_to_hash(park)
     { 

@@ -4,7 +4,7 @@
     <% if @park.catchphrase.present? %>
       <p class="text-park text-xl pb-5"><%= "#{@park.catchphrase}" %></p>
     <% else %>
-      <p class="text-park pb-5"><%= Park.human_attribute_name(:catchphrase) %>募集中<p>
+      <p class="text-park pb-5" onclick="editpark.showModal()"><%= Park.human_attribute_name(:catchphrase) %>募集中<i class="fa-solid fa-pen"></i></p>
     <% end %>
     <p class="text-park">- <%=  @tokyo_ward.name %> -<p>
     <div class="flex justify-center items-center pb-8 md:pb-20">
@@ -86,7 +86,20 @@
         </div>
         <div class="flex flex-col  justify-between px-3 border-b-2 border-slate-200 pb-1 text-park">
           <p class="pl-5"><i class="fa-solid fa-heart pr-3"></i><%= Park.human_attribute_name(:recommended_points) %></p>
-          <p class="pl-10"><%= @park.recommended_points %></p>
+          <% if @park.recommended_points.present? %>
+            <p class="pl-10"><%= @park.recommended_points %></p>
+          <% else %>
+            <button class="pr-5 border-none text-park" onclick="editpark.showModal()">募集中<i class="fa-solid fa-pen"></i></button>
+          <% end %>
+            <dialog id="editpark" class="modal">
+              <div class="modal-box">
+                <p class="text-park font-bold text-center"><%= "#{@park.name}" %>の<br>おすすめポイントとキャッチフレーズを追加してね</p>
+                <%= render 'edit', park: @park %>
+              </div>
+              <form method="dialog" class="modal-backdrop">
+                <button>close</button>
+              </form>
+            </dialog>
         </div>
         <% if @park_images.empty? %>
           <div class="text-park text-center">

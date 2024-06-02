@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
   resources :park_reports
-  resources :parks, only: [:show, :index] do
+  resources :parks, only: [:edit, :update, :show, :index] do
     collection do
       get 'autocomplete'
       get 'tokyo_ward_info'
