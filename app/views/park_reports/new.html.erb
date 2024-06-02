@@ -12,7 +12,7 @@
           <%= render 'shared/error_messages', object: @park_report %>
           <div data-controller="autocomplete" data-autocomplete-min-length-value="2" data-autocomplete-url-value="/parks/autocomplete" role="combobox">
             <div class="mt-8 flex flex-col px-5">
-              <%= f.label :name, "公園の名前" %>
+              <%= f.label :name, Park.human_attribute_name(:name) %>
               <%= f.text_field :park_name, data: { autocomplete_target: 'input' }, placeholder: '公園の名前を入れてね', class: "input input-bordered input-primary bg-accent shadow w-full max-w-xs" %>
               <%= f.hidden_field :name, data: { autocomplete_target: 'hidden' } %>
               <%= f.hidden_field :park_id, data: { autocomplete_target: 'parkId' } %>
@@ -23,7 +23,7 @@
             </div>
           </div>
           <div class="my-5 flex flex-col px-5">
-            <%= f.label :date, "行った日" %>
+            <%= f.label :date, ParkReport.human_attribute_name(:date) %>
             <%= f.date_field :date, class: "block shadow rounded-md border bg-accent outline-none border-success px-3 py-2 mt-2 w-full" %>
           </div>
             <%= f.fields_for :report_images do |report_image| %>
@@ -33,16 +33,16 @@
               </div>
             <% end %>
           <div class="mt-8 mb-8 flex flex-col px-5">
-            <%= f.label :title, "公園をひとことで(⚠︎必須)" %>
+            <%= f.label :title, ParkReport.human_attribute_name(:title)+"(⚠︎必須)" %>
             <%= f.text_field :title, placeholder: 'どんな公園だった？', class: "textarea textarea-primary bg-accent shadow" %>
           </div>
           <div class="mt-8 mb-8 flex flex-col px-5">
-            <%= f.label :comment, "思い出" %>
+            <%= f.label :comment, ParkReport.human_attribute_name(:comment) %>
             <%= f.text_area :comment, placeholder: '自由に記入して思い出を残そう', class: "textarea textarea-primary bg-accent shadow" %>
           </div>
           <div class="my-5 flex flex-col px-5">
             <button class="btn btn-primary">
-              <%= f.submit '投稿する' %>
+              <%= f.submit t('helpers.submit.submit') %>
             </button>
           </div>
         <% end %>

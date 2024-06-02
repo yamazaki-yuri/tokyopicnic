@@ -12,34 +12,34 @@
         </div>
         <div class="mt-8">
           <div class="text-park">
-            名前
+            <%= User.human_attribute_name(:name) %>
           </div>
           <%= f.text_field :name, placeholder: 'ニックネームOK', autofocus: true, autocomplete: "name", class: "py-3 px-5 mt-1 block w-full placeholder-gray-400 border-2 border-primary rounded-lg" %>
         </div>
 
         <div class="mt-8">
           <div class="text-park">
-            メールアドレス
+            <%= User.human_attribute_name(:email) %>
           </div>
           <%= f.email_field :email, placeholder: 'hogehoge@example.com', autofocus: true, autocomplete: "email", class: "py-3 px-5 mt-1 block w-full placeholder-gray-400 border-2 border-primary rounded-lg" %>
         </div>
 
         <div class="mt-8">
           <div class="text-park text-md">
-            パスワード
+            <%= User.human_attribute_name(:password) %>
           </div>
           <%= f.password_field :password, placeholder: '英数字6文字以上', autocomplete: "new-password", class: "py-3 px-5 mt-1 block w-full placeholder-gray-400 border-2 border-primary rounded-lg" %>
         </div>
         <div class="mt-8">
           <div class="text-park text-md">
-            確認用パスワード
+            確認用<%= User.human_attribute_name(:password) %>
           </div>
           <%= f.password_field :password_confirmation, placeholder: 'パスワードをもう一度', autocomplete: "new-password", class: "py-3 px-5 mt-1 block w-full placeholder-gray-400 border-2 border-primary rounded-lg" %>
         </div>
         
         <div class="mt-12">
           <button class="group relative w-full flex btn btn-primary">
-            <%= f.submit "登録" %>
+            <%= f.submit t('helpers.submit.create') %>
           </button>
         </div>
       <% end %>

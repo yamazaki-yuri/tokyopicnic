@@ -25,32 +25,32 @@
           <div class="text-park text-sm md:text-base">
             <%= f.check_box :alcohol_allowed_in, { multiple: true }, "within_common_sense", nil %>
             <i class="fa-solid fa-champagne-glasses">
-            <%= f.label :alcohol_allowed_in_within_common_sense, "飲酒✖️を除く" %></i>
+            <%= f.label :alcohol_allowed_in_within_common_sense, Park.human_attribute_name(:alcohol_allowed) + "✖️を除く" %></i>
           </div>
           <div class="text-park text-sm md:text-base">
             <%= f.check_box :food_allowed_in, { multiple: true }, "possible", nil  %>
             <i class="fa-solid fa-utensils">
-            <%= f.label :food_allowed_in_possible, "飲食 OK" %></i>
+            <%= f.label :food_allowed_in_possible, Park.human_attribute_name(:food_allowed) + " OK" %></i>
           </div>
           <div class="text-park text-sm md:text-base">
             <%= f.check_box :sheet_available_in, { multiple: true }, "possible", nil %>
             <i class="fa-solid fa-bacon">
-            <%= f.label :sheet_available_in_possible, "シート OK" %></i>
+            <%= f.label :sheet_available_in_possible, Park.human_attribute_name(:sheet_available) + " OK" %></i>
           </div>
           <div class="text-park text-sm md:text-base">
             <%= f.check_box :bringing_in_play_equipment_in, { multiple: true }, "possible", nil %>
             <i class="fa-solid fa-futbol">
-            <%= f.label :bringing_in_play_equipment_in_possible, "遊具 OK" %></i>
+            <%= f.label :bringing_in_play_equipment_in_possible, Park.human_attribute_name(:bringing_in_play_equipment) + " OK" %></i>
           </div>
           <div class="text-park text-sm md:text-base">
             <%= f.check_box :bbq_area_in, { multiple: true }, "possible", nil %>
             <i class="fa-solid fa-fire-burner">
-            <%= f.label :bbq_area_in_possible, "BBQ場有" %></i>
+            <%= f.label :bbq_area_in_possible, Park.human_attribute_name(:bbq_area) + "有" %></i>
           </div>
           <div class="text-park text-sm md:text-base">
             <%= f.check_box :dog_run_in, { multiple: true }, "possible", nil %>
             <i class="fa-solid fa-dog">
-            <%= f.label :dog_run_in_possible, "ドッグラン有" %></i>
+            <%= f.label :dog_run_in_possible, Park.human_attribute_name(:dog_run) + "有" %></i>
           </div>
         </div>
       </div>

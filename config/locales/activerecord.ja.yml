@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      park: 公園
+      park_report: 公園日記
+    attributes:
+      user:
+        password: パスワード
+        profile: プロフィール
+      park:
+        name: 公園の名前
+        website: 公式サイト
+        fee: 料金
+        food_allowed: 飲食
+        alcohol_allowed: 飲酒
+        sheet_available: シート
+        bringing_in_play_equipment: 遊具
+        catchphrase: キャッチフレーズ
+        recommended_points: おすすめの理由
+        dog_run: ドッグラン
+        bbq_area: BQQ場
+      park_report:
+        park: 公園の名前
+        date: 行った日
+        title: 公園をひとことで!!
+        comment: 思い出
+        report: 公園日記
+      report_image:
+        image: 日記の画像
+      park_image:
+        image: 公園の画像

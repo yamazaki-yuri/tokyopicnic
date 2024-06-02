@@ -1,0 +1,56 @@
+ja:
+  helpers:
+    submit:
+      create: 登録
+      login: ログイン
+      submit: 投稿する
+      edit: 編集
+      add_image: 画像を追加する
+      choice_image: 画像を選択してね
+  navbar:
+    login: ログイン
+    logout: ログアウト
+    new_user: ユーザー登録
+    profile: プロフィール編集
+    search: 公園を探す
+    post: 新規投稿
+    mypage: マイページ
+    privacy_policy: プライバシーポリシー
+    terms_of_service: 利用規約
+    random: ランダム選定
+    contact: お問い合わせ
+  flash_message:
+    image:
+      success: 🌱%{item}を追加しました!!
+      failure: 🍂%{item}の追加に失敗しました
+    post:
+      success: 🌱投稿が完了しました!!
+      failure: 🍂投稿に失敗しました
+    update:
+      success: 🌱%{item}を更新しました
+      failure: 🍂%{item}の更新に失敗しました
+    destroy:
+      success: "🍂%{item}を削除しました"
+      failure: "🍂%{item}の削除に失敗しました"
+  tops:
+    index:
+      title: トップ
+  park_reports:
+    new:
+      title: 新規投稿
+    show:
+      title: 公園日記
+  parks:
+    index:
+      title: 公園を見つける
+    show:
+      title: 公園詳細
+  profiles:
+    show:
+      title: プロフィール
+  users:
+    index:
+      title: マイページ
+    passwords:
+      new:
+        title: パスワードリセット申請

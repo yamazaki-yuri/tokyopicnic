@@ -1,9 +1,10 @@
+<% content_for(:title, t('.title')) %>
 <div  class="flex-grow container mx-auto px-6 py-10">
   <div class="flex justify-center items-center md:justify-between flex-col md:flex-row md:gap-x-10 px-3">
     <div class="card bg-base-100 shadow-xl flex flex-col md:flex-row w-full h-auto md:h-full object-cover">
       <figure class="rounded-md">
         <div>
-          <% if @park_report.report_images.present? %>
+          <% if @park_report.report_images.present? && @park_report.report_images.first.url.present? %>
             <%= image_tag @park_report.report_images.first.url.url %>
           <% else %>
             <%= image_tag 'default.png' %>
@@ -14,13 +15,13 @@
     <div class="card-body bg-white rounded-md w-full h-auto md:h-full object-cover">
         <h2 class="text-xl pb-2 pl-3 border-b-2 border-slate-200 text-park">
           <%= link_to "#{@park_report.park.name}", "#{park_path(@park_report.park)}", class: "hover:bg-slate-200 rounded-lg px-4 py-2" %>
-          <%= link_to '公式サイト', "#{@park_report.park.website_url}", class: "badge badge border-b-2 border-park text-park hover:bg-slate-200" %>
+          <%= link_to Park.human_attribute_name(:website), "#{@park_report.park.website_url}", class: "badge badge border-b-2 border-park text-park hover:bg-slate-200" %>
         </h2>
         <div class="flex justify-between border-b-2 border-slate-200 pb-1 text-park">
           <p class="pl-8"><%= @park_report.date %></p>
           <div data-controller="focus">
             <% if user_signed_in? && current_user.own?(@park_report) %>
-              <button class="pr-5" data-focus-target="edit" onclick="report_edit.showModal()"><i class="fa-solid fa-pen"></i>編集</button>
+              <button class="pr-5" data-focus-target="edit" onclick="report_edit.showModal()"><i class="fa-solid fa-pen"></i><%= t('helpers.submit.edit') %></button>
             <% end %>
             <dialog id="report_edit" class="modal">
               <div class="modal-box">
@@ -73,10 +74,10 @@
 
     <div class="flex justify-center items-center">
       <% if user_signed_in? && current_user.own?(@park_report) %>
-        <button class="btn hover:bg-slate-200 rounded-lg px-4 py-2" onclick="add_image.showModal()">画像を追加する</button>
+        <button class="btn hover:bg-slate-200 rounded-lg px-4 py-2" onclick="add_image.showModal()"><%= t('helpers.submit.add_image') %></button>
         <dialog id="add_image" class="modal">
           <div class="modal-box">
-            <p class="text-park font-bold pb-5 text-center">画像を選択してね</p>
+            <p class="text-park font-bold pb-5 text-center"><%= t('helpers.submit.choice_image') %></p>
             <%= render 'report_images/form', report_image: @report_image %>
           </div>
           <form method="dialog" class="modal-backdrop">

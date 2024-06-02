@@ -1,0 +1,14 @@
+<%= form_with(model: @park, remote: true, local: true, url: park_path, class: "justify-between item-center") do |f| %>
+  <%= f.hidden_field :park_id, value: @park.id %>
+  <div class="mt-8 mb-8 flex flex-col px-5">
+    <%= f.label :catchphrase, Park.human_attribute_name(:catchphrase) %>
+    <%= f.text_field :catchphrase, placeholder: 'キャッチーによろしく', class: "textarea textarea-primary bg-accent shadow", readonly: @park.catchphrase.present? %>
+  </div>
+  <div class="mt-8 mb-8 flex flex-col px-5">
+    <%= f.label :recommended_points, Park.human_attribute_name(:recommended_points) %>
+    <%= f.text_area :recommended_points, placeholder: 'おすすめポイントを教えて', class: "textarea textarea-primary bg-accent shadow", readonly: @park.recommended_points.present? %>
+  </div>
+  <div class="btn btn-ghost rounded-btn hover:bg-slate-200 text-park mt-5 w-full">
+    <%= f.submit t('helpers.submit.submit') %>
+  </div>
+<% end %>
