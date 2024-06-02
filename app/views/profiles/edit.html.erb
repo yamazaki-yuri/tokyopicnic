@@ -11,14 +11,14 @@
           <p class="text-sm pt-2">選択可能なファイル形式はjpg,jpeg,pngのみです<p>
         </div>
         <div class="flex justify-center border-b-2 border-slate-200 pt-4 pb-1">
-          <p class="font-bold">名前</p>
+          <p class="font-bold"><%= User.human_attribute_name(:name) %></p>
           <p class="text-park pl-4">
             <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "pl-3 mt-1 block placeholder-gray-400 rounded-lg border-2 border-gray-200" %>
           </p>
         </div>
         <div class="flex justify-center border-b-2 border-slate-200 pt-4 pb-1">
         <% is_google_account = @user.sns_credential_ids.present? %>
-          <p class="font-bold">メール</p>
+          <p class="font-bold"><%= User.human_attribute_name(:email) %></p>
           <% if is_google_account %>
             <p class="pl-3 mt-1 block placeholder-gray-400 rounded-lg border-2 border-gray-200"><%= current_user.email%></p>
           <% else %>

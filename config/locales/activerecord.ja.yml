@@ -5,6 +5,8 @@ ja:
       park: 公園
       park_report: 公園日記
     attributes:
+      user:
+        password: パスワード
       park:
         name: 公園の名前
         website: 公式サイト

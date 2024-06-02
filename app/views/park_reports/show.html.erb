@@ -3,7 +3,7 @@
     <div class="card bg-base-100 shadow-xl flex flex-col md:flex-row w-full h-auto md:h-full object-cover">
       <figure class="rounded-md">
         <div>
-          <% if @park_report.report_images.present? %>
+          <% if @park_report.report_images.present? && @park_report.report_images.first.url.present? %>
             <%= image_tag @park_report.report_images.first.url.url %>
           <% else %>
             <%= image_tag 'default.png' %>

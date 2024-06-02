@@ -18,11 +18,11 @@
           </div>
         </div>
         <div class="flex justify-center border-b-2 border-slate-200 pt-2 pb-3">
-          <p class="font-bold">名前</p>
+          <p class="font-bold"><%= User.human_attribute_name(:name) %></p>
           <p class="text-park"><%= current_user.name %></P>
         </div>
         <div class="flex justify-center border-b-2 border-slate-200 pt-2 pb-3">
-          <p class="font-bold">メール</p>
+          <p class="font-bold"><%= User.human_attribute_name(:email) %></p>
           <p class="text-park"><%= current_user.email %></p>
         </div>
         <div class="pt-5 w-full">
