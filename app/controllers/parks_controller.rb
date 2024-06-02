@@ -20,10 +20,10 @@ class ParksController < ApplicationController
   def update
     @park = Park.find(params[:id])
     if @park.update(edit_params)
-      flash[:success] = "投稿が完了しました"
+      flash[:success] = t('flash_message.post.success')
       redirect_to @park
     else
-      flash[:danger] = "投稿に失敗しました"
+      flash[:danger] = t('flash_message.post.failure')
       render :show, status: :unprocessable_entity
     end
   end

@@ -19,3 +19,16 @@ ja:
     terms_of_service: 利用規約
     random: ランダム選定
     contact: お問い合わせ
+  flash_message:
+    image:
+      success: 🌱%{item}を追加しました!!
+      failure: 🍂%{item}の追加に失敗しました
+    post:
+      success: 🌱投稿が完了しました!!
+      failure: 🍂投稿に失敗しました
+    update:
+      success: 🌱%{item}を更新しました
+      failure: 🍂%{item}の更新に失敗しました
+    destroy:
+      success: "🍂%{item}を削除しました"
+      failure: "🍂%{item}の削除に失敗しました"

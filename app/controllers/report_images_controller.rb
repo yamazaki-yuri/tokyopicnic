@@ -4,10 +4,10 @@ class ReportImagesController < ApplicationController
     @report_image = @park_report.report_images.build(report_image_params)
 
     if @report_image.save
-      flash[:success] = "画像を追加しました"
+      flash[:success] = t('flash_message.image.success', item: ReportImage.human_attribute_name(:image))
       redirect_to @park_report
     else
-      flash[:danger] = "画像の追加に失敗しました"
+      flash[:danger] = t('flash_message.image.failure', item: ReportImage.human_attribute_name(:image))
       render 'park_reports/show', status: :unprocessable_entity
     end
   end
@@ -17,7 +17,7 @@ class ReportImagesController < ApplicationController
     @park_report = @report_image.park_report
     @report_image.remove_url!
     @report_image.destroy!
-    flash.now[:success] = "画像を削除しました"
+    flash[:success] = t('flash_message.destroy.success', item: ReportImage.human_attribute_name(:image))
     redirect_to @park_report, status: :see_other
   end
 

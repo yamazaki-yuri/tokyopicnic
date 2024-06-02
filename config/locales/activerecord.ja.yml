@@ -7,6 +7,7 @@ ja:
     attributes:
       user:
         password: パスワード
+        profile: プロフィール
       park:
         name: 公園の名前
         website: 公式サイト
@@ -24,3 +25,8 @@ ja:
         date: 行った日
         title: 公園をひとことで!!
         comment: 思い出
+        report: 公園日記
+      report_image:
+        image: 日記の画像
+      park_image:
+        image: 公園の画像

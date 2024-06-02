@@ -38,10 +38,10 @@ class ParkReportsController < ApplicationController
 
   def update
     if @park_report.update(edit_params)
-      flash[:success] = "編集が完了しました"
+      flash[:success] = t('flash_message.update.success', item: ParkReport.human_attribute_name(:report))
       redirect_to @park_report
     else
-      flash[:danger] = "編集に失敗しました"
+      flash[:danger] = t('flash_message.update.failure', item: ParkReport.human_attribute_name(:report))
       render :show, status: :unprocessable_entity
     end
   end
@@ -93,10 +93,10 @@ class ParkReportsController < ApplicationController
   def save_park_report
     @park_report = current_user.park_reports.build(report_params)
     if @park_report.save
-      flash[:success] = "投稿しました"
+      flash[:success] = t('flash_message.post.success')
       redirect_to park_path(@park)
     else
-      flash[:danger] = "投稿に失敗しました"
+      flash[:danger] = t('flash_message.post.failure')
       render :new, status: :unprocessable_entity
     end
   end
