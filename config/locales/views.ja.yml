@@ -7,3 +7,15 @@ ja:
       edit: 編集
       add_image: 画像を追加する
       choice_image: 画像を選択してね
+  navbar:
+    login: ログイン
+    logout: ログアウト
+    new_user: ユーザー登録
+    profile: プロフィール編集
+    search: 公園を探す
+    post: 新規投稿
+    mypage: マイページ
+    privacy_policy: プライバシーポリシー
+    terms_of_service: 利用規約
+    random: ランダム選定
+    contact: お問い合わせ
