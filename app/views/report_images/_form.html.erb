@@ -1,9 +1,12 @@
-<%= form_with(model: @report_image, remote: true, local: true, url: report_images_path, class: "justify-between item-center") do |f| %>
-  <%= f.hidden_field :park_report_id, value: @park_report.id %>
-  <div class="field px-2">
-    <%= f.file_field :url, class: "file-input file-input-bordered file-input-accent w-full max-w-xs" %>
-  </div>
-  <div class="btn btn-ghost rounded-btn hover:bg-slate-200 text-park mt-5 w-full">
-    <%= f.submit t('helpers.submit.submit') %>
-  </div>
-<% end %>
+<div data-controller="loading">
+  <%= render 'shared/loading' %>
+  <%= form_with(model: @report_image, remote: true, local: true, url: report_images_path, class: "justify-between item-center") do |f| %>
+    <%= f.hidden_field :park_report_id, value: @park_report.id %>
+    <div class="field px-2">
+      <%= f.file_field :url, class: "file-input file-input-bordered file-input-accent w-full max-w-xs" %>
+    </div>
+    <div class="btn btn-ghost rounded-btn hover:bg-slate-200 text-park mt-5 w-full" data-loading-target="submit">
+      <%= f.submit t('helpers.submit.submit') %>
+    </div>
+  <% end %>
+</div>
