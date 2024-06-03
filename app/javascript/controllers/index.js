@@ -19,5 +19,8 @@ application.register("google-map--index", GoogleMap__IndexController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import LoadingController from "./loading_controller"
+application.register("loading", LoadingController)
+
 import SliderController from "./slider_controller"
 application.register("slider", SliderController)

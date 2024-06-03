@@ -1,6 +1,6 @@
 <div class="px-3">
   <% flash.each do |message_type, message| %>
-    <div class="rounded-b text-park font-bold px-4 py-5" role="alert">
+    <div id="flash-message" class="rounded-b text-park font-bold px-4 py-5" role="alert">
       <%= message %>
     </div>
   <% end %>
