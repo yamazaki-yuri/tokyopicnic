@@ -1,4 +1,6 @@
 class ParksController < ApplicationController
+  before_action :authenticate_user!, only: %i[edit update]
+
   def index
     @q = Park.ransack(params[:q])
     if params[:q].present? && (params[:q][:fee] == "paid" || params[:q][:fee] == "free")
