@@ -3,17 +3,16 @@ class ParksController < ApplicationController
 
   def index
     @q = Park.ransack(params[:q])
-    if params[:q].present? && (params[:q][:fee] == "paid" || params[:q][:fee] == "free")
+    if params[:q].present? && params[:q][:fee].present?
       if params[:q][:fee] == "paid"
-        @parks = @q.result.where(fee: "あり")
+        @q.fee_eq = "あり"
       elsif params[:q][:fee] == "free"
-        @parks = @q.result.where(fee: "なし")
+        @q..fee_eq = "なし"
       end
-    else
-      @parks = @q.result(distinct: true).includes(:park_images, park_tokyo_wards: :tokyo_ward)
+    end
+      @parks = @q.result(distinct: true).includes(:park_images, park_tokyo_wards: :tokyo_ward).page(params[:page]).per(12)
       @parks_json = @parks.map { |o| park_to_hash(o) }.to_json
       @count = @parks.count
-    end
   end
 
   def edit
