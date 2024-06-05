@@ -1,63 +1,13 @@
 <% content_for(:title, t('.title')) %>
-<div class="flex-grow container mx-auto px-6 py-5">
-  <div class="flex justify-center items-center">
-    <div class="text-2xl md:text-3xl lg:text-4xl text-park text-center font-bold pb-5 px-8 border-b-2 border-park">
-      <%= current_user.name %>さんのページ
-    </div>
+<div class="flex-grow container mx-auto px-6 py-5 text-park" data-controller="tabs">
+
+  <div class="tabs border-b border-park flex">
+    <button class="tab pl-3 hover:bg-slate-200 rounded-lg" data-action="tabs#showDiary" data-tabs-target="diary" data-url="<%= park_reports_path %>">公園日記</button>
+    <button class="tab pl-3 hover:bg-slate-200 rounded-lg" data-action="tabs#showBookmarks" data-tabs-target="bookmark" data-url="<%= bookmarks_path %>">ブックマーク</button>
+    
+    <button class="tab pl-3 hover:bg-slate-200 rounded-lg" data-action="tabs#showProfile" data-tabs-target="profile" data-url="<%= profile_path %>">プロフィール</button>
   </div>
 
-  <div class="py-5">
-    <p class="text-xl md:text-2xl text-park font-bold py-5 text-center">- わたしの公園日記 -</p>
-  </div>
-  <div class="px-8 flex justify-center items-center md:justify-between flex-col md:flex-row gap-y-8 xl:gap-x-5 lg:gap-x-5 sm:gap-x-5 pb-8  grid xl:grid-cols-4 lg:grid-cols-3  sm:grid-cols-2">
-    <% @park_reports.each do |park_report| %>
-      <div class="card bg-base-100 shadow-xl flex flex-col md:gap-x-10" style="height: 380px;">
-        <figure>
-          <div>
-            <% if park_report.report_images.present? && park_report.report_images.first.url.present? %>
-              <%= image_tag park_report.report_images.first.url.url, class: "w-full h-auto object-cover"%>
-            <% else %>
-              <%= image_tag 'default.png' %>
-            <% end %>
-          </div>
-        </figure>
-        <div class="card-body bg-white rounded-lg">
-            <p><%= park_report.date %></p>
-          <%= link_to "#{park_report.park.name}", park_path(park_report.park), class: "card-title hover:bg-slate-200 rounded-lg px-4 py-1" %>
-          <p class="border-b-2 border-slate-200"></p>
-          <%= link_to "#{park_report.title}", park_report_path(park_report), class: "pl-5 text-park font-bold hover:bg-slate-200 rounded-lg px-4 py-1" %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="px-8 flex justify-center items-center">
-      <%= link_to '公園の思い出を投稿する', new_park_report_path, class: "bg-accent btn btn-primary me-2 w-auto font-semibold" %>
-  </div>
-
-  <div class="py-5">
-    <p class="text-xl md:text-2xl text-park font-bold py-5 text-center">- ブックマーク一覧 -</p>
-  </div>
-  <div class="px-8 flex justify-center items-center md:justify-between flex-col md:flex-row gap-y-8 xl:gap-x-5 lg:gap-x-5 sm:gap-x-5 pb-8  grid xl:grid-cols-4 lg:grid-cols-3  sm:grid-cols-2">
-  <% @bookmark_parks.each do |bookmark_park| %>
-    <%= link_to park_path(bookmark_park), class: "card bg-base-100 shadow-xl flex flex-col md:gap-x-10", style: "height: 380px;" do %>
-      <figure>
-        <div>
-          <% if bookmark_park.park_images.present? %>
-            <%= image_tag bookmark_park.park_images.first.url.url, class: "w-full h-auto object-cover" %>
-          <% else %>
-            <%= image_tag 'park.jpg' %>
-          <% end %>
-        </div>
-      </figure>
-      <div class="card-body bg-white rounded-lg">
-        <p class="card-title border-b-2 border-slate-200"><%= bookmark_park.name %></p>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-
-  <div class="px-8 flex justify-center items-center">
-    <%= link_to '気になる公園を見つけよう！', search_path, class: "bg-accent btn btn-primary me-2 w-auto font-semibold" %>
+  <div data-tabs-target="content">
   </div>
 </div>

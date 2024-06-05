@@ -2,14 +2,16 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: %i[show edit update]
 
-  def show; end
+  def show
+    render partial: 'profiles/show'
+  end
 
   def edit; end
 
   def update
     if @user.update(user_params)
       flash[:notice] = t('flash_message.update.success', item: User.human_attribute_name(:profile))
-      redirect_to profile_path
+      redirect_to mypage_path
     else
       flash.now['alert'] = t('flash_message.update.failure', item: User.human_attribute_name(:profile))
       render :edit, status: :unprocessable_entity
