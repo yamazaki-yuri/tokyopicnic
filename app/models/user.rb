@@ -42,4 +42,8 @@ class User < ApplicationRecord
   def bookmark?(park)
     bookmark_parks.include?(park)
   end
+
+  def visited_tokyo_wards_count
+    park_reports.select(:tokyo_ward_id).distinct.count
+  end
 end

@@ -5,6 +5,7 @@ class ParkReportsController < ApplicationController
   
   def index
     @park_reports = current_user.park_reports.includes(:park, :report_images).order(created_at: :desc)
+    @visited_wards_count = current_user.visited_tokyo_wards_count
     render partial: 'park_reports/index'
   end
 

@@ -1,5 +1,6 @@
 <div class="py-5">
   <p class="text-xl md:text-2xl text-park font-bold py-5 text-center">- <%= current_user.name %>さんの公園日記 -</p>
+  <p class="text-lg md:text-xl text-park font-semibold py-5 text-center">行ったことのある23区の数: <%= @visited_wards_count %> 個</p>
 </div>
 <div class="px-8 flex justify-center items-center md:justify-between flex-col md:flex-row gap-y-8 xl:gap-x-5 lg:gap-x-5 sm:gap-x-5 pb-8  grid xl:grid-cols-4 lg:grid-cols-3  sm:grid-cols-2">
   <% @park_reports.each do |park_report| %>
