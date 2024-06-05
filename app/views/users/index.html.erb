@@ -2,10 +2,9 @@
 <div class="flex-grow container mx-auto px-6 py-5 text-park" data-controller="tabs">
 
   <div class="tabs border-b border-park flex">
-    <button class="tab pl-3 hover:bg-slate-200 rounded-lg" data-action="tabs#showDiary" data-tabs-target="diary" data-url="<%= park_reports_path %>">公園日記</button>
-    <button class="tab pl-3 hover:bg-slate-200 rounded-lg" data-action="tabs#showBookmarks" data-tabs-target="bookmark" data-url="<%= bookmarks_path %>">ブックマーク</button>
-    
-    <button class="tab pl-3 hover:bg-slate-200 rounded-lg" data-action="tabs#showProfile" data-tabs-target="profile" data-url="<%= profile_path %>">プロフィール</button>
+    <button class="tab pl-3 rounded-lg tab-active text-xs sm:text-base" data-action="tabs#showProfile" data-tabs-target="profile" data-url="<%= profile_path %>"><i class="fa-solid fa-user"></i><%= User.human_attribute_name(:profile) %></button>
+    <button class="tab pl-3 rounded-lg text-xs sm:text-base" data-action="tabs#showDiary" data-tabs-target="diary" data-url="<%= park_reports_path %>"><i class="fa-solid fa-pen"></i><%= ParkReport.human_attribute_name(:report) %></button>
+    <button class="tab pl-3 rounded-lg text-xs sm:text-base" data-action="tabs#showBookmarks" data-tabs-target="bookmark" data-url="<%= bookmarks_path %>"><i class="fa-solid fa-heart"></i><%= ParkReport.human_attribute_name(:bookmark) %></button>
   </div>
 
   <div data-tabs-target="content">

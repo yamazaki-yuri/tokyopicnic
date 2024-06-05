@@ -1,7 +1,7 @@
 <% content_for(:title, t('.title')) %>
 <div class="flex-grow container mx-auto px-6 py-5">
   <div class="flex justify-center items-center">
-    <p class="text-xl md:text-2xl text-park font-bold py-5 text-center">- プロフィール編集 -</p>
+    <p class="text-xl md:text-2xl text-park font-bold py-5 text-center">- <%= current_user.name %>さんのプロフィール -</p>
   </div>
   <%= turbo_frame_tag current_user do %>
   <div class="flex justify-center items-center py-10">

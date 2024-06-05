@@ -59,6 +59,7 @@ gem 'fog-aws'
 gem "aws-sdk-s3"
 
 gem 'ransack'
+gem 'kaminari'
 
 gem 'rails-i18n', '~> 7.0.0'
 

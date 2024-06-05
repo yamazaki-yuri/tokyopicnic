@@ -7,3 +7,8 @@
 html, body {
   overflow-x: hidden;
 }
+
+.tab-active {
+  background-color: #3f6212;
+  color: white;
+}
