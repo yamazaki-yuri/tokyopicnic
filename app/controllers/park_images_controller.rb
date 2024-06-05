@@ -3,7 +3,6 @@ class ParkImagesController < ApplicationController
 
   def create
     @park = Park.find(params[:park_image][:park_id])
-    Rails.logger.info "Park: #{@park.inspect}"
     @park_image = @park.park_images.build(park_image_params)
 
     if @park_image.save
