@@ -24,3 +24,6 @@ application.register("loading", LoadingController)
 
 import SliderController from "./slider_controller"
 application.register("slider", SliderController)
+
+import TabsController from "./tabs_controller"
+application.register("tabs", TabsController)

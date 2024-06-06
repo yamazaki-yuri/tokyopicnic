@@ -3,6 +3,14 @@ class ParkReportsController < ApplicationController
   before_action :find_current_user_report, only: %i[edit update]
   before_action :find_report, only: %i[show destroy]
   
+  def index
+    @park_reports = current_user.park_reports.includes(:park, :report_images).order(created_at: :desc)
+    @visited_wards_count = current_user.visited_tokyo_wards_count
+    @visited_wards = current_user.visited_tokyo_wards
+    @tokyo_wards = TokyoWard.all
+    render partial: 'park_reports/index'
+  end
+
   def show
     @report_image = ReportImage.new
   end
