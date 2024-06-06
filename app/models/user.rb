@@ -43,7 +43,11 @@ class User < ApplicationRecord
     bookmark_parks.include?(park)
   end
 
+  def visited_tokyo_wards
+    park_reports.select(:tokyo_ward_id).distinct.pluck(:tokyo_ward_id)
+  end
+
   def visited_tokyo_wards_count
-    park_reports.select(:tokyo_ward_id).distinct.count
+    visited_tokyo_wards.count
   end
 end

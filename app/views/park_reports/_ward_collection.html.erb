@@ -1,0 +1,13 @@
+<h2 class="text-center text-park text-xl font-bold py-5">行ったことのある区</h2>
+<div class="grid grid-cols-3 gap-4 md:grid-cols-4">
+  <% @tokyo_wards.each do |ward| %>
+    <div class="border p-4 text-center rounded-lg">
+      <p class="font-bold"><%= ward.name %></p>
+      <% if @visited_wards.include?(ward.id) %>
+        <%= image_tag 'gone.jpg', alt: "Visited", class: "mx-auto mt-2 rounded-lg" %>
+      <% else %>
+        <%= image_tag 'not_go.jpg', alt: "Not Visited", class: "mx-auto mt-2 rounded-lg" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
