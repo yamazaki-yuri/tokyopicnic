@@ -22,7 +22,7 @@
         </div>
         <div class="flex justify-center border-b-2 border-slate-200 pt-2 pb-3">
           <p class="font-bold"><%= User.human_attribute_name(:email) %></p>
-          <p class="text-park"><%= current_user.email %></p>
+          <p class="text-park text-center break-all w-2/3"><%= current_user.email %></p>
         </div>
         <div class="pt-5 w-full">
           <%= link_to t('helpers.submit.edit'), edit_profile_path, class: "btn btn-secondary me-2 w-full" %>

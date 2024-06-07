@@ -1,8 +1,8 @@
-<h2 class="text-center text-park text-xl font-bold py-5">行ったことない区の公園を探しに行こう</h2>
+<h2 class="text-center text-park text-base md:text-xl font-bold py-5">行ったことない区の公園を探しに行こう</h2>
 <div class="grid grid-cols-3 gap-4 md:grid-cols-4">
   <% @tokyo_wards.each do |ward| %>
     <%= link_to search_path(q: { tokyo_wards_id_eq: ward.id }), class: "border p-4 text-center rounded-lg block hover:bg-slate-200" do %>
-      <p class="font-bold"><%= ward.name %></p>
+      <p class="font-bold text-xs md:text-base"><%= ward.name %></p>
       <% if @visited_wards.include?(ward.id) %>
         <%= image_tag 'gone.jpg', alt: "Visited", class: "mx-auto mt-2 rounded-lg" %>
       <% else %>
