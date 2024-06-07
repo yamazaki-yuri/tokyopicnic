@@ -10,7 +10,7 @@ class ParksController < ApplicationController
         @q..fee_eq = "なし"
       end
     end
-      @parks = @q.result(distinct: true).includes(:park_images, park_tokyo_wards: :tokyo_ward).page(params[:page]).per(12)
+      @parks = @q.result(distinct: true).includes(:park_images, park_tokyo_wards: :tokyo_ward)
       @parks_json = @parks.map { |o| park_to_hash(o) }.to_json
       @count = @parks.count
   end

@@ -59,7 +59,6 @@ gem 'fog-aws'
 gem "aws-sdk-s3"
 
 gem 'ransack'
-gem 'kaminari'
 
 gem 'rails-i18n', '~> 7.0.0'
 
@@ -70,6 +69,8 @@ group :development, :test do
   gem 'rubocop', '~> 1.29', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
+  gem 'rspec-rails', '~> 6.1.0'
+  gem 'factory_bot_rails'
 end
 
 group :development do
