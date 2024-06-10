@@ -2,7 +2,7 @@
   <p class="text-xl md:text-2xl text-park font-bold py-5 text-center">- <%= current_user.name %>さんの公園日記 -</p>
 </div>
 <div class="flex justify-center items-center pb-5">
-  <p class="bg-accent btn btn-primary w-auto text-lg font-semibold" onclick="ward_collection.showModal()">行った23区の数 : <%= @visited_wards_count %> 個</p>
+  <p class="bg-accent btn btn-primary w-auto h-auto text-lg font-semibold" onclick="ward_collection.showModal()">\ click me /<br>行った23区の数 : <%= @visited_wards_count %> 個</p>
   <dialog id="ward_collection" class="modal">
     <div class="modal-box">
       <%= render 'ward_collection' %>

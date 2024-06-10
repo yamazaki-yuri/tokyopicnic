@@ -21,17 +21,4 @@ class Park < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     ["tokyo_wards"]
   end
-
-  def display_permission_value(column)
-    case self[column]
-    when 'possible'
-      '◯'
-    when 'impossible'
-      '×'
-    when 'unspecified'
-      '-'
-    when 'within_common_sense'
-      '△'
-    end
-  end
 end
