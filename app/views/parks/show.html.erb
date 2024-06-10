@@ -63,27 +63,27 @@
         </div>
         <div class="flex justify-between border-b-2 border-slate-200 pb-1 text-park">
           <p class="w-1/3 pl-8"><i class="fa-solid fa-utensils pr-4"></i><%= Park.human_attribute_name(:food_allowed) %></p>
-          <p class="pl-10"><%= @park.display_permission_value(:food_allowed) %></p>
+          <p class="pl-10"><%= @park.decorate.display_permission_value(:food_allowed) %></p>
         </div>
         <div class="flex justify-between border-b-2 border-slate-200 pb-1 text-park">
           <p class="w-1/3 pl-8"><i class="fa-solid fa-champagne-glasses pr-3"></i><%= Park.human_attribute_name(:alcohol_allowed) %></p>
-          <p class="pl-10"><%= @park.display_permission_value(:alcohol_allowed) %></p>
+          <p class="pl-10"><%= @park.decorate.display_permission_value(:alcohol_allowed) %></p>
         </div>
         <div class="flex justify-between border-b-2 border-slate-200 pb-1 text-park">
           <p class="w-1/3 pl-8"><i class="fa-solid fa-bacon pr-3"></i><%= Park.human_attribute_name(:sheet_available) %></p>
-          <p class="pl-10"><%= @park.display_permission_value(:sheet_available) %></p>
+          <p class="pl-10"><%= @park.decorate.display_permission_value(:sheet_available) %></p>
         </div>
         <div class="flex justify-between border-b-2 border-slate-200 pb-1 text-park">
           <p class="w-1/3 pl-8"><i class="fa-regular fa-futbol pr-3"></i>持ち込み</p>
-          <p class="pl-10"><%= @park.display_permission_value(:bringing_in_play_equipment) %></p>
+          <p class="pl-10"><%= @park.decorate.display_permission_value(:bringing_in_play_equipment) %></p>
         </div>
         <div class="flex justify-between border-b-2 border-slate-200 pb-1 text-park">
           <p class="w-1/3 pl-8"><i class="fa-solid fa-fire-burner pr-3"></i><%= Park.human_attribute_name(:bbq_area) %></p>
-          <p class="pl-10"><%= @park.display_permission_value(:bbq_area) %></p>
+          <p class="pl-10"><%= @park.decorate.display_permission_value(:bbq_area) %></p>
         </div>
         <div class="flex justify-between border-b-2 border-slate-200 pb-1 text-park">
           <p class="w-1/3 pl-8"><i class="fa-solid fa-dog pr-3"></i><%= Park.human_attribute_name(:dog_run) %></p>
-          <p class="pl-10"><%= @park.display_permission_value(:dog_run) %></p>
+          <p class="pl-10"><%= @park.decorate.display_permission_value(:dog_run) %></p>
         </div>
         <div class="flex flex-col  justify-between px-3 border-b-2 border-slate-200 pb-1 text-park">
           <p class="pl-5"><i class="fa-solid fa-heart pr-3"></i><%= Park.human_attribute_name(:recommended_points) %></p>

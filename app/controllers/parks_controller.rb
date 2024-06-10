@@ -27,7 +27,7 @@ class ParksController < ApplicationController
   end
 
   def show
-    @park = Park.find(params[:id])
+    @park = Park.find(params[:id]).decorate
     @park_image = ParkImage.new
     @park_images = @park.park_images
     @tokyo_ward = @park.tokyo_wards.first
