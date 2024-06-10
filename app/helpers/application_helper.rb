@@ -11,7 +11,7 @@ module ApplicationHelper
       title: '東京23区内のピクニックができる公園投稿・検索サービス',
       reverse: true,
       charset: 'utf-8',
-      description: 'ピクニックに最適な公園を目的別で探せます。また、ユーザーが公園情報を投稿して共有できます。',
+      description: '公園をきっかけに、東京23区の行ったことがない土地に行ってみよう！ピクニックに最適な公園を目的別で探せます。公園情報を投稿して共有しよう。',
       keywords: 'ピクニック,公園,東京,東京23区',
       canonical: request.original_url,
       separator: '|',
