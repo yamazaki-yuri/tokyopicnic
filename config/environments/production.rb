@@ -95,6 +95,7 @@ Rails.application.configure do
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
   config.hosts << 'tokyopicnic.com'
+  config.hosts << 'tokyopicnic.onrender.com'
   host = 'https://tokyopicnic.com/'
   config.action_mailer.default_url_options = { protocol: 'https', host: host }
   config.action_mailer.raise_delivery_errors = true
