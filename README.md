@@ -1,5 +1,5 @@
-# サービス名 : 東京picnic
-![イメージ](app/assets/images/ogp.jpg)
+## サービス名 : 東京picnic
+<img src="app/assets/images/ogp.jpg" alt="OGPイメージ" width="400">
 ## サービスURL
 ログインをしなくても公園の情報は見られます。
 https://tokyopicnic.com/
@@ -27,7 +27,7 @@ https://tokyopicnic.com/
 | [![ランダム](https://i.gyazo.com/e7c6094de5c4d789a070fb816c0eb001.gif)](https://gyazo.com/e7c6094de5c4d789a070fb816c0eb001)|[![公園検索](https://i.gyazo.com/0147b0fce88381d567012320cf8abf56.gif)](https://gyazo.com/0147b0fce88381d567012320cf8abf56)|
 |押すたびにランダムに違う公園を紹介するボタンを設置しました。気になった公園があれば、公園の詳細画面に遷移できます。検索ページのリンクも設置することで、公園を探すための導線をまとめました。|条件で公園を絞り込み検索できます。Googlemap APIを使用し、現在地に近い公園を地図上で確認することも可能です。|
 
-|公園詳細ページ|
+|公園詳細ページ(1)|公園詳細ページ(2)|
 |:----------|:----------|
 |[![公園詳細](https://i.gyazo.com/d626abd7babf277b26a9628f58720f7a.gif)](https://gyazo.com/d626abd7babf277b26a9628f58720f7a)|[![地図と投稿一覧](https://i.gyazo.com/d2fc4072424d419c60951180c0b00f30.gif)](https://gyazo.com/d2fc4072424d419c60951180c0b00f30)|
 | 公園詳細ページから、公園情報の確認ができ、公式サイトに飛ぶこともできます。|また、公園詳細ページにはGoogleのMaps Embed APIを使用しているので、ここから拡大地図にてルートの確認も行えます。ユーザーの投稿があれば実際に行った人の公園日記も見られます。|
