@@ -15,7 +15,7 @@ https://tokyopicnic.com/
 - ピクニックができる公園を探すとき、アクセスの良さ・有料か・飲酒はできるか・シートは広げられるかなどを考慮して公園を決定するのが大変で、目的別で公園を検索できる方法があればいいと思ったことがアプリ作成のきっかけです。<br>
 - また、私は東京に生まれ育ち、東京という街が好きなのですが、行ったことがない場所はたくさんあります。<br>
 　行ったことがないだけで、魅力のある場所というのはたくさんあるはずという思いと、ずっと暮らしている割に土地勘がないという悔しさがあり、東京23区を制覇するという目的を持たせたアプリにしたいと思いました。<br>
-・アクセスの良さを考慮すると、普段は行こうとはならない場所にも、公園を通して訪れるきっかけ作りになったら良いと思っています。<br>
+- アクセスの良さを考慮すると、普段は行こうとはならない場所にも、公園を通して訪れるきっかけ作りになったら良いと思っています。<br>
 
 ## ユーザー層について
 - 東京に暮らす人
@@ -57,7 +57,7 @@ https://tokyopicnic.com/
 |データベース|PostgreSQL|
 |認証|Devise, OmniAuth|
 |インフラ|Render, Amazon S3|
-|API| Google Maps Embed API, Google Places API, Google Maps JavaScript API |
+|API|Google Places API, Google Maps Embed API, Google Maps JavaScript API |
 |その他|MiniMagick, Ransack, CarrierWave|
 
 
@@ -65,4 +65,4 @@ https://tokyopicnic.com/
 https://www.figma.com/file/jT1IMXubZj3C5haz9rBoeb/%E6%9D%B1%E4%BA%ACpicnic?type=design&node-id=0%3A1&mode=design&t=8BcDOFxaTVPNVXRy-1
 
 ### ER図
-[![Image from Gyazo](https://i.gyazo.com/44ef7b5f96b484eefe2374865ba250e0.png)](https://gyazo.com/44ef7b5f96b484eefe2374865ba250e0)
+[![Image from Gyazo](https://i.gyazo.com/0b2a0a4b8e0e2c2450f5c2b8b2509567.png)](https://gyazo.com/0b2a0a4b8e0e2c2450f5c2b8b2509567)
