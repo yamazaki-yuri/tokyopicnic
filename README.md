@@ -26,7 +26,7 @@ https://tokyopicnic.com/
 |トップページ|公園検索|
 |:----------|:----------|
 |[![ランダム](https://i.gyazo.com/408f47d2f0b1e0e0b6137742ea926002.gif)](https://gyazo.com/408f47d2f0b1e0e0b6137742ea926002)|[![公園検索](https://i.gyazo.com/d935312954b168fbea6ebc4c309a237b.gif)](https://gyazo.com/d935312954b168fbea6ebc4c309a237b)|
-|押すたびにランダムに違う公園を紹介するボタンを設置しました。公園の詳細と検索ページのリンクも設置することで、公園を探すための導線をまとめました。|条件で公園を絞り込み検索できます。GooglemapのJavaScript APIを使用することで、現在地に近い公園を地図上で確認できるようにしました。|
+|押すたびにランダムで異なる公園を紹介するボタンを設置しました。公園の詳細と検索ページのリンクも設置することで、公園を探すための導線をまとめました。|条件で公園を絞り込み検索できます。GooglemapのJavaScript APIを使用することで、現在地に近い公園についても地図上で確認できるようにしました。|
 
 |公園詳細ページ(1)|公園詳細ページ(2)|
 |:----------|:----------|
@@ -45,20 +45,20 @@ https://tokyopicnic.com/
 |公園の日記を投稿することで、思い出が残せます。既にデータベースにある公園に関しては予測変換機能を実装し、区が自動補完されます。データにない公園は、公園名と区を選択することで、新規に公園のページを作成することができます。|公園日記一覧ページから、23区の行ったことがある区を確認できます。また、行ったことがない区の公園をすぐに探せるよう、区のカードをクリックするとその区の公園の検索結果が表示されます。|
 
 ### サービスの差別化ポイント・推しポイント
-- picnicに特化した公園のサービスである。
+- ピクニックに特化した公園のサービスである。
 - Googlemapでは、ある程度範囲を決めた中での公園検索しかできないので、新たな土地の開拓はしづらい。
 - 公園の検索の仕方として、飲酒可・シート可・区の選択などのあらかじめ用意したタグでの検索方法を提供することで、ユーザーの目的に合う情報を絞った検索ができる。
 
 ### 技術スタック
 |カテゴリ|技術|
 |:----------|:----------|
-|フロントエンド|Tailwind CSS/DaisyUI/Turbo-Rails/Stimulus-Rails|
-|バックエンド|Ruby 3.2.3 / Ruby on Rails 7.1.3|
+|フロントエンド|Tailwind CSS, DaisyUI, Turbo-Rails, Stimulus-Rails|
+|バックエンド|Ruby 3.2.3, Ruby on Rails 7.1.3|
 |データベース|PostgreSQL|
 |認証|Devise, OmniAuth|
-|インフラ|Render/Amazon S3|
-|API| Google Maps Embed API/Google Places API/Google Maps JavaScripy API |
-|その他|MiniMagick/Ransack/CarrierWave|
+|インフラ|Render, Amazon S3|
+|API| Google Maps Embed API, Google Places API, Google Maps JavaScript API |
+|その他|MiniMagick, Ransack, CarrierWave|
 
 
 ###  画面遷移図
