@@ -25,12 +25,12 @@ https://tokyopicnic.com/
 ### ユーザー登録せずできること
 |トップページ|公園検索|
 |:----------|:----------|
-|[![ランダム](https://i.gyazo.com/6b9a02fb7fd151bc36db34c091e53b2e.gif)](https://gyazo.com/6b9a02fb7fd151bc36db34c091e53b2e)|[![公園検索](https://i.gyazo.com/d935312954b168fbea6ebc4c309a237b.gif)](https://gyazo.com/d935312954b168fbea6ebc4c309a237b)|
+|[![ランダム](https://i.gyazo.com/408f47d2f0b1e0e0b6137742ea926002.gif)](https://gyazo.com/408f47d2f0b1e0e0b6137742ea926002)|[![公園検索](https://i.gyazo.com/d935312954b168fbea6ebc4c309a237b.gif)](https://gyazo.com/d935312954b168fbea6ebc4c309a237b)|
 |押すたびにランダムに違う公園を紹介するボタンを設置しました。公園の詳細と検索ページのリンクも設置することで、公園を探すための導線をまとめました。|条件で公園を絞り込み検索できます。GooglemapのJavaScript APIを使用することで、現在地に近い公園を地図上で確認できるようにしました。|
 
 |公園詳細ページ(1)|公園詳細ページ(2)|
 |:----------|:----------|
-|[![公式サイト](https://i.gyazo.com/49fd4a6cbbff223b4e4e1677934de02e.gif)](https://gyazo.com/49fd4a6cbbff223b4e4e1677934de02e)|[![公園地図](https://i.gyazo.com/d6a24cf5abcd2d76cc69cbf668142b33.gif)](https://gyazo.com/d6a24cf5abcd2d76cc69cbf668142b33)|
+|[![公式サイト](https://i.gyazo.com/49fd4a6cbbff223b4e4e1677934de02e.gif)](https://gyazo.com/49fd4a6cbbff223b4e4e1677934de02e)|[![地図](https://i.gyazo.com/d84334b7d97803d06cf87fdfcb658156.gif)](https://gyazo.com/d84334b7d97803d06cf87fdfcb658156)|
 |公園詳細ページでは、公園情報の確認ができ、公式サイトに飛ぶこともできます。|GoogleのMaps Embed APIを使用しているので、ここから拡大地図にてルートの確認も行えます。|
 
 ### ユーザー登録するとできること
