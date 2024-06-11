@@ -1,9 +1,8 @@
-## サービス名 : 東京picnic
 <img src="app/assets/images/ogp.jpg" alt="OGPイメージ" width="400">
 
-## サービスURL
-ログインをしなくても公園の情報は見られます。<br>
-https://tokyopicnic.com/
+## サービス名
+### [東京picnic](https://tokyopicnic.com/)
+ログインをしなくても公園の検索や公園の詳細情報をご確認いただけます。<br>
 
 ## サービス概要
 - 東京23区にある、ピクニック可能な公園を検索できる
