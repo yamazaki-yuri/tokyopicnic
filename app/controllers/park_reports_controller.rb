@@ -31,6 +31,7 @@ class ParkReportsController < ApplicationController
 
     if @park
       @tokyo_ward = @park.tokyo_wards.first
+      fetch_and_add_park_image(@park)
     else
       receive_tokyo_ward
     end
@@ -131,5 +132,34 @@ class ParkReportsController < ApplicationController
   
     @park = Park.create(name: @park_name, googlemaps_place_id: place_id, website_url: website, latitude: park_lat, longitude: park_lng)
     @park.tokyo_wards << @tokyo_ward
+
+    add_image_to_park(google_places_service, park_info, @park)
+  end
+
+  def fetch_and_add_park_image(park)
+    google_places_service = GooglePlacesService.new
+    response = google_places_service.search("#{park.latitude},#{park.longitude}", park.name)
+
+    park_info = response['results'].first
+    return if park_info.nil?
+
+    add_image_to_park(google_places_service, park_info, park)
+  end
+
+  def add_image_to_park(google_places_service, park_info, park)
+    return unless park_info['photos'].present?
+
+    photo_reference = park_info['photos'].first['photo_reference']
+    image_url = google_places_service.get_photo_url(photo_reference)
+
+    service = ImageDownloadService.new(image_url)
+    temp_file = service.download_and_process
+
+    if temp_file
+      park_image = park.park_images.create(url: File.open(temp_file.path))
+    end
+  ensure
+    temp_file.close if temp_file
+    temp_file.unlink if temp_file
   end
 end
