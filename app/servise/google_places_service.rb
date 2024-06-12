@@ -32,4 +32,17 @@ class GooglePlacesService
     }
     self.class.get("/details/json", options)
   end
+
+  def get_photo_url(photo_reference)
+    options = {
+      query: {
+        maxwidth: 600,
+        maxheight: 500,
+        photoreference: photo_reference,
+        key: @api_key
+      }
+    }
+    response = self.class.get("/photo", options)
+    response.request.last_uri.to_s if response.success?
+  end
 end

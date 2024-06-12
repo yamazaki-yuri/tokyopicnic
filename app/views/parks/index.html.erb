@@ -27,7 +27,7 @@
     <% @parks.each do |park| %>
       <%= link_to park_path(park), data: { turbo: false }, class: "card bg-base-100 shadow-xl flex flex-col md:gap-x-10" do %>
         <figure>
-        <div style="max-height: 230px; width: 100%; object-fit: cover;">
+        <div style="max-height: 180px; width: 100%; object-fit: cover;">
           <% if park.park_images.present? && park.park_images.first.url.present? %>
             <%= image_tag park.park_images.first.url.url %>
           <% else %>
