@@ -35,7 +35,7 @@
 ### ユーザー登録するとできること
 |ログイン機能|マイページ|
 |:----------|:----------|
-|[![ログイン](https://i.gyazo.com/791008adea193468f12511d11aba96d7.gif)](https://gyazo.com/791008adea193468f12511d11aba96d7)|[![マイページ](https://i.gyazo.com/28724c9b05d99ceb025118489ebfb4d8.gif)](https://gyazo.com/28724c9b05d99ceb025118489ebfb4d8)|
+|[![ログイン](https://i.gyazo.com/fbd07c243e73d667804e57e641700036.gif)](https://gyazo.com/fbd07c243e73d667804e57e641700036)|[![マイページ](https://i.gyazo.com/28724c9b05d99ceb025118489ebfb4d8.gif)](https://gyazo.com/28724c9b05d99ceb025118489ebfb4d8)|
 |ユーザー登録・ログインが手軽に行えるよう、Googleログイン機能を実装しました。|マイページから、ユーザー情報の変更と自身の投稿一覧、ブックマークした公園が確認できます。|
 
 |新規投稿|23区の達成を可視化|
