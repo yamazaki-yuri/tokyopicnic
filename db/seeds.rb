@@ -32,3 +32,5 @@ tokyo_wards = TokyoWard.create([
   {name: '港区', latitude: 35.65865030623709, longitude: 139.75135129450376},
   {name: '目黒区', latitude: 35.64219699407184, longitude: 139.69827978654425},
 ])
+
+Admin.create!(name: 'りいち', email: 'admin@example.com', password: 'password', password_confirmation: 'password')
