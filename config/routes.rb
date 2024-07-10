@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :admins, skip: [:registrations, :password], controllers: {
+    sessions: 'admins/sessions'
+  }
+  namespace :admins do
+    root 'parks#index'
+  end
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   devise_for :users, controllers: {
     sessions: 'users/sessions',
