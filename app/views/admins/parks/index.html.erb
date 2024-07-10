@@ -12,7 +12,8 @@
     <% @parks.each do |park| %>
       <div class="flex justify-between border-b-2 py-2 pl-5 h-auto">
         <div class="py-3">
-          <%= "#{park.name}"%>
+          <%= "#{park.id}" %>
+          <%= "#{park.name}" %>
         </div>
         <div class="pr-5">
           <p class="btn btn-primary justify-end">編集</p>
